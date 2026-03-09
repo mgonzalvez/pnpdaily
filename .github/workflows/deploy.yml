@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 */6 * * *'  # Check every 6 hours
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update data from Google Sheets
+        run: |
+          # Replace these with your actual Google Sheet CSV URLs
+          # For tips: https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=0
+          # For tools: https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=1
+          
+          if [ -n "$GOOGLE_TIPS_CSV_URL" ]; then
+            curl -sL "$GOOGLE_TIPS_CSV_URL" > assets/tips.csv || echo "Using default tips"
+          fi
+          
+          if [ -n "$GOOGLE_TOOLS_CSV_URL" ]; then
+            curl -sL "$GOOGLE_TOOLS_CSV_URL" > assets/tools.csv || echo "Using default tools"
+          fi
+
+          if [ -n "$GOOGLE_GAMES_CSV_URL" ]; then
+            curl -sL "$GOOGLE_GAMES_CSV_URL" > assets/games.csv || echo "Using default games"
+          fi
+
+      - name: Build editorial pages from Markdown
+        run: node scripts/build-posts.mjs
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+
+env:
+  GOOGLE_TIPS_CSV_URL: ${{ vars.GOOGLE_TIPS_CSV_URL }}
+  GOOGLE_TOOLS_CSV_URL: ${{ vars.GOOGLE_TOOLS_CSV_URL }}
+  GOOGLE_GAMES_CSV_URL: ${{ vars.GOOGLE_GAMES_CSV_URL }}

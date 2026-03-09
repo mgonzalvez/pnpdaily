@@ -1,0 +1,143 @@
+# PnPDaily Project - Developer Instructions
+
+## Setup
+
+### 1. Google Sheets (Tips, Games, and Tools)
+
+Create three Google Sheets and publish each tab as CSV.
+
+Tips sheet headers:
+
+```text
+Source,Content
+```
+
+Tools sheet headers:
+
+```text
+Name,Description,URL
+```
+
+Games sheet headers:
+
+```text
+Name,Description,URL
+```
+
+Publish steps:
+
+1. File -> Share -> Publish to web
+2. Choose the tab
+3. Export as CSV
+4. Copy URL
+
+### 2. GitHub Repository Variables
+
+In `Settings -> Secrets and variables -> Actions`, add:
+
+- `GOOGLE_TIPS_CSV_URL`
+- `GOOGLE_GAMES_CSV_URL`
+- `GOOGLE_TOOLS_CSV_URL`
+
+## Content Workflow
+
+### Editorial Articles
+
+Use Markdown files in `/posts` as source content.
+
+1. Create `posts/<slug>.md`
+2. Use this format:
+
+```markdown
+# Article Title
+
+*By Author Name | March 8, 2026*
+
+---
+
+Article body...
+```
+
+3. Regenerate editorial outputs:
+
+```bash
+node scripts/build-posts.mjs
+```
+
+This creates/updates:
+
+- `posts/<slug>.html`
+- `posts/index.html`
+- `posts/manifest.json`
+
+Homepage reads `posts/manifest.json` and shows the latest article.
+
+### Tips/Games/Tools Updates
+
+Edit rows in Google Sheets. The CSV sync workflow updates `assets/tips.csv`, `assets/games.csv`, and `assets/tools.csv` hourly, and homepage uses that content automatically.
+
+## Runtime Behavior
+
+On homepage load:
+
+1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, and `assets/tools.csv`
+2. If CSV files are unavailable/invalid, built-in defaults are used
+3. Game, tip, and tool are selected randomly per page load
+4. `posts/manifest.json` is loaded and latest editorial is shown
+5. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection
+
+## Deployment Workflows
+
+- `deploy.yml`
+  - Runs on push to `main` and every 6 hours
+  - Fetches Google Sheets CSV (when URLs are configured)
+  - Runs `node scripts/build-posts.mjs`
+  - Publishes to GitHub Pages
+
+- `fetch-sheets.yml`
+  - Runs hourly
+  - Pulls latest CSV files
+  - Commits only when `assets/` data changed
+
+## Key Files
+
+- `index.html` - homepage layout
+- `styles.css` - theme and responsive styles
+- `assets/js/main.js` - rotating content + editorial feature logic
+- `app.js` - paper-weight converter
+- `scripts/build-posts.mjs` - Markdown -> HTML/manifest generator
+- `posts/*.md` - editorial source files
+
+## Troubleshooting
+
+### Content not refreshing
+
+1. Verify CSV URLs are valid and published
+2. Check Actions runs for `deploy.yml` and `fetch-sheets.yml`
+3. Hard refresh browser cache
+
+### Editorial card/link issues
+
+1. Run `node scripts/build-posts.mjs`
+2. Confirm `posts/manifest.json` exists and includes expected slug
+3. Confirm corresponding `posts/<slug>.html` exists
+
+### Converter issues
+
+Use browser console:
+
+```javascript
+console.log("Converter loaded:", typeof convertPaperWeight === 'function');
+```
+
+## Maintenance Checklist
+
+- Add/update tips in Google Sheets
+- Add/update games in Google Sheets
+- Add/edit editorial Markdown in `/posts`
+- Run post build script after Markdown changes
+- Verify deploy workflow status after push
+
+---
+
+*Last updated: March 8, 2026 | Maintained by PnP Daily Team*
