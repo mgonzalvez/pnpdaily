@@ -11,6 +11,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       
       - name: Fetch Tips CSV
         run: |
@@ -34,4 +36,5 @@ jobs:
             exit 0
           fi
           git commit -m "Update CSV data from Google Sheets"
+          git pull --rebase origin main
           git push origin main
