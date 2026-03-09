@@ -7,6 +7,41 @@ const GSM_PER_LB = {
     cover: 1406.5 / 520
 };
 
+const CARD_SIZES = {
+    poker: {
+        inches: "2.5 x 3.5",
+        mm: "63.5 x 88.9"
+    },
+    tarot: {
+        inches: "2.75 x 4.75",
+        mm: "69.9 x 120.7"
+    },
+    jumbo: {
+        inches: "3.5 x 5",
+        mm: "88.9 x 127"
+    },
+    bridge: {
+        inches: "2.25 x 3.5",
+        mm: "57.2 x 88.9"
+    },
+    business: {
+        inches: "2 x 3.5",
+        mm: "50.8 x 88.9"
+    },
+    domino: {
+        inches: "1.75 x 3.5",
+        mm: "44.5 x 88.9"
+    },
+    mini: {
+        inches: "1.75 x 2.5",
+        mm: "44.5 x 63.5"
+    },
+    micro: {
+        inches: "1.25 x 1.75",
+        mm: "31.8 x 44.5"
+    }
+};
+
 function initConverter() {
     const input = document.getElementById("weight-input");
     const paperType = document.getElementById("paper-type-select");
@@ -37,6 +72,31 @@ function initConverter() {
     });
 
     convertPaperWeight();
+}
+
+function initCardDimensions() {
+    const select = document.getElementById("card-size-select");
+    const imperial = document.getElementById("card-size-imperial");
+    const metric = document.getElementById("card-size-metric");
+
+    if (!select || !imperial || !metric) {
+        return;
+    }
+
+    const savedCardSize = localStorage.getItem("pnp_card_size");
+    if (savedCardSize && CARD_SIZES[savedCardSize]) {
+        select.value = savedCardSize;
+    }
+
+    const render = () => {
+        const selected = CARD_SIZES[select.value] || CARD_SIZES.poker;
+        imperial.textContent = selected.inches;
+        metric.textContent = selected.mm;
+        localStorage.setItem("pnp_card_size", select.value);
+    };
+
+    select.addEventListener("change", render);
+    render();
 }
 
 function convertPaperWeight() {
@@ -77,4 +137,7 @@ function formatValue(num) {
     return num.toFixed(2).replace(/\.?0+$/, "");
 }
 
-document.addEventListener("DOMContentLoaded", initConverter);
+document.addEventListener("DOMContentLoaded", () => {
+    initConverter();
+    initCardDimensions();
+});

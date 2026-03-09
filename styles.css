@@ -96,7 +96,7 @@ header h1 {
 
 .widgets-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
 }
 
@@ -158,16 +158,29 @@ header h1 {
 #input-unit-select {
     width: 100%;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 800;
     color: var(--ink);
     background: #fff;
     border: 3px solid var(--ink);
     padding: 0.6rem;
 }
 
+#card-size-select {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--ink);
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 0.7rem 0.6rem;
+}
+
 #weight-input:focus,
 #paper-type-select:focus,
-#input-unit-select:focus {
+#input-unit-select:focus,
+#card-size-select:focus {
     outline: none;
     border-color: var(--accent);
 }
@@ -175,6 +188,20 @@ header h1 {
 .converter-results {
     border-top: 4px solid var(--ink);
     padding-top: 0.9rem;
+}
+
+.dimension-results {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+}
+
+.dimension-results .value {
+    font-size: clamp(1.15rem, 2.2vw, 1.75rem);
+}
+
+.dimension-results .label {
+    font-size: 0.74rem;
 }
 
 .result {
@@ -261,6 +288,12 @@ footer h2 {
 .loading,
 .empty-content {
     color: var(--muted);
+}
+
+@media (max-width: 1180px) {
+    .widgets-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 980px) {
