@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PnPDaily - Your Daily PnP Roundup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <h1><span class="highlight">PnPDaily</span></h1>
+                <div class="header-actions">
+                    <a class="action-btn" href="posts/index.html">Read Articles</a>
+                    <a class="action-btn solid" href="https://reddit.com/r/printandplay" target="_blank" rel="noopener noreferrer">Community Feed</a>
+                </div>
+            </div>
+            <p class="tagline">What's going on in the world of print and play games.</p>
+        </header>
+
+        <section id="top-widgets">
+            <div class="widgets-grid">
+                <div class="card game-card">
+                    <h2>PnP Game Spotlight</h2>
+                    <div id="game-content"></div>
+                </div>
+
+                <div class="card converter-card">
+                    <h2>Paper Weight Converter</h2>
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label for="paper-type-select">Paper Type:</label>
+                            <select id="paper-type-select">
+                                <option value="text">Text / Book</option>
+                                <option value="cover">Cover</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-unit-select">Input Unit:</label>
+                            <select id="input-unit-select">
+                                <option value="lb">Pounds (lb)</option>
+                                <option value="gsm">GSM (g/m²)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="weight-input">Weight:</label>
+                            <input type="number" id="weight-input" value="" placeholder="Enter value">
+                        </div>
+                    </div>
+                    <div class="converter-results">
+                        <div class="result">
+                            <span class="value" id="converted-result"></span>
+                            <span class="label" id="converted-label"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card tip-card">
+                    <h2>Tip of the Day</h2>
+                    <div id="tip-content"></div>
+                </div>
+
+                <div class="card tools-card">
+                    <h2>Tool Spotlight</h2>
+                    <div id="tools-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="editorial">
+            <h2 class="section-title">Daily Briefing</h2>
+            <div id="editorial-content"></div>
+        </section>
+
+        <!-- Community Links -->
+        <footer>
+            <h2>Join the Community</h2>
+            <div class="community-links">
+                <a href="https://facebook.com/groups/martinspnphideaway" target="_blank" title="Martin's PnP Hideaway Facebook">
+                    Martin's PnP Hideaway
+                </a>
+                <a href="https://reddit.com/r/printandplay" target="_blank" title="r/printandplay subreddit">
+                    r/printandplay
+                </a>
+                <a href="https://boardgamegeek.com/geeklist/345768/crafting-and-playing-pnp-games" target="_blank" title="BoardGameGeek Crafting PnP Geeklist">
+                    BGG Crafting & Playing
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
