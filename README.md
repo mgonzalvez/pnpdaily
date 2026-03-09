@@ -55,15 +55,10 @@ Article body...
 GitHub Actions:
 
 - `.github/workflows/deploy.yml`
-  - Trigger: push to `main` + every 6 hours
+  - Trigger: push to `main` + hourly schedule
   - Pulls latest CSV data from repository vars (if set)
   - Runs `node scripts/build-posts.mjs`
   - Deploys site to GitHub Pages
-
-- `.github/workflows/fetch-sheets.yml`
-  - Trigger: hourly
-  - Fetches CSV from Google Sheets URLs into `assets/`
-  - Commits only when CSV content changed
 
 Repository variables required for sheet sync:
 
@@ -99,8 +94,7 @@ pnpdaily/
 ├── scripts/
 │   └── build-posts.mjs
 └── .github/workflows/
-    ├── deploy.yml
-    └── fetch-sheets.yml
+    └── deploy.yml
 ```
 
 ## Maintainer Notes

@@ -25,14 +25,10 @@
 ## Automation Flow
 
 - `deploy.yml`
-  - Push to `main` + 6-hour schedule
+  - Push to `main` + hourly schedule
   - Pull CSV from repo variables
   - Build posts from Markdown
   - Deploy to GitHub Pages
-
-- `fetch-sheets.yml`
-  - Hourly CSV refresh from Google Sheets
-  - Commit only on changes
 
 ## Work Log
 
@@ -57,3 +53,8 @@
 - Moved editorial feature below widgets as a full-width section.
 - Added game spotlight data flow from `assets/games.csv` with fallback defaults.
 - Added `GOOGLE_GAMES_CSV_URL` support in deploy and sheet-fetch workflows.
+
+### March 9, 2026
+
+- Removed the separate sheet-fetch workflow because it was racing with normal pushes and causing non-fast-forward failures.
+- Moved hourly Google Sheets refresh responsibility into `deploy.yml` so Pages deploy remains the only publishing path.

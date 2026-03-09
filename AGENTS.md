@@ -74,7 +74,7 @@ Homepage reads `posts/manifest.json` and shows the latest article.
 
 ### Tips/Games/Tools Updates
 
-Edit rows in Google Sheets. The CSV sync workflow updates `assets/tips.csv`, `assets/games.csv`, and `assets/tools.csv` hourly, and homepage uses that content automatically.
+Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, and `assets/tools.csv` hourly and republishes the site automatically.
 
 ## Runtime Behavior
 
@@ -89,15 +89,10 @@ On homepage load:
 ## Deployment Workflows
 
 - `deploy.yml`
-  - Runs on push to `main` and every 6 hours
+  - Runs on push to `main` and hourly
   - Fetches Google Sheets CSV (when URLs are configured)
   - Runs `node scripts/build-posts.mjs`
   - Publishes to GitHub Pages
-
-- `fetch-sheets.yml`
-  - Runs hourly
-  - Pulls latest CSV files
-  - Commits only when `assets/` data changed
 
 ## Key Files
 
@@ -113,7 +108,7 @@ On homepage load:
 ### Content not refreshing
 
 1. Verify CSV URLs are valid and published
-2. Check Actions runs for `deploy.yml` and `fetch-sheets.yml`
+2. Check Actions runs for `deploy.yml`
 3. Hard refresh browser cache
 
 ### Editorial card/link issues

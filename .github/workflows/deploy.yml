@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   schedule:
-    - cron: '0 */6 * * *'  # Check every 6 hours
+    - cron: '0 * * * *'  # Rebuild hourly with latest sheet data
 
 jobs:
   build:
