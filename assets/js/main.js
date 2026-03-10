@@ -1,9 +1,9 @@
 const DEFAULT_TIPS = [
-    { source: "r/printandplay", content: "Use a bone folder for crisp folding - score first, fold over a ruler edge." },
-    { source: "Martin's PnP Hideaway", content: "Laminating cards in sleeves before mounting to cardstock extends longevity significantly." },
-    { source: "BGG Geeklists", content: "Color test print all pages on regular printer before committing to the final print run." },
-    { source: "r/printandplay", content: "Keep a small test kit of paper stocks, adhesives, and blades for quick prototyping." },
-    { source: "Martin's PnP Hideaway", content: "Use alignment marks on front/back prints to cut cleaner double-sided cards." }
+    { title: "Cleaner folds", content: "Use a bone folder for crisp folding - score first, fold over a ruler edge." },
+    { title: "Longer-lasting cards", content: "Laminating cards in sleeves before mounting to cardstock extends longevity significantly." },
+    { title: "Test before full print", content: "Color test print all pages on regular printer before committing to the final print run." },
+    { title: "Keep a test kit", content: "Keep a small test kit of paper stocks, adhesives, and blades for quick prototyping." },
+    { title: "Use alignment marks", content: "Use alignment marks on front/back prints to cut cleaner double-sided cards." }
 ];
 
 const DEFAULT_TOOLS = [
@@ -173,10 +173,10 @@ async function loadPostsManifest() {
 function parseTipsCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
-            source: getField(row, ["source"]).trim(),
+            title: getField(row, ["title", "source"]).trim(),
             content: getField(row, ["content", "tip"]).trim()
         }))
-        .filter((row) => row.source && row.content);
+        .filter((row) => row.title && row.content);
 }
 
 function parseToolsCsv(csvText) {
@@ -299,7 +299,7 @@ function renderTip(tip) {
     }
 
     tipElement.innerHTML = `
-        <p><strong>From:</strong> ${escapeHtml(tip.source)}</p>
+        <p><strong>${escapeHtml(tip.title)}</strong></p>
         <p>${escapeHtml(tip.content)}</p>
     `;
 }

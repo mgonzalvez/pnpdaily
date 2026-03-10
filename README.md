@@ -15,7 +15,7 @@ Fast static site for daily print-and-play highlights: rotating game/tip/tool/com
 ## Content Sources
 
 - `assets/tips.csv`
-  - Headers: `Source,Content`
+  - Headers: `Title,Content`
 - `assets/games.csv`
   - Headers: `Name,Description,URL` (optional `Source`)
 - `assets/tools.csv`

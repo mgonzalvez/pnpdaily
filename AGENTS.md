@@ -9,7 +9,7 @@ Create five Google Sheets and publish each tab as CSV.
 Tips sheet headers:
 
 ```text
-Source,Content
+Title,Content
 ```
 
 Tools sheet headers:
