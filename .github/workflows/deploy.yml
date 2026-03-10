@@ -26,20 +26,19 @@ jobs:
 
       - name: Update data from Google Sheets
         run: |
-          # Replace these with your actual Google Sheet CSV URLs
-          # For tips: https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=0
-          # For tools: https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=1
-          
           if [ -n "$GOOGLE_TIPS_CSV_URL" ]; then
-            curl -sL "$GOOGLE_TIPS_CSV_URL" > assets/tips.csv || echo "Using default tips"
+            curl -fsSL "$GOOGLE_TIPS_CSV_URL" -o assets/tips.csv
+            test -s assets/tips.csv
           fi
           
           if [ -n "$GOOGLE_TOOLS_CSV_URL" ]; then
-            curl -sL "$GOOGLE_TOOLS_CSV_URL" > assets/tools.csv || echo "Using default tools"
+            curl -fsSL "$GOOGLE_TOOLS_CSV_URL" -o assets/tools.csv
+            test -s assets/tools.csv
           fi
 
           if [ -n "$GOOGLE_GAMES_CSV_URL" ]; then
-            curl -sL "$GOOGLE_GAMES_CSV_URL" > assets/games.csv || echo "Using default games"
+            curl -fsSL "$GOOGLE_GAMES_CSV_URL" -o assets/games.csv
+            test -s assets/games.csv
           fi
 
       - name: Build editorial pages from Markdown

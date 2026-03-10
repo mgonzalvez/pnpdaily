@@ -132,8 +132,8 @@ async function loadPostsManifest() {
 function parseTipsCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
-            source: (row.Source || "").trim(),
-            content: (row.Content || "").trim()
+            source: getField(row, ["source"]).trim(),
+            content: getField(row, ["content", "tip"]).trim()
         }))
         .filter((row) => row.source && row.content);
 }
@@ -141,9 +141,9 @@ function parseTipsCsv(csvText) {
 function parseToolsCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
-            name: (row.Name || "").trim(),
-            description: (row.Description || "").trim(),
-            url: (row.URL || "").trim()
+            name: getField(row, ["name", "tool", "title"]).trim(),
+            description: getField(row, ["description", "summary", "notes"]).trim(),
+            url: getField(row, ["url", "link"]).trim()
         }))
         .filter((row) => row.name && row.description);
 }
@@ -151,10 +151,10 @@ function parseToolsCsv(csvText) {
 function parseGamesCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
-            name: (row.Name || row.Game || row.Title || "").trim(),
-            source: (row.Source || row.Community || row.Subreddit || "").trim(),
-            description: (row.Description || row.Notes || row.Summary || "").trim(),
-            url: (row.URL || row.Link || "").trim()
+            name: getField(row, ["name", "game", "title"]).trim(),
+            source: getField(row, ["source", "community", "subreddit"]).trim(),
+            description: getField(row, ["description", "notes", "summary"]).trim(),
+            url: getField(row, ["url", "link"]).trim()
         }))
         .filter((row) => row.name);
 }
@@ -170,7 +170,7 @@ function parseCsvRows(csvText) {
         return [];
     }
 
-    const headers = splitCsvLine(lines[0]).map((header) => header.trim());
+    const headers = splitCsvLine(lines[0]).map((header) => normalizeHeader(header));
 
     return lines.slice(1).map((line) => {
         const values = splitCsvLine(line);
@@ -213,6 +213,22 @@ function splitCsvLine(line) {
 
     values.push(current);
     return values;
+}
+
+function normalizeHeader(header) {
+    return String(header || "")
+        .replace(/^\uFEFF/, "")
+        .trim()
+        .toLowerCase();
+}
+
+function getField(row, keys) {
+    for (const key of keys) {
+        if (typeof row[key] === "string") {
+            return row[key];
+        }
+    }
+    return "";
 }
 
 function renderTip(tip) {
