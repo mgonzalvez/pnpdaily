@@ -328,7 +328,6 @@ function renderGame(game) {
     }
 
     const safeName = escapeHtml(game.name);
-    const safeSource = game.source ? escapeHtml(game.source) : "Community";
     const safeDescription = game.description
         ? escapeHtml(game.description)
         : "Current community favorite worth checking out.";
@@ -336,7 +335,7 @@ function renderGame(game) {
 
     gameElement.innerHTML = `
         <p><strong>${safeName}</strong></p>
-        <p><strong>From:</strong> ${safeSource}</p>
+        <p>Powered by <a href="https://pnpfinder.com" target="_blank" rel="noopener noreferrer">PnPFinder.com</a></p>
         <p>${safeDescription}</p>
         ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">View game</a>` : ""}
     `;
