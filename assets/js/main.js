@@ -352,7 +352,7 @@ function renderCommunityFeed(contest, wip) {
         : `<p class="empty-content">No contest entries available.</p>`;
 
     const wipMarkup = wip
-        ? renderFeedCardMarkup("Notable WIP", wip, "View thread")
+        ? renderFeedCardMarkup("Notable WIP Thread", wip, "View thread")
         : `<p class="empty-content">No WIP entries available.</p>`;
 
     communityElement.innerHTML = `

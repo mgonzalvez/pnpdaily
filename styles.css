@@ -129,6 +129,10 @@ header h1 {
     font-weight: 700;
 }
 
+.card p strong {
+    font-weight: 900;
+}
+
 .card a,
 .read-more-btn {
     color: var(--ink);
