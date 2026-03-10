@@ -41,6 +41,16 @@ jobs:
             test -s assets/games.csv
           fi
 
+          if [ -n "$GOOGLE_CONTESTS_CSV_URL" ]; then
+            curl -fsSL "$GOOGLE_CONTESTS_CSV_URL" -o assets/contests.csv
+            test -s assets/contests.csv
+          fi
+
+          if [ -n "$GOOGLE_WIPS_CSV_URL" ]; then
+            curl -fsSL "$GOOGLE_WIPS_CSV_URL" -o assets/wips.csv
+            test -s assets/wips.csv
+          fi
+
       - name: Build editorial pages from Markdown
         run: node scripts/build-posts.mjs
 
@@ -67,3 +77,5 @@ env:
   GOOGLE_TIPS_CSV_URL: ${{ vars.GOOGLE_TIPS_CSV_URL }}
   GOOGLE_TOOLS_CSV_URL: ${{ vars.GOOGLE_TOOLS_CSV_URL }}
   GOOGLE_GAMES_CSV_URL: ${{ vars.GOOGLE_GAMES_CSV_URL }}
+  GOOGLE_CONTESTS_CSV_URL: ${{ vars.GOOGLE_CONTESTS_CSV_URL }}
+  GOOGLE_WIPS_CSV_URL: ${{ vars.GOOGLE_WIPS_CSV_URL }}

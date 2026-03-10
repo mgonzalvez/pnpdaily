@@ -34,6 +34,22 @@ const DEFAULT_GAMES = [
     }
 ];
 
+const DEFAULT_CONTESTS = [
+    {
+        title: "Monthly Solo Design Challenge",
+        description: "Community print-and-play design prompt with voting and build logs.",
+        url: ""
+    }
+];
+
+const DEFAULT_WIPS = [
+    {
+        title: "Pocket Card Battler Prototype",
+        description: "A compact deck-driven combat prototype currently being iterated in public.",
+        url: ""
+    }
+];
+
 const DEFAULT_ARTICLES = [
     {
         title: "The Art of Miniature PnP Conversion",
@@ -47,16 +63,19 @@ const DEFAULT_ARTICLES = [
 window.addEventListener("DOMContentLoaded", async () => {
     renderEditorial(getRandomItem(DEFAULT_ARTICLES));
 
-    const [tips, tools, games, posts] = await Promise.all([
+    const [tips, tools, games, contests, wips, posts] = await Promise.all([
         loadTips(),
         loadTools(),
         loadGames(),
+        loadContests(),
+        loadWips(),
         loadPostsManifest()
     ]);
 
     renderTip(getRandomItem(tips));
     renderTool(getRandomItem(tools));
     renderGame(getRandomItem(games));
+    renderCommunityFeed(getRandomItem(contests), getRandomItem(wips));
     if (posts.length) {
         renderEditorial(posts[0]);
     }
@@ -92,6 +111,28 @@ async function loadGames() {
     } catch (error) {
         console.log("Using default games:", error);
         return DEFAULT_GAMES;
+    }
+}
+
+async function loadContests() {
+    try {
+        const csv = await fetchCsv("assets/contests.csv");
+        const parsed = parseContestCsv(csv);
+        return parsed.length ? parsed : DEFAULT_CONTESTS;
+    } catch (error) {
+        console.log("Using default contests:", error);
+        return DEFAULT_CONTESTS;
+    }
+}
+
+async function loadWips() {
+    try {
+        const csv = await fetchCsv("assets/wips.csv");
+        const parsed = parseWipCsv(csv);
+        return parsed.length ? parsed : DEFAULT_WIPS;
+    } catch (error) {
+        console.log("Using default WIPs:", error);
+        return DEFAULT_WIPS;
     }
 }
 
@@ -157,6 +198,26 @@ function parseGamesCsv(csvText) {
             url: getField(row, ["url", "link"]).trim()
         }))
         .filter((row) => row.name);
+}
+
+function parseContestCsv(csvText) {
+    return parseCsvRows(csvText)
+        .map((row) => ({
+            title: getField(row, ["title", "name", "contest"]).trim(),
+            description: getField(row, ["description", "summary", "notes"]).trim(),
+            url: getField(row, ["url", "link"]).trim()
+        }))
+        .filter((row) => row.title);
+}
+
+function parseWipCsv(csvText) {
+    return parseCsvRows(csvText)
+        .map((row) => ({
+            title: getField(row, ["title", "name", "wip", "thread"]).trim(),
+            description: getField(row, ["description", "summary", "notes"]).trim(),
+            url: getField(row, ["url", "link"]).trim()
+        }))
+        .filter((row) => row.title);
 }
 
 function parseCsvRows(csvText) {
@@ -278,6 +339,41 @@ function renderGame(game) {
         <p><strong>From:</strong> ${safeSource}</p>
         <p>${safeDescription}</p>
         ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">View game</a>` : ""}
+    `;
+}
+
+function renderCommunityFeed(contest, wip) {
+    const communityElement = document.getElementById("community-content");
+    if (!communityElement) {
+        return;
+    }
+
+    const contestMarkup = contest
+        ? renderFeedCardMarkup("Ongoing Contest", contest, "View contest")
+        : `<p class="empty-content">No contest entries available.</p>`;
+
+    const wipMarkup = wip
+        ? renderFeedCardMarkup("Notable WIP", wip, "View thread")
+        : `<p class="empty-content">No WIP entries available.</p>`;
+
+    communityElement.innerHTML = `
+        <div class="community-block">${contestMarkup}</div>
+        <div class="community-block">${wipMarkup}</div>
+    `;
+}
+
+function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
+    const safeTitle = escapeHtml(item.title);
+    const safeDescription = item.description
+        ? escapeHtml(item.description)
+        : "Current community thread worth checking out.";
+    const safeUrl = item.url ? escapeHtml(item.url) : "";
+
+    return `
+        <p class="feed-label">${escapeHtml(sectionLabel)}</p>
+        <p><strong>${safeTitle}</strong></p>
+        <p>${safeDescription}</p>
+        ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${linkLabel}</a>` : ""}
     `;
 }
 

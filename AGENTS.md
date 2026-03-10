@@ -2,9 +2,9 @@
 
 ## Setup
 
-### 1. Google Sheets (Tips, Games, and Tools)
+### 1. Google Sheets (Tips, Games, Tools, Contests, and WIPs)
 
-Create three Google Sheets and publish each tab as CSV.
+Create five Google Sheets and publish each tab as CSV.
 
 Tips sheet headers:
 
@@ -24,12 +24,34 @@ Games sheet headers:
 Name,Description,URL
 ```
 
+Contests sheet headers:
+
+```text
+Title,Description,URL
+```
+
+WIPs sheet headers:
+
+```text
+Title,Description,URL
+```
+
 Publish steps:
 
 1. File -> Share -> Publish to web
 2. Choose the tab
 3. Export as CSV
 4. Copy URL
+
+Access requirement:
+
+1. Set the sheet sharing to `Anyone with the link can view`
+2. Confirm the CSV URL works in an incognito browser window
+3. Prefer direct export URLs:
+
+```text
+https://docs.google.com/spreadsheets/d/<SHEET_ID>/export?format=csv&gid=<TAB_GID>
+```
 
 ### 2. GitHub Repository Variables
 
@@ -38,6 +60,8 @@ In `Settings -> Secrets and variables -> Actions`, add:
 - `GOOGLE_TIPS_CSV_URL`
 - `GOOGLE_GAMES_CSV_URL`
 - `GOOGLE_TOOLS_CSV_URL`
+- `GOOGLE_CONTESTS_CSV_URL`
+- `GOOGLE_WIPS_CSV_URL`
 
 ## Content Workflow
 
@@ -72,17 +96,17 @@ This creates/updates:
 
 Homepage reads `posts/manifest.json` and shows the latest article.
 
-### Tips/Games/Tools Updates
+### Tips/Games/Tools/Contests/WIPs Updates
 
-Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, and `assets/tools.csv` hourly and republishes the site automatically.
+Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, and `assets/wips.csv` hourly and republishes the site automatically.
 
 ## Runtime Behavior
 
 On homepage load:
 
-1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, and `assets/tools.csv`
+1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, and `assets/wips.csv`
 2. If CSV files are unavailable/invalid, built-in defaults are used
-3. Game, tip, and tool are selected randomly per page load
+3. Game, tip, and tool entries are selected randomly per page load, and the combined community widget shows one contest plus one WIP entry
 4. `posts/manifest.json` is loaded and latest editorial is shown
 5. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection
 
@@ -107,7 +131,7 @@ On homepage load:
 
 ### Content not refreshing
 
-1. Verify CSV URLs are valid and published
+1. Verify CSV URLs are valid, public, and work without Google login
 2. Check Actions runs for `deploy.yml`
 3. Hard refresh browser cache
 
@@ -129,6 +153,9 @@ console.log("Converter loaded:", typeof convertPaperWeight === 'function');
 
 - Add/update tips in Google Sheets
 - Add/update games in Google Sheets
+- Add/update tools in Google Sheets
+- Add/update contests in Google Sheets
+- Add/update WIPs in Google Sheets
 - Add/edit editorial Markdown in `/posts`
 - Run post build script after Markdown changes
 - Verify deploy workflow status after push
