@@ -396,14 +396,11 @@ function renderContests(contests) {
         const safeUrl = contest.url ? escapeHtml(contest.url) : "";
 
         return `
-            <div class="community-block">
-                <p class="feed-label">Ongoing Contest</p>
-                <p>
-                    ${safeUrl
-                        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
-                        : `<strong>${safeTitle}</strong>`}
-                </p>
-            </div>
+            <p>
+                ${safeUrl
+                    ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
+                    : `<strong>${safeTitle}</strong>`}
+            </p>
         `;
     }).join("");
 }
