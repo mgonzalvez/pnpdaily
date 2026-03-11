@@ -391,9 +391,21 @@ function renderContests(contests) {
         return;
     }
 
-    contestsElement.innerHTML = contests.map((contest) => (
-        `<div class="community-block">${renderFeedCardMarkup("Ongoing Contest", contest, "View contest")}</div>`
-    )).join("");
+    contestsElement.innerHTML = contests.map((contest) => {
+        const safeTitle = escapeHtml(contest.title);
+        const safeUrl = contest.url ? escapeHtml(contest.url) : "";
+
+        return `
+            <div class="community-block">
+                <p class="feed-label">Ongoing Contest</p>
+                <p>
+                    ${safeUrl
+                        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
+                        : `<strong>${safeTitle}</strong>`}
+                </p>
+            </div>
+        `;
+    }).join("");
 }
 
 function renderWip(wip) {
