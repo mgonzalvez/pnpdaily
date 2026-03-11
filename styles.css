@@ -306,6 +306,39 @@ footer h2 {
     color: var(--muted);
 }
 
+.poll-options {
+    display: grid;
+    gap: 0.7rem;
+    margin: 1rem 0;
+}
+
+.poll-option-btn {
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--ink);
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 0.7rem 0.8rem;
+    cursor: pointer;
+}
+
+.poll-option-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.poll-note {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.poll-result-row + .poll-result-row {
+    margin-top: 0.8rem;
+}
+
 @media (max-width: 1180px) {
     .widgets-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));

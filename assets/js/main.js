@@ -50,6 +50,20 @@ const DEFAULT_WIPS = [
     }
 ];
 
+const POLL_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe4btzJ_XPS5Y7rxlTc7ST9KI7QAdbspm8Ai86QxYbgM0SVEA/viewform?usp=publish-editor";
+const POLL_STORAGE_KEY = "pnp_poll_voted";
+
+const DEFAULT_POLL_RESULTS = [
+    {
+        option: "3x3 card grid - duplex format",
+        votes: 0
+    },
+    {
+        option: "Gutterfold - foldable format",
+        votes: 0
+    }
+];
+
 const DEFAULT_ARTICLES = [
     {
         title: "The Art of Miniature PnP Conversion",
@@ -63,19 +77,22 @@ const DEFAULT_ARTICLES = [
 window.addEventListener("DOMContentLoaded", async () => {
     renderEditorial(getRandomItem(DEFAULT_ARTICLES));
 
-    const [tips, tools, games, contests, wips, posts] = await Promise.all([
+    const [tips, tools, games, contests, wips, pollResults, posts] = await Promise.all([
         loadTips(),
         loadTools(),
         loadGames(),
         loadContests(),
         loadWips(),
+        loadPollResults(),
         loadPostsManifest()
     ]);
 
     renderTip(getRandomItem(tips));
     renderTool(getRandomItem(tools));
     renderGame(getRandomItem(games));
-    renderCommunityFeed(getRandomItem(contests), getRandomItem(wips));
+    renderContests(contests);
+    renderWip(getRandomItem(wips));
+    renderPoll(pollResults);
     if (posts.length) {
         renderEditorial(posts[0]);
     }
@@ -133,6 +150,17 @@ async function loadWips() {
     } catch (error) {
         console.log("Using default WIPs:", error);
         return DEFAULT_WIPS;
+    }
+}
+
+async function loadPollResults() {
+    try {
+        const csv = await fetchCsv("assets/poll-results.csv");
+        const parsed = parsePollResultsCsv(csv);
+        return parsed.length ? parsed : DEFAULT_POLL_RESULTS;
+    } catch (error) {
+        console.log("Using default poll results:", error);
+        return DEFAULT_POLL_RESULTS;
     }
 }
 
@@ -219,6 +247,15 @@ function parseWipCsv(csvText) {
             url: getField(row, ["url", "link"]).trim()
         }))
         .filter((row) => row.title);
+}
+
+function parsePollResultsCsv(csvText) {
+    return parseCsvRows(csvText)
+        .map((row) => ({
+            option: getField(row, ["option", "choice", "answer"]).trim(),
+            votes: Number(getField(row, ["votes", "count", "total"]).trim() || 0)
+        }))
+        .filter((row) => row.option);
 }
 
 function parseCsvRows(csvText) {
@@ -343,24 +380,31 @@ function renderGame(game) {
     `;
 }
 
-function renderCommunityFeed(contest, wip) {
-    const communityElement = document.getElementById("community-content");
-    if (!communityElement) {
+function renderContests(contests) {
+    const contestsElement = document.getElementById("contests-content");
+    if (!contestsElement) {
         return;
     }
 
-    const contestMarkup = contest
-        ? renderFeedCardMarkup("Ongoing Contest", contest, "View contest")
-        : `<p class="empty-content">No contest entries available.</p>`;
+    if (!contests.length) {
+        contestsElement.innerHTML = `<p class="empty-content">No contest entries available.</p>`;
+        return;
+    }
 
-    const wipMarkup = wip
+    contestsElement.innerHTML = contests.map((contest) => (
+        `<div class="community-block">${renderFeedCardMarkup("Ongoing Contest", contest, "View contest")}</div>`
+    )).join("");
+}
+
+function renderWip(wip) {
+    const wipsElement = document.getElementById("wips-content");
+    if (!wipsElement) {
+        return;
+    }
+
+    wipsElement.innerHTML = wip
         ? renderFeedCardMarkup("Notable WIP Thread", wip, "View thread")
         : `<p class="empty-content">No WIP entries available.</p>`;
-
-    communityElement.innerHTML = `
-        <div class="community-block">${contestMarkup}</div>
-        <div class="community-block">${wipMarkup}</div>
-    `;
 }
 
 function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
@@ -376,6 +420,52 @@ function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
         <p>${safeDescription}</p>
         ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${linkLabel}</a>` : ""}
     `;
+}
+
+function renderPoll(results) {
+    const pollElement = document.getElementById("poll-content");
+    if (!pollElement) {
+        return;
+    }
+
+    const hasVoted = localStorage.getItem(POLL_STORAGE_KEY) === "true";
+    const totalVotes = results.reduce((sum, item) => sum + (Number.isFinite(item.votes) ? item.votes : 0), 0);
+    const optionButtons = DEFAULT_POLL_RESULTS.map((item) => `
+        <button class="poll-option-btn" data-option="${escapeAttribute(item.option)}" ${hasVoted ? "disabled" : ""}>
+            ${escapeHtml(item.option)}
+        </button>
+    `).join("");
+
+    const resultsMarkup = results.map((item) => {
+        const votes = Number.isFinite(item.votes) ? item.votes : 0;
+        const pct = totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0;
+        return `
+            <div class="poll-result-row">
+                <p><strong>${escapeHtml(item.option)}</strong></p>
+                <p>${votes} vote${votes === 1 ? "" : "s"} (${pct}%)</p>
+            </div>
+        `;
+    }).join("");
+
+    pollElement.innerHTML = `
+        <p><strong>Which print and play card file format do you prefer?</strong></p>
+        <div class="poll-options">${optionButtons}</div>
+        <p class="poll-note">${hasVoted ? "Vote submitted from this browser already. Google Form also limits one response per account." : "Voting opens in Google Forms. Google sign-in and one response per account are required."}</p>
+        <div class="community-block">
+            <p class="feed-label">Current Results</p>
+            ${resultsMarkup}
+            <p><strong>Total votes:</strong> ${totalVotes}</p>
+            <p><a href="${escapeAttribute(POLL_FORM_URL)}" target="_blank" rel="noopener noreferrer">Open poll form</a></p>
+        </div>
+    `;
+
+    pollElement.querySelectorAll(".poll-option-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+            localStorage.setItem(POLL_STORAGE_KEY, "true");
+            window.open(POLL_FORM_URL, "_blank", "noopener,noreferrer");
+            renderPoll(results);
+        });
+    });
 }
 
 function renderEditorial(article) {
@@ -405,4 +495,12 @@ function escapeHtml(text) {
     const div = document.createElement("div");
     div.textContent = String(text || "");
     return div.innerHTML;
+}
+
+function escapeAttribute(text) {
+    return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
 }

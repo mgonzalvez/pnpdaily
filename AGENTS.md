@@ -2,9 +2,9 @@
 
 ## Setup
 
-### 1. Google Sheets (Tips, Games, Tools, Contests, and WIPs)
+### 1. Google Sheets (Tips, Games, Tools, Contests, WIPs, and Poll Results)
 
-Create five Google Sheets and publish each tab as CSV.
+Create six Google Sheets or tabs and publish each tab as CSV.
 
 Tips sheet headers:
 
@@ -36,6 +36,12 @@ WIPs sheet headers:
 Title,Description,URL
 ```
 
+Poll results sheet headers:
+
+```text
+Option,Votes
+```
+
 Publish steps:
 
 1. File -> Share -> Publish to web
@@ -62,6 +68,7 @@ In `Settings -> Secrets and variables -> Actions`, add:
 - `GOOGLE_TOOLS_CSV_URL`
 - `GOOGLE_CONTESTS_CSV_URL`
 - `GOOGLE_WIPS_CSV_URL`
+- `GOOGLE_POLL_RESULTS_CSV_URL`
 
 ## Content Workflow
 
@@ -96,17 +103,17 @@ This creates/updates:
 
 Homepage reads `posts/manifest.json` and shows the latest article.
 
-### Tips/Games/Tools/Contests/WIPs Updates
+### Tips/Games/Tools/Contests/WIPs/Poll Updates
 
-Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, and `assets/wips.csv` hourly and republishes the site automatically.
+Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv` hourly and republishes the site automatically.
 
 ## Runtime Behavior
 
 On homepage load:
 
-1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, and `assets/wips.csv`
+1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv`
 2. If CSV files are unavailable/invalid, built-in defaults are used
-3. Game, tip, and tool entries are selected randomly per page load, and the combined community widget shows one contest plus one WIP entry
+3. Game, tip, tool, and WIP entries are selected randomly per page load; contests render the current contest rows from the sheet; poll results are tallied from the published results sheet
 4. `posts/manifest.json` is loaded and latest editorial is shown
 5. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection
 
@@ -156,6 +163,7 @@ console.log("Converter loaded:", typeof convertPaperWeight === 'function');
 - Add/update tools in Google Sheets
 - Add/update contests in Google Sheets
 - Add/update WIPs in Google Sheets
+- Add/update poll results in Google Sheets/Form pipeline
 - Add/edit editorial Markdown in `/posts`
 - Run post build script after Markdown changes
 - Verify deploy workflow status after push

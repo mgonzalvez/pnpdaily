@@ -1,13 +1,15 @@
 # PnPDaily - Print & Play Daily Roundup
 
-Fast static site for daily print-and-play highlights: rotating game/tip/tool/community spotlights, a featured editorial, and print utilities.
+Fast static site for daily print-and-play highlights: rotating game/tip/tool/community spotlights, a featured editorial, print utilities, and a lightweight community poll.
 
 ## Current Features
 
 - Tip of the Day card (random, from `assets/tips.csv` if present, otherwise built-in defaults)
 - PnP Game Spotlight card (random, from `assets/games.csv` if present, otherwise built-in defaults)
 - Tool Spotlight card (random, from `assets/tools.csv` if present, otherwise built-in defaults)
-- Combined `Contests + WIPs` card (one contest from `assets/contests.csv` and one WIP from `assets/wips.csv`, with built-in defaults)
+- `BGG Contests` card (current entries from `assets/contests.csv`, with built-in defaults)
+- `Notable BGG Work-in-Progress Threads` card (random entry from `assets/wips.csv`, with built-in defaults)
+- `PnP Community Poll` card (Google Form vote flow with results from `assets/poll-results.csv`)
 - Featured Editorial card (latest post from `posts/manifest.json`, generated from Markdown)
 - Paper Weight Converter widget (lb <-> gsm with Text/Book vs Cover paper types)
 - Mobile responsive dark theme
@@ -24,6 +26,8 @@ Fast static site for daily print-and-play highlights: rotating game/tip/tool/com
   - Headers: `Title,Description,URL`
 - `assets/wips.csv`
   - Headers: `Title,Description,URL`
+- `assets/poll-results.csv`
+  - Headers: `Option,Votes`
 - `posts/*.md`
   - Markdown editorial sources
 
@@ -72,6 +76,7 @@ Repository variables required for sheet sync:
 - `GOOGLE_TOOLS_CSV_URL`
 - `GOOGLE_CONTESTS_CSV_URL`
 - `GOOGLE_WIPS_CSV_URL`
+- `GOOGLE_POLL_RESULTS_CSV_URL`
 
 Google Sheets access requirement:
 
@@ -101,7 +106,8 @@ pnpdaily/
 │   ├── games.csv          # optional, generated/synced
 │   ├── tools.csv          # optional, generated/synced
 │   ├── contests.csv       # optional, generated/synced
-│   └── wips.csv           # optional, generated/synced
+│   ├── wips.csv           # optional, generated/synced
+│   └── poll-results.csv   # optional, generated/synced
 ├── posts/
 │   ├── *.md               # source editorial content
 │   ├── *.html             # generated editorial pages
