@@ -441,8 +441,14 @@ function renderPoll(results) {
         const pct = totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0;
         return `
             <div class="poll-result-row">
-                <p><strong>${escapeHtml(item.option)}</strong></p>
-                <p>${votes} vote${votes === 1 ? "" : "s"} (${pct}%)</p>
+                <div class="poll-result-head">
+                    <span><strong>${escapeHtml(item.option)}</strong></span>
+                    <span>${pct}%</span>
+                </div>
+                <div class="poll-bar">
+                    <div class="poll-bar-fill" style="width: ${pct}%"></div>
+                </div>
+                <p class="poll-vote-count">${votes} vote${votes === 1 ? "" : "s"}</p>
             </div>
         `;
     }).join("");
@@ -450,12 +456,11 @@ function renderPoll(results) {
     pollElement.innerHTML = `
         <p><strong>Which print and play card file format do you prefer?</strong></p>
         <div class="poll-options">${optionButtons}</div>
-        <p class="poll-note">${hasVoted ? "Vote submitted from this browser already. Google Form also limits one response per account." : "Voting opens in Google Forms. Google sign-in and one response per account are required."}</p>
         <div class="community-block">
             <p class="feed-label">Current Results</p>
             ${resultsMarkup}
-            <p><strong>Total votes:</strong> ${totalVotes}</p>
-            <p><a href="${escapeAttribute(POLL_FORM_URL)}" target="_blank" rel="noopener noreferrer">Open poll form</a></p>
+            <p class="poll-total"><strong>Total votes:</strong> ${totalVotes}</p>
+            <p><a href="${escapeAttribute(POLL_FORM_URL)}" target="_blank" rel="noopener noreferrer">${hasVoted ? "Vote again in Google Form" : "Open poll form"}</a></p>
         </div>
     `;
 
