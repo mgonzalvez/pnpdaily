@@ -1,5 +1,14 @@
 name: Deploy to GitHub Pages
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  GOOGLE_TIPS_CSV_URL: ${{ vars.GOOGLE_TIPS_CSV_URL }}
+  GOOGLE_TOOLS_CSV_URL: ${{ vars.GOOGLE_TOOLS_CSV_URL }}
+  GOOGLE_GAMES_CSV_URL: ${{ vars.GOOGLE_GAMES_CSV_URL }}
+  GOOGLE_CONTESTS_CSV_URL: ${{ vars.GOOGLE_CONTESTS_CSV_URL }}
+  GOOGLE_WIPS_CSV_URL: ${{ vars.GOOGLE_WIPS_CSV_URL }}
+  GOOGLE_POLL_RESULTS_CSV_URL: ${{ vars.GOOGLE_POLL_RESULTS_CSV_URL }}
+
 on:
   push:
     branches: [ main ]
@@ -77,11 +86,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-env:
-  GOOGLE_TIPS_CSV_URL: ${{ vars.GOOGLE_TIPS_CSV_URL }}
-  GOOGLE_TOOLS_CSV_URL: ${{ vars.GOOGLE_TOOLS_CSV_URL }}
-  GOOGLE_GAMES_CSV_URL: ${{ vars.GOOGLE_GAMES_CSV_URL }}
-  GOOGLE_CONTESTS_CSV_URL: ${{ vars.GOOGLE_CONTESTS_CSV_URL }}
-  GOOGLE_WIPS_CSV_URL: ${{ vars.GOOGLE_WIPS_CSV_URL }}
-  GOOGLE_POLL_RESULTS_CSV_URL: ${{ vars.GOOGLE_POLL_RESULTS_CSV_URL }}
