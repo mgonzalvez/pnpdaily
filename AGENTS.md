@@ -2,9 +2,9 @@
 
 ## Setup
 
-### 1. Google Sheets (Tips, Games, Tools, Contests, WIPs, and Poll Results)
+### 1. Google Sheets (Tips, Games, Tools, Crowdfunding, Contests, WIPs, and Poll Results)
 
-Create six Google Sheets or tabs and publish each tab as CSV.
+Create seven Google Sheets or tabs and publish each tab as CSV.
 
 Tips sheet headers:
 
@@ -22,6 +22,12 @@ Games sheet headers:
 
 ```text
 Name,Description,URL
+```
+
+Crowdfunding sheet headers:
+
+```text
+Title,Description,URL
 ```
 
 Contests sheet headers:
@@ -66,6 +72,7 @@ In `Settings -> Secrets and variables -> Actions`, add:
 - `GOOGLE_TIPS_CSV_URL`
 - `GOOGLE_GAMES_CSV_URL`
 - `GOOGLE_TOOLS_CSV_URL`
+- `GOOGLE_CROWDFUNDING_CSV_URL`
 - `GOOGLE_CONTESTS_CSV_URL`
 - `GOOGLE_WIPS_CSV_URL`
 - `GOOGLE_POLL_RESULTS_CSV_URL`
@@ -103,17 +110,17 @@ This creates/updates:
 
 Homepage reads `posts/manifest.json` and shows the latest article.
 
-### Tips/Games/Tools/Contests/WIPs/Poll Updates
+### Tips/Games/Tools/Crowdfunding/Contests/WIPs/Poll Updates
 
-Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv` hourly and republishes the site automatically.
+Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv` hourly and republishes the site automatically.
 
 ## Runtime Behavior
 
 On homepage load:
 
-1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv`
+1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv`
 2. If CSV files are unavailable/invalid, built-in defaults are used
-3. Game, tip, tool, and WIP entries are selected randomly per page load; contests render the current contest rows from the sheet; poll results are tallied from the published results sheet
+3. Game, tip, tool, crowdfunding, and WIP entries are selected randomly per page load; contests render the current contest rows from the sheet; poll results are tallied from the published results sheet
 4. `posts/manifest.json` is loaded and latest editorial is shown
 5. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection
 
@@ -161,6 +168,7 @@ console.log("Converter loaded:", typeof convertPaperWeight === 'function');
 - Add/update tips in Google Sheets
 - Add/update games in Google Sheets
 - Add/update tools in Google Sheets
+- Add/update crowdfunding entries in Google Sheets
 - Add/update contests in Google Sheets
 - Add/update WIPs in Google Sheets
 - Add/update poll results in Google Sheets/Form pipeline

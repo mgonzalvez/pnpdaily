@@ -13,6 +13,24 @@ const DEFAULT_TOOLS = [
     { name: "Blender", description: "3D modeling software for printable miniatures and terrain.", url: "https://www.blender.org/" }
 ];
 
+const DEFAULT_CROWDFUNDING = [
+    {
+        title: "Pocket Civ Builder Campaign",
+        description: "Compact civilization card game campaign offering print-and-play files for backers.",
+        url: ""
+    },
+    {
+        title: "Solo Dungeon Zine Launch",
+        description: "Small-batch solo dungeon crawler with immediate PnP access during the campaign.",
+        url: ""
+    },
+    {
+        title: "Modular Skirmish Pack",
+        description: "Terrain and card-driven skirmish project with printable rewards and stretch content.",
+        url: ""
+    }
+];
+
 const DEFAULT_GAMES = [
     {
         name: "Mini Rogue",
@@ -77,9 +95,10 @@ const DEFAULT_ARTICLES = [
 window.addEventListener("DOMContentLoaded", async () => {
     renderEditorial(getRandomItem(DEFAULT_ARTICLES));
 
-    const [tips, tools, games, contests, wips, pollResults, posts] = await Promise.all([
+    const [tips, tools, crowdfunding, games, contests, wips, pollResults, posts] = await Promise.all([
         loadTips(),
         loadTools(),
+        loadCrowdfunding(),
         loadGames(),
         loadContests(),
         loadWips(),
@@ -89,6 +108,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     renderTip(getRandomItem(tips));
     renderTool(getRandomItem(tools));
+    renderCrowdfunding(getRandomItems(crowdfunding, 3));
     renderGame(getRandomItem(games));
     renderContests(contests);
     renderWips(getRandomItems(wips, 3));
@@ -128,6 +148,17 @@ async function loadGames() {
     } catch (error) {
         console.log("Using default games:", error);
         return DEFAULT_GAMES;
+    }
+}
+
+async function loadCrowdfunding() {
+    try {
+        const csv = await fetchCsv("assets/crowdfunding.csv");
+        const parsed = parseCrowdfundingCsv(csv);
+        return parsed.length ? parsed : DEFAULT_CROWDFUNDING;
+    } catch (error) {
+        console.log("Using default crowdfunding roundup:", error);
+        return DEFAULT_CROWDFUNDING;
     }
 }
 
@@ -227,6 +258,16 @@ function parseGamesCsv(csvText) {
             url: getField(row, ["url", "link"]).trim()
         }))
         .filter((row) => row.name);
+}
+
+function parseCrowdfundingCsv(csvText) {
+    return parseCsvRows(csvText)
+        .map((row) => ({
+            title: getField(row, ["title", "name", "project", "campaign"]).trim(),
+            description: getField(row, ["description", "summary", "notes"]).trim(),
+            url: getField(row, ["url", "link"]).trim()
+        }))
+        .filter((row) => row.title);
 }
 
 function parseContestCsv(csvText) {
@@ -378,6 +419,35 @@ function renderGame(game) {
         <p>${safeDescription}</p>
         ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">View game</a>` : ""}
     `;
+}
+
+function renderCrowdfunding(entries) {
+    const crowdfundingElement = document.getElementById("crowdfunding-content");
+    if (!crowdfundingElement) {
+        return;
+    }
+
+    if (!entries.length) {
+        crowdfundingElement.innerHTML = `<p class="empty-content">No crowdfunding entries available.</p>`;
+        return;
+    }
+
+    crowdfundingElement.innerHTML = entries.map((entry) => {
+        const safeTitle = escapeHtml(entry.title);
+        const safeDescription = entry.description
+            ? escapeHtml(entry.description)
+            : "Current print-and-play crowdfunding campaign worth checking out.";
+        const safeUrl = entry.url ? escapeHtml(entry.url) : "";
+
+        return `
+            <p>
+                ${safeUrl
+                    ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
+                    : `<strong>${safeTitle}</strong>`}
+            </p>
+            <p>${safeDescription}</p>
+        `;
+    }).join("");
 }
 
 function renderContests(contests) {

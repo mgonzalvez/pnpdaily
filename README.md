@@ -1,14 +1,15 @@
 # PnPDaily - Print & Play Daily Roundup
 
-Fast static site for daily print-and-play highlights: rotating game/tip/tool/community spotlights, a featured editorial, print utilities, and a lightweight community poll.
+Fast static site for daily print-and-play highlights: rotating game/tip/tool/crowdfunding/community spotlights, a featured editorial, print utilities, and a lightweight community poll.
 
 ## Current Features
 
 - Tip of the Day card (random, from `assets/tips.csv` if present, otherwise built-in defaults)
 - PnP Game Spotlight card (random, from `assets/games.csv` if present, otherwise built-in defaults)
 - Tool Spotlight card (random, from `assets/tools.csv` if present, otherwise built-in defaults)
+- `PnP Crowdfunding Roundup` card (3 random entries from `assets/crowdfunding.csv`, with built-in defaults)
 - `BGG Contests` card (current entries from `assets/contests.csv`, with built-in defaults)
-- `Notable BGG Work-in-Progress Threads` card (random entry from `assets/wips.csv`, with built-in defaults)
+- `Notable BGG Works-in-Progress` card (3 random entries from `assets/wips.csv`, with built-in defaults)
 - `PnP Community Poll` card (Google Form vote flow with results from `assets/poll-results.csv`)
 - Featured Editorial card (latest post from `posts/manifest.json`, generated from Markdown)
 - Paper Weight Converter widget (lb <-> gsm with Text/Book vs Cover paper types)
@@ -23,6 +24,8 @@ Fast static site for daily print-and-play highlights: rotating game/tip/tool/com
 - `assets/tools.csv`
   - Headers: `Name,Description,URL`
 - `assets/contests.csv`
+  - Headers: `Title,Description,URL`
+- `assets/crowdfunding.csv`
   - Headers: `Title,Description,URL`
 - `assets/wips.csv`
   - Headers: `Title,Description,URL`
@@ -74,6 +77,7 @@ Repository variables required for sheet sync:
 - `GOOGLE_TIPS_CSV_URL`
 - `GOOGLE_GAMES_CSV_URL`
 - `GOOGLE_TOOLS_CSV_URL`
+- `GOOGLE_CROWDFUNDING_CSV_URL`
 - `GOOGLE_CONTESTS_CSV_URL`
 - `GOOGLE_WIPS_CSV_URL`
 - `GOOGLE_POLL_RESULTS_CSV_URL`
@@ -105,6 +109,7 @@ pnpdaily/
 │   ├── tips.csv           # optional, generated/synced
 │   ├── games.csv          # optional, generated/synced
 │   ├── tools.csv          # optional, generated/synced
+│   ├── crowdfunding.csv   # optional, generated/synced
 │   ├── contests.csv       # optional, generated/synced
 │   ├── wips.csv           # optional, generated/synced
 │   └── poll-results.csv   # optional, generated/synced
