@@ -111,7 +111,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     renderCrowdfunding(getRandomItem(crowdfunding));
     renderGame(getRandomItem(games));
     renderContests(contests);
-    renderWips(getRandomItems(wips, 3));
+    renderWips(getRandomItem(wips));
     renderPoll(pollResults);
     if (posts.length) {
         renderEditorial(posts[0]);
@@ -473,33 +473,31 @@ function renderContests(contests) {
     }).join("");
 }
 
-function renderWips(wips) {
+function renderWips(wip) {
     const wipsElement = document.getElementById("wips-content");
     if (!wipsElement) {
         return;
     }
 
-    if (!wips.length) {
+    if (!wip) {
         wipsElement.innerHTML = `<p class="empty-content">No WIP entries available.</p>`;
         return;
     }
 
-    wipsElement.innerHTML = wips.map((wip) => {
-        const safeTitle = escapeHtml(wip.title);
-        const safeDescription = wip.description
-            ? escapeHtml(wip.description)
-            : "Current community thread worth checking out.";
-        const safeUrl = wip.url ? escapeHtml(wip.url) : "";
+    const safeTitle = escapeHtml(wip.title);
+    const safeDescription = wip.description
+        ? escapeHtml(wip.description)
+        : "Current community thread worth checking out.";
+    const safeUrl = wip.url ? escapeHtml(wip.url) : "";
 
-        return `
-            <p>
-                ${safeUrl
-                    ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
-                    : `<strong>${safeTitle}</strong>`}
-            </p>
-            <p>${safeDescription}</p>
-        `;
-    }).join("");
+    wipsElement.innerHTML = `
+        <p>
+            ${safeUrl
+                ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
+                : `<strong>${safeTitle}</strong>`}
+        </p>
+        <p>${safeDescription}</p>
+    `;
 }
 
 function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
