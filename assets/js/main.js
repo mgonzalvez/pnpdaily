@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     renderTool(getRandomItem(tools));
     renderGame(getRandomItem(games));
     renderContests(contests);
-    renderWip(getRandomItem(wips));
+    renderWips(getRandomItems(wips, 3));
     renderPoll(pollResults);
     if (posts.length) {
         renderEditorial(posts[0]);
@@ -405,15 +405,33 @@ function renderContests(contests) {
     }).join("");
 }
 
-function renderWip(wip) {
+function renderWips(wips) {
     const wipsElement = document.getElementById("wips-content");
     if (!wipsElement) {
         return;
     }
 
-    wipsElement.innerHTML = wip
-        ? renderFeedCardMarkup("Notable WIP Thread", wip, "View thread")
-        : `<p class="empty-content">No WIP entries available.</p>`;
+    if (!wips.length) {
+        wipsElement.innerHTML = `<p class="empty-content">No WIP entries available.</p>`;
+        return;
+    }
+
+    wipsElement.innerHTML = wips.map((wip) => {
+        const safeTitle = escapeHtml(wip.title);
+        const safeDescription = wip.description
+            ? escapeHtml(wip.description)
+            : "Current community thread worth checking out.";
+        const safeUrl = wip.url ? escapeHtml(wip.url) : "";
+
+        return `
+            <p>
+                ${safeUrl
+                    ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
+                    : `<strong>${safeTitle}</strong>`}
+            </p>
+            <p>${safeDescription}</p>
+        `;
+    }).join("");
 }
 
 function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
@@ -503,6 +521,20 @@ function getRandomItem(array) {
         return null;
     }
     return array[Math.floor(Math.random() * array.length)];
+}
+
+function getRandomItems(array, count) {
+    if (!array || !array.length) {
+        return [];
+    }
+
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled.slice(0, Math.min(count, shuffled.length));
 }
 
 function escapeHtml(text) {
