@@ -79,6 +79,10 @@ In `Settings -> Secrets and variables -> Actions`, add:
 
 ## Content Workflow
 
+### Editorial Voice
+
+Use [VOICE.md](/Users/gonz/Desktop/qwen%20projects/pnpdaily/VOICE.md) as the default style reference when writing or revising editorial posts for this site. Future blog posts should match Martin Gonzalvez's voice and mannerisms as documented there, and should avoid generic SEO/blog filler or obvious AI phrasing.
+
 ### Editorial Articles
 
 Use Markdown files in `/posts` as source content.
