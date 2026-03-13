@@ -230,6 +230,9 @@ function renderPostHtml(post) {
         </p>
       </div>
     </section>
+    <footer>
+      <p class="site-credit">Copyright 2026 by <a href="mailto:help@pnpfinder.com?subject=Feedback%20for%20PnPDaily">Martin Gonzalvez</a>. If you find this site helpful, <a href="https://ko-fi.com/marting" target="_blank" rel="noopener noreferrer">why not buy me a coffee?</a></p>
+    </footer>
   </div>
 </body>
 </html>
@@ -298,6 +301,9 @@ ${rows}
         </p>
       </div>
     </section>
+    <footer>
+      <p class="site-credit">Copyright 2026 by <a href="mailto:help@pnpfinder.com?subject=Feedback%20for%20PnPDaily">Martin Gonzalvez</a>. If you find this site helpful, <a href="https://ko-fi.com/marting" target="_blank" rel="noopener noreferrer">why not buy me a coffee?</a></p>
+    </footer>
   </div>
 </body>
 </html>
