@@ -71,6 +71,7 @@ header h1 {
     display: flex;
     gap: 0.6rem;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .action-btn {
@@ -88,6 +89,52 @@ header h1 {
 
 .action-btn.solid {
     background: var(--accent);
+}
+
+.community-menu {
+    position: relative;
+}
+
+.community-menu summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.community-menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.community-menu-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.55rem);
+    min-width: 260px;
+    display: grid;
+    gap: 0.45rem;
+    padding: 0.7rem;
+    background: var(--panel);
+    border: 3px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    z-index: 20;
+}
+
+.community-menu-panel a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    background: #fff;
+    padding: 0.6rem 0.7rem;
+    box-shadow: 2px 2px 0 var(--ink);
+}
+
+.community-menu-panel a:hover,
+.community-menu-panel a:focus-visible {
+    background: var(--accent);
+    outline: none;
 }
 
 #top-widgets {
@@ -390,6 +437,13 @@ footer h2 {
     .tagline {
         font-size: 0.9rem;
         letter-spacing: 0.02em;
+    }
+
+    .community-menu-panel {
+        position: static;
+        margin-top: 0.55rem;
+        min-width: 0;
+        width: 100%;
     }
 
     .community-links {
