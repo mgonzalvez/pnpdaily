@@ -395,9 +395,10 @@ function renderTool(tool) {
     const safeUrl = tool.url ? escapeHtml(tool.url) : "";
 
     toolsElement.innerHTML = `
-        <p><strong>${safeName}</strong></p>
+        <p>${safeUrl
+            ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeName}</strong></a>`
+            : `<strong>${safeName}</strong>`}</p>
         <p>${safeDescription}</p>
-        ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">Check out tool</a>` : ""}
     `;
 }
 
@@ -414,10 +415,11 @@ function renderGame(game) {
     const safeUrl = game.url ? escapeHtml(game.url) : "";
 
     gameElement.innerHTML = `
-        <p><strong>${safeName}</strong></p>
+        <p>${safeUrl
+            ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeName}</strong></a>`
+            : `<strong>${safeName}</strong>`}</p>
         <p>Powered by <a href="https://pnpfinder.com" target="_blank" rel="noopener noreferrer">PnPFinder.com</a></p>
         <p>${safeDescription}</p>
-        ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">View game</a>` : ""}
     `;
 }
 
