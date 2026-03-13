@@ -183,7 +183,12 @@ function markdownToHtml(markdown) {
 function inlineMarkdown(text) {
   const escaped = escapeHtml(text);
   return escaped
-    .replace(/\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/\[(.+?)\]\(((?:https?:\/\/|mailto:)[^\s)]+)\)/g, (match, label, href) => {
+      if (href.startsWith("mailto:")) {
+        return `<a href="${href}">${label}</a>`;
+      }
+      return `<a href="${href}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    })
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.+?)\*/g, "<em>$1</em>");
 }
