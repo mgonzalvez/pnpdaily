@@ -2,9 +2,9 @@
 
 ## Setup
 
-### 1. Google Sheets (Tips, Games, Tools, Crowdfunding, Contests, WIPs, and Poll Results)
+### 1. Google Sheets (Tips, Games, Tools, Crowdfunding, Sites, Contests, WIPs, and Poll Results)
 
-Create seven Google Sheets or tabs and publish each tab as CSV.
+Create eight Google Sheets or tabs and publish each tab as CSV.
 
 Tips sheet headers:
 
@@ -28,6 +28,12 @@ Crowdfunding sheet headers:
 
 ```text
 Title,Description,URL
+```
+
+Sites sheet headers:
+
+```text
+Name,Description,URL
 ```
 
 Contests sheet headers:
@@ -73,6 +79,7 @@ In `Settings -> Secrets and variables -> Actions`, add:
 - `GOOGLE_GAMES_CSV_URL`
 - `GOOGLE_TOOLS_CSV_URL`
 - `GOOGLE_CROWDFUNDING_CSV_URL`
+- `GOOGLE_SITES_CSV_URL`
 - `GOOGLE_CONTESTS_CSV_URL`
 - `GOOGLE_WIPS_CSV_URL`
 - `GOOGLE_POLL_RESULTS_CSV_URL`
@@ -114,19 +121,26 @@ This creates/updates:
 
 Homepage reads `posts/manifest.json` and shows the latest article.
 
-### Tips/Games/Tools/Crowdfunding/Contests/WIPs/Poll Updates
+### Tips/Games/Tools/Crowdfunding/Sites/Contests/WIPs/Poll Updates
 
-Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv` hourly and republishes the site automatically.
+Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/sites.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv` hourly and republishes the site automatically.
 
 ## Runtime Behavior
 
 On homepage load:
 
-1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv`
+1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/sites.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv`
 2. If CSV files are unavailable/invalid, built-in defaults are used
-3. Game, tip, tool, crowdfunding, and WIP entries are selected randomly per page load; contests render the current contest rows from the sheet; poll results are tallied from the published results sheet
-4. `posts/manifest.json` is loaded and latest editorial is shown
-5. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection
+3. Game, tip, tool, crowdfunding, and WIP entries are selected randomly per page load
+4. Contests render the current contest rows from the sheet; poll results are tallied from the published results sheet
+5. `posts/manifest.json` is loaded and the latest editorial is shown in the `PnP Article` section
+6. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection and card-size dimension lookups
+
+On `sites.html` load:
+
+1. `assets/js/main.js` tries to load `assets/sites.csv`
+2. If CSV is unavailable/invalid, built-in defaults are used
+3. The page renders one card per site entry using `Name,Description,URL`
 
 ## Deployment Workflows
 
@@ -139,9 +153,11 @@ On homepage load:
 ## Key Files
 
 - `index.html` - homepage layout
+- `sites.html` - Martin's PnP Sites directory page
 - `styles.css` - theme and responsive styles
 - `assets/js/main.js` - rotating content + editorial feature logic
 - `app.js` - paper-weight converter
+- `favicon.svg` - site tab icon
 - `scripts/build-posts.mjs` - Markdown -> HTML/manifest generator
 - `posts/*.md` - editorial source files
 
@@ -173,12 +189,14 @@ console.log("Converter loaded:", typeof convertPaperWeight === 'function');
 - Add/update games in Google Sheets
 - Add/update tools in Google Sheets
 - Add/update crowdfunding entries in Google Sheets
+- Add/update sites directory entries in Google Sheets
 - Add/update contests in Google Sheets
 - Add/update WIPs in Google Sheets
 - Add/update poll results in Google Sheets/Form pipeline
 - Check and update the monthly BGG crafting geeklist link at the end or start of each month so site links point to the current month's list
 - Add/edit editorial Markdown in `/posts`
 - Run post build script after Markdown changes
+- Verify both `index.html` and `sites.html` after layout/navigation changes
 - Verify deploy workflow status after push
 
 ---
