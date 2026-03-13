@@ -259,14 +259,26 @@ function renderPostsIndexHtml(posts) {
 <body>
   <div class="container">
     <header>
-      <h1><span class="highlight">PnPDaily</span> Articles</h1>
+      <div class="header-top">
+        <h1><span class="highlight">PnPDaily</span> Articles</h1>
+        <div class="header-actions">
+          <a class="action-btn" href="../index.html">Home</a>
+          <details class="community-menu">
+            <summary class="action-btn solid">Join the Community</summary>
+            <div class="community-menu-panel">
+              <a href="https://facebook.com/groups/pnphideaway" target="_blank" rel="noopener noreferrer">PnP Hideaway</a>
+              <a href="https://reddit.com/r/printandplay" target="_blank" rel="noopener noreferrer">r/printandplay</a>
+              <a href="https://boardgamegeek.com/geeklist/374344/what-print-and-play-games-are-you-crafting-or-plan" target="_blank" rel="noopener noreferrer">BGG Crafting Geeklist</a>
+            </div>
+          </details>
+        </div>
+      </div>
       <p class="tagline">Editorial content from the print and play community</p>
     </header>
 
     <section id="editorial">
       <div class="editorial-card" style="text-align:left;">
         <h2>Featured Articles</h2>
-        <p class="summary">Generated from Markdown sources in <code>/posts</code>.</p>
 
         <table style="width:100%; border-collapse:collapse; margin-top:1rem;">
           <thead>
