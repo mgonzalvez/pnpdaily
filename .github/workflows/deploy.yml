@@ -5,6 +5,7 @@ env:
   GOOGLE_TIPS_CSV_URL: ${{ vars.GOOGLE_TIPS_CSV_URL }}
   GOOGLE_TOOLS_CSV_URL: ${{ vars.GOOGLE_TOOLS_CSV_URL }}
   GOOGLE_CROWDFUNDING_CSV_URL: ${{ vars.GOOGLE_CROWDFUNDING_CSV_URL }}
+  GOOGLE_SITES_CSV_URL: ${{ vars.GOOGLE_SITES_CSV_URL }}
   GOOGLE_GAMES_CSV_URL: ${{ vars.GOOGLE_GAMES_CSV_URL }}
   GOOGLE_CONTESTS_CSV_URL: ${{ vars.GOOGLE_CONTESTS_CSV_URL }}
   GOOGLE_WIPS_CSV_URL: ${{ vars.GOOGLE_WIPS_CSV_URL }}
@@ -49,6 +50,11 @@ jobs:
           if [ -n "$GOOGLE_CROWDFUNDING_CSV_URL" ]; then
             curl -fsSL "$GOOGLE_CROWDFUNDING_CSV_URL" -o assets/crowdfunding.csv
             test -s assets/crowdfunding.csv
+          fi
+
+          if [ -n "$GOOGLE_SITES_CSV_URL" ]; then
+            curl -fsSL "$GOOGLE_SITES_CSV_URL" -o assets/sites.csv
+            test -s assets/sites.csv
           fi
 
           if [ -n "$GOOGLE_GAMES_CSV_URL" ]; then

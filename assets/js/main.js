@@ -31,6 +31,39 @@ const DEFAULT_CROWDFUNDING = [
     }
 ];
 
+const DEFAULT_SITES = [
+    {
+        name: "PnPFinder",
+        description: "Search and discover worthwhile print-and-play games from around the hobby.",
+        url: "http://pnpfinder.com"
+    },
+    {
+        name: "PnP Launchpad",
+        description: "Track current and upcoming print-and-play crowdfunding projects and promotions.",
+        url: "https://launchpad.gonzhome.us"
+    },
+    {
+        name: "PnPTools",
+        description: "A directory of useful tools for printing, formatting, crafting, and prototyping PnP games.",
+        url: "https://pnptools.gonzhome.us"
+    },
+    {
+        name: "Martin's Card Prototyper",
+        description: "Design quick card prototypes and export individual cards or print-ready sheets.",
+        url: "https://prototyper.gonzhome.us"
+    },
+    {
+        name: "Martin's Card Extractor",
+        description: "Extract individual card images from PnP PDFs by drawing grids along card boundaries.",
+        url: "https://extractor.gonzhome.us"
+    },
+    {
+        name: "Martin's Card Formatter",
+        description: "Lay out card images into properly formatted print-and-play PDF files.",
+        url: "https://formatter.gonzhome.us"
+    }
+];
+
 const DEFAULT_GAMES = [
     {
         name: "Mini Rogue",
@@ -95,10 +128,11 @@ const DEFAULT_ARTICLES = [
 window.addEventListener("DOMContentLoaded", async () => {
     renderEditorial(getRandomItem(DEFAULT_ARTICLES));
 
-    const [tips, tools, crowdfunding, games, contests, wips, pollResults, posts] = await Promise.all([
+    const [tips, tools, crowdfunding, sites, games, contests, wips, pollResults, posts] = await Promise.all([
         loadTips(),
         loadTools(),
         loadCrowdfunding(),
+        loadSites(),
         loadGames(),
         loadContests(),
         loadWips(),
@@ -109,6 +143,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     renderTip(getRandomItem(tips));
     renderTool(getRandomItem(tools));
     renderCrowdfunding(getRandomItem(crowdfunding));
+    renderSites(sites);
     renderGame(getRandomItem(games));
     renderContests(contests);
     renderWips(getRandomItem(wips));
@@ -159,6 +194,17 @@ async function loadCrowdfunding() {
     } catch (error) {
         console.log("Using default crowdfunding roundup:", error);
         return DEFAULT_CROWDFUNDING;
+    }
+}
+
+async function loadSites() {
+    try {
+        const csv = await fetchCsv("assets/sites.csv");
+        const parsed = parseSitesCsv(csv);
+        return parsed.length ? parsed : DEFAULT_SITES;
+    } catch (error) {
+        console.log("Using default sites directory:", error);
+        return DEFAULT_SITES;
     }
 }
 
@@ -255,6 +301,16 @@ function parseGamesCsv(csvText) {
             name: getField(row, ["name", "game", "title"]).trim(),
             source: getField(row, ["source", "community", "subreddit"]).trim(),
             description: getField(row, ["description", "notes", "summary"]).trim(),
+            url: getField(row, ["url", "link"]).trim()
+        }))
+        .filter((row) => row.name);
+}
+
+function parseSitesCsv(csvText) {
+    return parseCsvRows(csvText)
+        .map((row) => ({
+            name: getField(row, ["name", "title", "site"]).trim(),
+            description: getField(row, ["description", "summary", "notes"]).trim(),
             url: getField(row, ["url", "link"]).trim()
         }))
         .filter((row) => row.name);
@@ -421,6 +477,35 @@ function renderGame(game) {
         <p>Powered by <a href="https://pnpfinder.com" target="_blank" rel="noopener noreferrer">PnPFinder.com</a></p>
         <p>${safeDescription}</p>
     `;
+}
+
+function renderSites(sites) {
+    const sitesElement = document.getElementById("sites-content");
+    if (!sitesElement) {
+        return;
+    }
+
+    if (!sites.length) {
+        sitesElement.innerHTML = `<p class="empty-content">No site entries available.</p>`;
+        return;
+    }
+
+    sitesElement.innerHTML = sites.map((site) => {
+        const safeName = escapeHtml(site.name);
+        const safeDescription = site.description
+            ? escapeHtml(site.description)
+            : "Useful print-and-play site or tool.";
+        const safeUrl = site.url ? escapeHtml(site.url) : "";
+
+        return `
+            <article class="card site-card">
+                <h2>${safeUrl
+                    ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeName}</strong></a>`
+                    : `<strong>${safeName}</strong>`}</h2>
+                <p>${safeDescription}</p>
+            </article>
+        `;
+    }).join("");
 }
 
 function renderCrowdfunding(entry) {
