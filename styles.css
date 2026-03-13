@@ -93,6 +93,7 @@ header h1 {
 
 .community-menu {
     position: relative;
+    align-self: flex-start;
 }
 
 .community-menu summary {
@@ -109,7 +110,8 @@ header h1 {
     right: 0;
     top: calc(100% + 0.55rem);
     min-width: 260px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 0.45rem;
     padding: 0.7rem;
     background: var(--panel);
@@ -119,6 +121,8 @@ header h1 {
 }
 
 .community-menu-panel a {
+    display: block;
+    width: 100%;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
