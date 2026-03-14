@@ -64,6 +64,72 @@ const DEFAULT_SITES = [
     }
 ];
 
+const DEFAULT_BUILDS = [
+    {
+        source: "hideaway",
+        name: "Martin G.",
+        title: "Bargain Basement Bathysphere",
+        url: "http://pnpfinder.com",
+        blurb: "I wanted something quick to print that still felt like a real campaign game."
+    },
+    {
+        source: "hideaway",
+        name: "Lena M.",
+        title: "Mini Rogue",
+        url: "http://pnpfinder.com",
+        blurb: "I am keeping the build simple and focusing on clean cards and a sturdy tracker."
+    },
+    {
+        source: "hideaway",
+        name: "Carlos R.",
+        title: "Voyages",
+        url: "http://pnpfinder.com",
+        blurb: "This one keeps hitting the sweet spot for me between easy setup and satisfying play."
+    },
+    {
+        source: "reddit",
+        name: "meeplepilot",
+        title: "Utopia Engine",
+        url: "http://pnpfinder.com",
+        blurb: "I was in the mood for something compact, puzzly, and easy to get to the table."
+    },
+    {
+        source: "reddit",
+        name: "cardcraftingcat",
+        title: "Gloomholdin'",
+        url: "http://pnpfinder.com",
+        blurb: "The challenge here is keeping the footprint tiny without the build feeling flimsy."
+    },
+    {
+        source: "reddit",
+        name: "hexandink",
+        title: "Ragemore",
+        url: "http://pnpfinder.com",
+        blurb: "I like how much game this packs into a very manageable little print job."
+    },
+    {
+        source: "bgg",
+        name: "T. Warren",
+        title: "Deck Hand Contest Entry",
+        url: "https://boardgamegeek.com",
+        blurb: "Still tightening the rules, but the core loop is finally starting to feel right."
+    },
+    {
+        source: "bgg",
+        name: "Maya L.",
+        title: "9-Card Contest Prototype",
+        url: "https://boardgamegeek.com",
+        blurb: "I am trying to get the most out of the tiny format without making it feel cramped."
+    },
+    {
+        source: "bgg",
+        name: "RookDesigns",
+        title: "Solo Adventure WIP",
+        url: "https://boardgamegeek.com",
+        blurb: "This is now fully playable, and I am mostly testing pacing and decision tension."
+    }
+];
+
 const DEFAULT_GAMES = [
     {
         name: "Mini Rogue",
@@ -128,11 +194,12 @@ const DEFAULT_ARTICLES = [
 window.addEventListener("DOMContentLoaded", async () => {
     renderEditorial(getRandomItem(DEFAULT_ARTICLES));
 
-    const [tips, tools, crowdfunding, sites, games, contests, wips, pollResults, posts] = await Promise.all([
+    const [tips, tools, crowdfunding, sites, builds, games, contests, wips, pollResults, posts] = await Promise.all([
         loadTips(),
         loadTools(),
         loadCrowdfunding(),
         loadSites(),
+        loadBuilds(),
         loadGames(),
         loadContests(),
         loadWips(),
@@ -144,6 +211,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     renderTool(getRandomItem(tools));
     renderCrowdfunding(getRandomItem(crowdfunding));
     renderSites(sites);
+    renderBuilds(builds);
     renderGame(getRandomItem(games));
     renderContests(contests);
     renderWips(getRandomItem(wips));
@@ -205,6 +273,17 @@ async function loadSites() {
     } catch (error) {
         console.log("Using default sites directory:", error);
         return DEFAULT_SITES;
+    }
+}
+
+async function loadBuilds() {
+    try {
+        const csv = await fetchCsv("assets/builds.csv");
+        const parsed = parseBuildsCsv(csv);
+        return parsed.length ? parsed : DEFAULT_BUILDS;
+    } catch (error) {
+        console.log("Using default builds feed:", error);
+        return DEFAULT_BUILDS;
     }
 }
 
@@ -314,6 +393,18 @@ function parseSitesCsv(csvText) {
             url: getField(row, ["url", "link"]).trim()
         }))
         .filter((row) => row.name);
+}
+
+function parseBuildsCsv(csvText) {
+    return parseCsvRows(csvText)
+        .map((row) => ({
+            source: normalizeBuildSource(getField(row, ["source", "community"]).trim()),
+            name: getField(row, ["name", "username", "user"]).trim(),
+            title: getField(row, ["title", "game", "name"]).trim(),
+            url: getField(row, ["url", "link"]).trim(),
+            blurb: getField(row, ["blurb", "quote", "description", "notes"]).trim()
+        }))
+        .filter((row) => row.source && row.name && row.title);
 }
 
 function parseCrowdfundingCsv(csvText) {
@@ -508,6 +599,23 @@ function renderSites(sites) {
     }).join("");
 }
 
+function renderBuilds(builds) {
+    const columns = {
+        hideaway: document.getElementById("builds-hideaway"),
+        reddit: document.getElementById("builds-reddit"),
+        bgg: document.getElementById("builds-bgg")
+    };
+
+    if (!columns.hideaway || !columns.reddit || !columns.bgg) {
+        return;
+    }
+
+    ["hideaway", "reddit", "bgg"].forEach((sourceKey) => {
+        const sourceBuilds = getBuildsForSource(builds, sourceKey);
+        columns[sourceKey].innerHTML = sourceBuilds.map((build, index) => renderBuildCard(build, index)).join("");
+    });
+}
+
 function renderCrowdfunding(entry) {
     const crowdfundingElement = document.getElementById("crowdfunding-content");
     if (!crowdfundingElement) {
@@ -602,6 +710,43 @@ function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
     `;
 }
 
+function getBuildsForSource(builds, sourceKey) {
+    const primary = builds.filter((build) => build.source === sourceKey).slice(0, 3);
+    if (primary.length === 3) {
+        return primary;
+    }
+
+    const fallbacks = DEFAULT_BUILDS
+        .filter((build) => build.source === sourceKey)
+        .slice(0, 3 - primary.length);
+
+    return [...primary, ...fallbacks];
+}
+
+function renderBuildCard(build, index) {
+    const safeName = escapeHtml(build.name);
+    const safeTitle = escapeHtml(build.title);
+    const safeBlurb = escapeHtml(build.blurb || "Currently deep in the middle of the build.");
+    const safeUrl = build.url ? escapeHtml(build.url) : "";
+    const titleMarkup = safeUrl
+        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
+        : `<strong>${safeTitle}</strong>`;
+
+    const variants = [
+        `${safeName} is crafting ${titleMarkup} and says "${safeBlurb}"`,
+        `${safeName} is currently building ${titleMarkup}. Their take: "${safeBlurb}"`,
+        `${safeName} has ${titleMarkup} on the table right now and says "${safeBlurb}"`,
+        `Right now ${safeName} is working on ${titleMarkup}, saying "${safeBlurb}"`,
+        `${safeName} is putting together ${titleMarkup} and says "${safeBlurb}"`
+    ];
+
+    return `
+        <article class="build-card">
+            <p>${variants[index % variants.length]}</p>
+        </article>
+    `;
+}
+
 function renderPoll(results) {
     const pollElement = document.getElementById("poll-content");
     if (!pollElement) {
@@ -688,6 +833,24 @@ function getRandomItems(array, count) {
     }
 
     return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+function normalizeBuildSource(source) {
+    const value = String(source || "").trim().toLowerCase();
+
+    if (value.includes("hideaway") || value.includes("facebook") || value === "fb") {
+        return "hideaway";
+    }
+
+    if (value.includes("reddit") || value.includes("printandplay")) {
+        return "reddit";
+    }
+
+    if (value.includes("bgg") || value.includes("boardgamegeek")) {
+        return "bgg";
+    }
+
+    return "";
 }
 
 function escapeHtml(text) {

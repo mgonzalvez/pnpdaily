@@ -2,9 +2,9 @@
 
 ## Setup
 
-### 1. Google Sheets (Tips, Games, Tools, Crowdfunding, Sites, Contests, WIPs, and Poll Results)
+### 1. Google Sheets (Tips, Games, Tools, Crowdfunding, Sites, Builds, Contests, WIPs, and Poll Results)
 
-Create eight Google Sheets or tabs and publish each tab as CSV.
+Create nine Google Sheets or tabs and publish each tab as CSV.
 
 Tips sheet headers:
 
@@ -34,6 +34,12 @@ Sites sheet headers:
 
 ```text
 Name,Description,URL
+```
+
+Builds sheet headers:
+
+```text
+Source,Name,Title,URL,Blurb
 ```
 
 Contests sheet headers:
@@ -80,6 +86,7 @@ In `Settings -> Secrets and variables -> Actions`, add:
 - `GOOGLE_TOOLS_CSV_URL`
 - `GOOGLE_CROWDFUNDING_CSV_URL`
 - `GOOGLE_SITES_CSV_URL`
+- `GOOGLE_BUILDS_CSV_URL`
 - `GOOGLE_CONTESTS_CSV_URL`
 - `GOOGLE_WIPS_CSV_URL`
 - `GOOGLE_POLL_RESULTS_CSV_URL`
@@ -121,20 +128,21 @@ This creates/updates:
 
 Homepage reads `posts/manifest.json` and shows the latest article.
 
-### Tips/Games/Tools/Crowdfunding/Sites/Contests/WIPs/Poll Updates
+### Tips/Games/Tools/Crowdfunding/Sites/Builds/Contests/WIPs/Poll Updates
 
-Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/sites.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv` hourly and republishes the site automatically.
+Edit rows in Google Sheets. The deploy workflow fetches `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/sites.csv`, `assets/builds.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv` hourly and republishes the site automatically.
 
 ## Runtime Behavior
 
 On homepage load:
 
-1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/sites.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv`
+1. `assets/js/main.js` tries to load `assets/tips.csv`, `assets/games.csv`, `assets/tools.csv`, `assets/crowdfunding.csv`, `assets/sites.csv`, `assets/builds.csv`, `assets/contests.csv`, `assets/wips.csv`, and `assets/poll-results.csv`
 2. If CSV files are unavailable/invalid, built-in defaults are used
 3. Game, tip, tool, crowdfunding, and WIP entries are selected randomly per page load
-4. Contests render the current contest rows from the sheet; poll results are tallied from the published results sheet
-5. `posts/manifest.json` is loaded and the latest editorial is shown in the `PnP Article` section
-6. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection and card-size dimension lookups
+4. The builds section renders 3 compact entries each for PnP Hideaway, `r/printandplay`, and BGG based on the `Source` column
+5. Contests render the current contest rows from the sheet; poll results are tallied from the published results sheet
+6. `posts/manifest.json` is loaded and the latest editorial is shown in the `PnP Article` section
+7. `app.js` runs lb <-> gsm conversion with Text/Book vs Cover paper type selection and card-size dimension lookups
 
 On `sites.html` load:
 
@@ -190,6 +198,7 @@ console.log("Converter loaded:", typeof convertPaperWeight === 'function');
 - Add/update tools in Google Sheets
 - Add/update crowdfunding entries in Google Sheets
 - Add/update sites directory entries in Google Sheets
+- Add/update builds roundup entries in Google Sheets
 - Add/update contests in Google Sheets
 - Add/update WIPs in Google Sheets
 - Add/update poll results in Google Sheets/Form pipeline

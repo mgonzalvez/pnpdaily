@@ -1,6 +1,6 @@
 # PnPDaily - Print & Play Daily Roundup
 
-Fast static site for print-and-play highlights: rotating homepage widgets, a featured editorial, print utilities, a lightweight community poll, and a linked directory of Martin's other PnP sites.
+Fast static site for print-and-play highlights: rotating homepage widgets, a featured editorial, print utilities, a lightweight community poll, a live crafting roundup, and a linked directory of Martin's other PnP sites.
 
 ## Current Features
 
@@ -8,6 +8,7 @@ Fast static site for print-and-play highlights: rotating homepage widgets, a fea
 - PnP Game Spotlight card (random, from `assets/games.csv` if present, otherwise built-in defaults)
 - Tool Spotlight card (random, from `assets/tools.csv` if present, otherwise built-in defaults)
 - `PnP Crowdfunding Roundup` card (1 random entry from `assets/crowdfunding.csv`, with built-in defaults)
+- `What PnP Games Are People Crafting Right Now?` section (9 compact build cards from `assets/builds.csv`, grouped by PnP Hideaway, Reddit, and BGG)
 - `Martin's PnP Sites` page (directory cards from `assets/sites.csv`, with built-in defaults)
 - `BGG Contests` card (current entries from `assets/contests.csv`, with built-in defaults)
 - `Notable BGG Work-in-Progress Thread` card (1 random entry from `assets/wips.csv`, with built-in defaults)
@@ -28,6 +29,8 @@ Fast static site for print-and-play highlights: rotating homepage widgets, a fea
   - Headers: `Name,Description,URL`
 - `assets/sites.csv`
   - Headers: `Name,Description,URL`
+- `assets/builds.csv`
+  - Headers: `Source,Name,Title,URL,Blurb`
 - `assets/contests.csv`
   - Headers: `Title,Description,URL`
 - `assets/crowdfunding.csv`
@@ -84,6 +87,7 @@ Repository variables required for sheet sync:
 - `GOOGLE_TOOLS_CSV_URL`
 - `GOOGLE_CROWDFUNDING_CSV_URL`
 - `GOOGLE_SITES_CSV_URL`
+- `GOOGLE_BUILDS_CSV_URL`
 - `GOOGLE_CONTESTS_CSV_URL`
 - `GOOGLE_WIPS_CSV_URL`
 - `GOOGLE_POLL_RESULTS_CSV_URL`
@@ -119,6 +123,7 @@ pnpdaily/
 │   ├── tools.csv          # optional, generated/synced
 │   ├── crowdfunding.csv   # optional, generated/synced
 │   ├── sites.csv          # optional, generated/synced
+│   ├── builds.csv         # optional, generated/synced
 │   ├── contests.csv       # optional, generated/synced
 │   ├── wips.csv           # optional, generated/synced
 │   └── poll-results.csv   # optional, generated/synced
