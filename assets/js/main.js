@@ -711,13 +711,18 @@ function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
 }
 
 function getBuildsForSource(builds, sourceKey) {
-    const primary = builds.filter((build) => build.source === sourceKey).slice(0, 3);
+    const primary = getRandomItems(
+        builds.filter((build) => build.source === sourceKey),
+        3
+    );
     if (primary.length === 3) {
         return primary;
     }
 
-    const fallbacks = DEFAULT_BUILDS
-        .filter((build) => build.source === sourceKey)
+    const fallbackPool = DEFAULT_BUILDS.filter((build) => build.source === sourceKey);
+    const seenTitles = new Set(primary.map((build) => build.title));
+    const fallbacks = fallbackPool
+        .filter((build) => !seenTitles.has(build.title))
         .slice(0, 3 - primary.length);
 
     return [...primary, ...fallbacks];
