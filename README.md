@@ -32,7 +32,7 @@ Fast static site for print-and-play highlights: rotating homepage widgets, a fea
 - `assets/builds.csv`
   - Headers: `Source,Name,Title,URL,Blurb`
 - `assets/contests.csv`
-  - Headers: `Title,Description,URL`
+  - Headers: `Title,Ends,Description,URL`
 - `assets/crowdfunding.csv`
   - Headers: `Title,Description,URL`
 - `assets/wips.csv`

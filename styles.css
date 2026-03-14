@@ -198,6 +198,12 @@ header h1 {
     border-bottom: 2px solid var(--ink);
 }
 
+.contest-end-date {
+    color: var(--muted);
+    font-size: 0.88em;
+    font-weight: 700;
+}
+
 .card,
 #editorial {
     background: var(--panel);

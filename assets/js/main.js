@@ -157,6 +157,7 @@ const DEFAULT_GAMES = [
 const DEFAULT_CONTESTS = [
     {
         title: "Monthly Solo Design Challenge",
+        ends: "December 31, 2026",
         description: "Community print-and-play design prompt with voting and build logs.",
         url: ""
     }
@@ -426,10 +427,12 @@ function parseContestCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
             title: getField(row, ["title", "name", "contest"]).trim(),
+            ends: getField(row, ["ends", "end", "deadline"]).trim(),
             description: getField(row, ["description", "summary", "notes"]).trim(),
             url: getField(row, ["url", "link"]).trim()
         }))
-        .filter((row) => row.title);
+        .filter((row) => row.title)
+        .filter((row) => isContestActive(row.ends));
 }
 
 function parseWipCsv(csvText) {
@@ -665,12 +668,14 @@ function renderContests(contests) {
     contestsElement.innerHTML = contests.map((contest) => {
         const safeTitle = escapeHtml(contest.title);
         const safeUrl = contest.url ? escapeHtml(contest.url) : "";
+        const formattedEnds = formatContestEndDate(contest.ends);
 
         return `
             <p>
                 ${safeUrl
                     ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
                     : `<strong>${safeTitle}</strong>`}
+                ${formattedEnds ? `<span class="contest-end-date"> · ends ${escapeHtml(formattedEnds)}</span>` : ""}
             </p>
         `;
     }).join("");
@@ -864,6 +869,40 @@ function normalizeBuildSource(source) {
     }
 
     return "";
+}
+
+function isContestActive(ends) {
+    const value = String(ends || "").trim();
+    if (!value) {
+        return true;
+    }
+
+    const dateValue = Date.parse(value);
+    if (Number.isNaN(dateValue)) {
+        return true;
+    }
+
+    const contestDate = new Date(dateValue);
+    contestDate.setHours(23, 59, 59, 999);
+    return contestDate.getTime() >= Date.now();
+}
+
+function formatContestEndDate(ends) {
+    const value = String(ends || "").trim();
+    if (!value) {
+        return "";
+    }
+
+    const dateValue = Date.parse(value);
+    if (Number.isNaN(dateValue)) {
+        return value;
+    }
+
+    return new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    }).format(new Date(dateValue));
 }
 
 function escapeHtml(text) {

@@ -45,7 +45,7 @@ Source,Name,Title,URL,Blurb
 Contests sheet headers:
 
 ```text
-Title,Description,URL
+Title,Ends,Description,URL
 ```
 
 WIPs sheet headers:
