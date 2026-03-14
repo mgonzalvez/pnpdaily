@@ -36,7 +36,7 @@ Fast static site for print-and-play highlights: rotating homepage widgets, a fea
 - `assets/crowdfunding.csv`
   - Headers: `Title,Description,URL`
 - `assets/wips.csv`
-  - Headers: `Title,Description,URL`
+  - Headers: `Title,Designer,Description,URL`
 - `assets/poll-results.csv`
   - Headers: `Option,Votes`
 - `posts/*.md`

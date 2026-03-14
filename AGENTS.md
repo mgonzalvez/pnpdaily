@@ -51,7 +51,7 @@ Title,Description,URL
 WIPs sheet headers:
 
 ```text
-Title,Description,URL
+Title,Designer,Description,URL
 ```
 
 Poll results sheet headers:

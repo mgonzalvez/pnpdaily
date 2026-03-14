@@ -165,6 +165,7 @@ const DEFAULT_CONTESTS = [
 const DEFAULT_WIPS = [
     {
         title: "Pocket Card Battler Prototype",
+        designer: "Martin Gonzalvez",
         description: "A compact deck-driven combat prototype currently being iterated in public.",
         url: ""
     }
@@ -435,6 +436,7 @@ function parseWipCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
             title: getField(row, ["title", "name", "wip", "thread"]).trim(),
+            designer: getField(row, ["designer", "author"]).trim(),
             description: getField(row, ["description", "summary", "notes"]).trim(),
             url: getField(row, ["url", "link"]).trim()
         }))
@@ -686,17 +688,17 @@ function renderWips(wip) {
     }
 
     const safeTitle = escapeHtml(wip.title);
+    const safeDesigner = wip.designer ? escapeHtml(wip.designer) : "Unknown designer";
     const safeDescription = wip.description
         ? escapeHtml(wip.description)
         : "Current community thread worth checking out.";
     const safeUrl = wip.url ? escapeHtml(wip.url) : "";
+    const titleMarkup = safeUrl
+        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
+        : `<strong>${safeTitle}</strong>`;
 
     wipsElement.innerHTML = `
-        <p>
-            ${safeUrl
-                ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeTitle}</strong></a>`
-                : `<strong>${safeTitle}</strong>`}
-        </p>
+        <p>${titleMarkup}, designed by <strong>${safeDesigner}</strong>.</p>
         <p>${safeDescription}</p>
     `;
 }
