@@ -21,7 +21,7 @@ Name,Description,URL
 Games sheet headers:
 
 ```text
-Name,Description,URL
+Name,Designer,Description,URL
 ```
 
 Crowdfunding sheet headers:

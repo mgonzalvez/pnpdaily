@@ -133,18 +133,21 @@ const DEFAULT_BUILDS = [
 const DEFAULT_GAMES = [
     {
         name: "Mini Rogue",
+        designer: "Nuts! Publishing",
         source: "PnP Community Pick",
         description: "A compact solo dungeon crawl with fast setup and strong replayability.",
         url: ""
     },
     {
         name: "Bargain Basement Bathysphere",
+        designer: "Scott Almes",
         source: "PnP Community Pick",
         description: "Solo campaign-style deep-sea dice game with free downloadable content.",
         url: ""
     },
     {
         name: "Utopia Engine",
+        designer: "Matt Riddle",
         source: "PnP Community Pick",
         description: "Classic roll-and-write puzzle game that is quick to print and teach.",
         url: ""
@@ -378,6 +381,7 @@ function parseGamesCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
             name: getField(row, ["name", "game", "title"]).trim(),
+            designer: getField(row, ["designer", "author"]).trim(),
             source: getField(row, ["source", "community", "subreddit"]).trim(),
             description: getField(row, ["description", "notes", "summary"]).trim(),
             url: getField(row, ["url", "link"]).trim()
@@ -556,15 +560,17 @@ function renderGame(game) {
     }
 
     const safeName = escapeHtml(game.name);
+    const safeDesigner = game.designer ? escapeHtml(game.designer) : "Unknown designer";
     const safeDescription = game.description
         ? escapeHtml(game.description)
         : "Current community favorite worth checking out.";
     const safeUrl = game.url ? escapeHtml(game.url) : "";
+    const titleMarkup = safeUrl
+        ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeName}</strong></a>`
+        : `<strong>${safeName}</strong>`;
 
     gameElement.innerHTML = `
-        <p>${safeUrl
-            ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer"><strong>${safeName}</strong></a>`
-            : `<strong>${safeName}</strong>`}</p>
+        <p>${titleMarkup}, designed by <strong>${safeDesigner}</strong>.</p>
         <p>Powered by <a href="https://pnpfinder.com" target="_blank" rel="noopener noreferrer">PnPFinder.com</a></p>
         <p>${safeDescription}</p>
     `;

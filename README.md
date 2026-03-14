@@ -24,7 +24,7 @@ Fast static site for print-and-play highlights: rotating homepage widgets, a fea
 - `assets/tips.csv`
   - Headers: `Title,Source,Content`
 - `assets/games.csv`
-  - Headers: `Name,Description,URL` (optional `Source`)
+  - Headers: `Name,Designer,Description,URL` (optional `Source`)
 - `assets/tools.csv`
   - Headers: `Name,Description,URL`
 - `assets/sites.csv`
