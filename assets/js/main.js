@@ -398,7 +398,7 @@ function parseSitesCsv(csvText) {
 function parseBuildsCsv(csvText) {
     return parseCsvRows(csvText)
         .map((row) => ({
-            source: normalizeBuildSource(getField(row, ["source", "community"]).trim()),
+            source: normalizeBuildSource(getField(row, ["source", "community", "1"]).trim()),
             name: getField(row, ["name", "username", "user"]).trim(),
             title: getField(row, ["title", "game", "name"]).trim(),
             url: getField(row, ["url", "link"]).trim(),
