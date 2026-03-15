@@ -202,7 +202,7 @@ console.log("Converter loaded:", typeof convertPaperWeight === 'function');
 - Add/update contests in Google Sheets
 - Add/update WIPs in Google Sheets
 - Add/update poll results in Google Sheets/Form pipeline
-- Check and update the monthly BGG crafting geeklist link at the end or start of each month so site links point to the current month's list
+- Check and update both the monthly BGG crafting geeklist link and the monthly PnP on Your Table geeklist link at the end of each month or start of the new month so site links point to the current lists
 - Add/edit editorial Markdown in `/posts`
 - Run post build script after Markdown changes
 - Verify both `index.html` and `sites.html` after layout/navigation changes
