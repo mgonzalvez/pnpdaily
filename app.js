@@ -33,8 +33,12 @@ const CARD_SIZES = {
         mm: "44.5 x 88.9"
     },
     mini: {
-        inches: "1.75 x 2.5",
-        mm: "44.5 x 63.5"
+        inches: "1.625 x 2.5",
+        mm: "41 x 63"
+    },
+    miniEuropean: {
+        inches: "1.6875 x 2.625",
+        mm: "44 x 68"
     },
     micro: {
         inches: "1.25 x 1.75",
