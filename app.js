@@ -14,7 +14,7 @@ const CARD_SIZES = {
     },
     tarot: {
         inches: "2.75 x 4.75",
-        mm: "69.9 x 120.7"
+        mm: "70 x 120"
     },
     jumbo: {
         inches: "3.5 x 5",
