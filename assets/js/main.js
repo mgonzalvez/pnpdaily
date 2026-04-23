@@ -172,16 +172,16 @@ const DEFAULT_WIPS = [
     }
 ];
 
-const POLL_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSe4btzJ_XPS5Y7rxlTc7ST9KI7QAdbspm8Ai86QxYbgM0SVEA/viewform?usp=publish-editor";
+const POLL_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeHGc4YCSyQal-4M-lF8wzR7j_xPUKmPv-vIDyaYIQK-PYSzw/viewform?usp=publish-editor";
 const POLL_STORAGE_KEY = "pnp_poll_voted";
 
 const DEFAULT_POLL_RESULTS = [
     {
-        option: "3x3 card grid - duplex format",
+        option: "With bleed",
         votes: 0
     },
     {
-        option: "Gutterfold - foldable format",
+        option: "Without bleed",
         votes: 0
     }
 ];
@@ -797,7 +797,7 @@ function renderPoll(results) {
     }).join("");
 
     pollElement.innerHTML = `
-        <p><strong>Which print and play card file format do you prefer?</strong></p>
+        <p><strong>Do you prefer print and play card files with bleed or without bleed?</strong></p>
         <div class="poll-options">${optionButtons}</div>
         <div class="community-block">
             <p class="feed-label">Current Results</p>
