@@ -1,64 +1,54 @@
 # PnPDaily - Print & Play Daily Roundup
 
-Fast static site for print-and-play highlights: rotating homepage widgets, a featured editorial, print utilities, a lightweight community poll, a live crafting roundup, and a linked directory of Martin's other PnP sites.
+Fast static site for print-and-play highlights: rotating homepage widgets, featured editorial, print utilities, community poll, live crafting roundup, and a directory of Martin's PnP sites.
 
-## Current Features
+## Project Structure
 
-- Tip of the Day card (random, from `assets/tips.csv` if present, otherwise built-in defaults)
-- PnP Game Spotlight card (random, from `assets/games.csv` if present, otherwise built-in defaults)
-- Tool Spotlight card (random, from `assets/tools.csv` if present, otherwise built-in defaults)
-- `PnP Crowdfunding Roundup` card (1 random entry from `assets/crowdfunding.csv`, with built-in defaults)
-- `What PnP Games Are People Crafting Right Now?` section (9 compact build cards from `assets/builds.csv`, grouped by PnP Hideaway, Reddit, and BGG)
-- `Martin's PnP Sites` page (directory cards from `assets/sites.csv`, with built-in defaults)
-- `BGG Contests` card (current entries from `assets/contests.csv`, with built-in defaults)
-- `Notable BGG Work-in-Progress Thread` card (1 random entry from `assets/wips.csv`, with built-in defaults)
-- `PnP Community Poll` card (Google Form vote flow with results from `assets/poll-results.csv`)
-- Featured Editorial card (latest post from `posts/manifest.json`, generated from Markdown)
-- Paper Weight Converter widget (lb <-> gsm with Text/Book vs Cover paper types)
-- Card Dimensions widget (popular card sizes in inches and millimeters)
-- Header community dropdown and linked community footer
-- Mobile responsive dark theme
-
-## Content Sources
-
-- `assets/tips.csv`
-  - Headers: `Title,Source,Content`
-- `assets/games.csv`
-  - Headers: `Name,Designer,Description,URL` (optional `Source`)
-- `assets/tools.csv`
-  - Headers: `Name,Description,URL`
-- `assets/sites.csv`
-  - Headers: `Name,Description,URL`
-- `assets/builds.csv`
-  - Headers: `Source,Name,Title,URL,Blurb`
-- `assets/contests.csv`
-  - Headers: `Title,Ends,Description,URL`
-- `assets/crowdfunding.csv`
-  - Headers: `Title,Description,URL`
-- `assets/wips.csv`
-  - Headers: `Title,Designer,Description,URL`
-- `assets/poll-results.csv`
-  - Headers: `Option,Votes`
-- `posts/*.md`
-  - Markdown editorial sources
-
-If CSV files are missing or empty, the homepage and sites directory page use JavaScript fallback content from `assets/js/main.js`.
-
-## Editorial Build Workflow
-
-Editorial pages are generated from Markdown using:
-
-```bash
-node scripts/build-posts.mjs
+```
+pnpdaily/
+├── index.html          # Homepage with rotating widgets
+├── sites.html          # Martin's PnP Sites directory
+├── styles.css          # Theme and responsive styles
+├── app.js              # Paper Weight Converter + Card Dimensions widgets
+├── assets/
+│   ├── js/main.js      # Rotating content logic + editorial feature
+│   └── data.json       # All data (tips, tools, games, crowdfunding, sites, builds, contests, wips, poll, articles)
+├── posts/              # Editorial Markdown → HTML (run `node scripts/build-posts.mjs`)
+├── drafts/             # Unpublished editorial drafts
+├── scripts/
+│   └── build-posts.mjs # Markdown to HTML/manifest generator
+└── .github/workflows/
+    └── deploy.yml      # GitHub Actions: push to main + hourly
 ```
 
-This script generates:
+## Data Source
 
-- `posts/*.html` for each `posts/*.md`
-- `posts/index.html` (article list)
-- `posts/manifest.json` (metadata for homepage featured article)
+`assets/data.json` is the single source of truth. All homepage widgets read from it. If it's missing or invalid, `assets/js/main.js` falls back to built-in defaults.
 
-Expected Markdown format:
+JSON structure:
+
+| Section | Fields |
+|---------|--------|
+| `tips` | `title`, `source`, `content` |
+| `tools` | `name`, `description`, `url` |
+| `games` | `name`, `designer`, `source`, `description`, `url` |
+| `crowdfunding` | `title`, `description`, `url` |
+| `sites` | `name`, `description`, `url` |
+| `builds` | `source`, `name`, `title`, `url`, `blurb` |
+| `contests` | `title`, `ends`, `description`, `url` |
+| `wips` | `title`, `designer`, `description`, `url` |
+| `poll` | `option`, `votes` |
+| `articles` | `title`, `author`, `date`, `summary`, `slug` |
+
+## Content Workflow
+
+### Updating Data
+
+Provide the data and the agent will update `assets/data.json` and `assets/js/main.js` (both must stay in sync).
+
+### Editorial Posts
+
+1. Create `posts/<slug>.md` with format:
 
 ```markdown
 # Article Title
@@ -70,78 +60,14 @@ Expected Markdown format:
 Article body...
 ```
 
-## Deployment
+2. Run `node scripts/build-posts.mjs`
+3. To publish a draft: move from `drafts/` to `posts/`, then rebuild
 
-GitHub Actions:
+Use [VOICE.md](VOICE.md) as the writing style reference.
 
-- `.github/workflows/deploy.yml`
-  - Trigger: push to `main` + hourly schedule
-  - Pulls latest CSV data from repository vars (if set)
-  - Runs `node scripts/build-posts.mjs`
-  - Deploys site to GitHub Pages
+## Maintenance
 
-Repository variables required for sheet sync:
-
-- `GOOGLE_TIPS_CSV_URL`
-- `GOOGLE_GAMES_CSV_URL`
-- `GOOGLE_TOOLS_CSV_URL`
-- `GOOGLE_CROWDFUNDING_CSV_URL`
-- `GOOGLE_SITES_CSV_URL`
-- `GOOGLE_BUILDS_CSV_URL`
-- `GOOGLE_CONTESTS_CSV_URL`
-- `GOOGLE_WIPS_CSV_URL`
-- `GOOGLE_POLL_RESULTS_CSV_URL`
-
-Google Sheets access requirement:
-
-- Each sheet/tab used for CSV export must be shared as `Anyone with the link can view`
-- The CSV URL must work in an incognito browser window without logging into Google
-- Prefer direct export URLs in this format:
-  `https://docs.google.com/spreadsheets/d/<SHEET_ID>/export?format=csv&gid=<TAB_GID>`
-
-## Local Development
-
-No framework required.
-
-1. Edit HTML/CSS/JS and/or `posts/*.md`
-2. Run `node scripts/build-posts.mjs` after Markdown edits
-3. Open `index.html` and `sites.html` in a browser
-
-## Project Structure
-
-```bash
-pnpdaily/
-├── index.html
-├── sites.html
-├── styles.css
-├── favicon.svg
-├── app.js
-├── assets/
-│   ├── js/main.js
-│   ├── tips.csv           # optional, generated/synced
-│   ├── games.csv          # optional, generated/synced
-│   ├── tools.csv          # optional, generated/synced
-│   ├── crowdfunding.csv   # optional, generated/synced
-│   ├── sites.csv          # optional, generated/synced
-│   ├── builds.csv         # optional, generated/synced
-│   ├── contests.csv       # optional, generated/synced
-│   ├── wips.csv           # optional, generated/synced
-│   └── poll-results.csv   # optional, generated/synced
-├── posts/
-│   ├── *.md               # source editorial content
-│   ├── *.html             # generated editorial pages
-│   ├── index.html         # generated article index
-│   └── manifest.json      # generated metadata for homepage
-├── scripts/
-│   └── build-posts.mjs
-└── .github/workflows/
-    └── deploy.yml
-```
-
-## Maintainer Notes
-
-- Keep `posts/*.md` as source of truth for editorials.
-- Re-run build script whenever Markdown articles change.
-- Homepage dynamic behavior lives in `assets/js/main.js`.
-- The sites directory page also uses `assets/js/main.js`.
-- Converter logic lives in `app.js` using U.S. basis-size factors for Text/Book and Cover stocks.
+- Update `assets/data.json` with new content
+- Run `node scripts/build-posts.mjs` after Markdown changes
+- Verify `index.html` and `sites.html` after layout changes
+- Check deploy workflow status after push
