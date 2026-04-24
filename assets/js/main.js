@@ -48,17 +48,17 @@ const DEFAULT_SITES = [
         url: "https://pnptools.gonzhome.us"
     },
     {
-        name: "Martin's Card Prototyper",
+        name: "Card Prototyper",
         description: "Design quick card prototypes and export individual cards or print-ready sheets.",
         url: "https://prototyper.gonzhome.us"
     },
     {
-        name: "Martin's Card Extractor",
+        name: "Card Extractor",
         description: "Extract individual card images from PnP PDFs by drawing grids along card boundaries.",
         url: "https://extractor.gonzhome.us"
     },
     {
-        name: "Martin's Card Formatter",
+        name: "Card Formatter",
         description: "Lay out card images into properly formatted print-and-play PDF files.",
         url: "https://formatter.gonzhome.us"
     }
