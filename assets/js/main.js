@@ -1,33 +1,70 @@
 const DEFAULT_TIPS = [
-    { title: "Cleaner folds", source: "r/printandplay", content: "Use a bone folder for crisp folding - score first, fold over a ruler edge." },
-    { title: "Longer-lasting cards", source: "Martin's PnP Hideaway", content: "Laminating cards in sleeves before mounting to cardstock extends longevity significantly." },
-    { title: "Test before full print", source: "BGG Geeklists", content: "Color test print all pages on regular printer before committing to the final print run." },
-    { title: "Keep a test kit", source: "r/printandplay", content: "Keep a small test kit of paper stocks, adhesives, and blades for quick prototyping." },
-    { title: "Use alignment marks", source: "Martin's PnP Hideaway", content: "Use alignment marks on front/back prints to cut cleaner double-sided cards." }
+    { title: "Cut cards from the back", source: "Martin Gonzalvez", content: "Cut duplex card sheets from the back, if fronts and backs are misaligned it won't be obvious from the card backs and the cards will still be playable." },
+    { title: "Laminate twice", source: "Martin Gonzalvez", content: "If your laminated PnP cards are splitting open at the edges, consider passing them through the laminator a second time." },
+    { title: "Use a higher heat setting", source: "Martin Gonzalvez", content: "If your cards are delaminating at the 3mil heat setting, try passing them through at the 5mil heat setting on your laminator." },
+    { title: "Rotary cutter + metal blade", source: "Manu Villarroya", content: "Rotary cutter + metal blade. Highly precise cuts once you get it. A bit muscle-taxing, however, if you use thick laminated paper!" },
+    { title: "Ink tank printers", source: "Manu Villarroya", content: "Ink tank printers can work wonders: my Canon Pixma has printed A LOT, with high quality, and still has half ink left over!" },
+    { title: "Learn a design tool", source: "Manu Villarroya", content: "Inkscape (and other free design tools) is your friend. Learn a program, and the quality of your designs will increase substantially." },
+    { title: "Sleeve laminated cards", source: "Manu Villarroya", content: "Laminating and corner-rounding a card, and then sleeving it, will get you a premium feeling. The thickness of a pnp'd laminated card in ~140 mg paper is just right." },
+    { title: "Get an ink tank printer", source: "Daniel Männikkö", content: "Get an ink tank printer. It's more expensive up front but cheaper in the long run." },
+    { title: "Use coin capsules for circle tokens", source: "Martin Gonzalvez", content: "Punch out 1-inch circle tokens and place them inside 25mm plastic coin capsules for easy yet deluxe circle tokens." },
+    { title: "Peeling off sticker backs", source: "Sarah Haag", content: "Sometimes using another scrap piece of sticker on the back of the first will peel the backing off." },
+    { title: "Just do it", source: "Lara Matiisen", content: "Don't overthink. I spent so long early on wanting to have the smoothest process, finding the \"perfect\" way to craft, that I often just never started." },
+    { title: "Experiment", source: "Lara Matiisen", content: "Don't be afraid to try different techniques and experiment to find what works for you." },
+    { title: "Play test first", source: "Colette Haley", content: "Play test a game first to see if you like it before fully investing time and money into crafting a \"forever copy\"." },
+    { title: "Start small", source: "Rob Beachler", content: "Start small with your first project so you can get a handle on how to do things. Work up to larger projects if you have any in mind." },
+    { title: "Choose your cutter", source: "Edward Bell", content: "Find what cutting method works for you (mine is a guillotine cutter) and use it." },
+    { title: "Paper and card sleeves", source: "Edward Bell", content: "200+gsm paper and card sleeves are a great way to start." },
+    { title: "Eco-tank printer", source: "Darin Herrick", content: "Buy an eco-tank inkjet printer, and print frequently so the nozzles don't clog." },
+    { title: "Test print", source: "Darin Herrick", content: "Test Print One Page before printing out 300." },
+    { title: "Don't rush", source: "Darin Herrick", content: "TAKE YOUR TIME, don't rush." },
+    { title: "Digital rules", source: "Darin Herrick", content: "If you like digital copies of rules, get a comics app for your tablet and copy the rules PDF to the tablet instead of printing it out." },
+    { title: "Card backing", source: "Darin Herrick", content: "Use construction paper or print card backs to make cards less flimsy." },
+    { title: "Thicker tokens", source: "Darin Herrick", content: "Use coin protectors or glue onto pennies to make circular tokens." },
+    { title: "Explore your creativity", source: "Darin Herrick", content: "You can create whatever you want. Create your own game, modify a game you already own, create something like a game that already exists from scratch. The only limit is your imagination." },
+    { title: "Practice first", source: "Darin Herrick", content: "You don't have to do a full board game on your first try. Create some extra pieces or cards for a game you already know with some fan expansions or official PNP extra components so you can practice." },
+    { title: "Half full printer tray", source: "Yuri Verweij", content: "Make sure your paper drawer is at least half full, this really makes a difference when printing (manual) duplex" },
+    { title: "Edit PDFs", source: "Yuri Verweij", content: "Affinity (software, free version) is capable of editing PDF files. For example, to remove cut lines or extract images." },
+    { title: "Dry erase pocket sleeves", source: "Yuri Verweij", content: "You don't need to laminate all your Roll and Writes. There exist Dry Erase Pocket Sleeves that can hold your paper and make it reusable." },
+    { title: "Reuse old boxes", source: "Yuri Verweij", content: "reuse old boxes for storing pnp games. You can print on full page label paper to cover the full box and make it look amazing. Add a layer of cold laminate over it to make it even better." },
+    { title: "Don't cut to the edge", source: "Barny Skinner", content: "Don't cut to the edge of the sheet, to keep the crop marks in place." },
+    { title: "Use permanent markers", source: "Doc Viglietti", content: "Using permanent markers on matte laminated roll and write sheets requires tedious alcohol wiping to clean between games. Try wet-erase markers on matte laminate and rinse the sheets easily under running water!" },
+    { title: "Start small and simple", source: "Katie Duggan", content: "Start with a small game. It can be an 18 card game like Rove, Mini Rogue, or Galdor's Grip. Just use printer paper and a deck of playing cards. Packing tape the front and backs. That way you don't have to fuss about the fronts and backs aligning properly." }
 ];
 
 const DEFAULT_TOOLS = [
-    { name: "Inkscape", description: "Free vector graphics software for editing templates and creating custom PnP assets.", url: "https://inkscape.org/" },
-    { name: "GIMP", description: "Free raster image editor for resizing art, cleanup, and print prep.", url: "https://www.gimp.org/" },
-    { name: "Canva", description: "Quick design workspace for labels, tuckboxes, and overlays.", url: "https://www.canva.com/" },
-    { name: "Blender", description: "3D modeling software for printable miniatures and terrain.", url: "https://www.blender.org/" }
+    { name: "PnP Launchpad", description: "A website to keep track of current and upcoming PnP crowdfunding projects and promotions.", url: "https://launchpad.gonzhome.us" },
+    { name: "PnPFinder", description: "A community-curated website to search for and discover worthwhile PnP games.", url: "http://pnpfinder.com" },
+    { name: "Martin's Card Prototyper", description: "Design quick card prototypes and export individual card images or print-ready sheets in this intuitive, easy-to-use web app.", url: "https://prototyper.gonzhome.us" },
+    { name: "Component Studio", description: "An online, subscription-based formatting tool to easily format 100's of cards and output PnP PDF files, or upload to The Gamecrafter.", url: "https://component.studio/" },
+    { name: "PnP Buddy", description: "A free online tool to format your print and play files and adjust front-back page alignment.", url: "http://www.pnpbuddy.com/" },
+    { name: "CardFoldr", description: "A tool to help you convert a PDF of card grids into a gutterfold PDF.", url: "https://foosel.github.io/cardfoldr/" },
+    { name: "PnP Tool", description: "A Windows-based tool to perform various formatting tasks for PnP files.", url: "https://boardgamegeek.com/thread/2490834/tool-for-help-with-your-game-prototype-tabletop-pn" },
+    { name: "nanDECK", description: "A free tool for designing games, enabling users to create custom cards and components via scripting and spreadsheet integration.", url: "https://www.nandeck.com" },
+    { name: "Dextrous", description: "Faster prototyping for tabletop game designers. Make cards, tiles, tokens, at speed with game design software for Chrome.", url: "https://www.dextrous.com.au/" },
+    { name: "PnP PDF Creator", description: "PnP PDF Creator is a powerful and easy-to-use tool that converts card images into clean, print-ready Print & Play PDF sheets. It is designed for game designers, prototypers, and players who want fast and reliable PDF generation for home or professional printing.", url: "https://raoulschaupp.itch.io/pnp-pdf-creator" },
 ];
 
 const DEFAULT_CROWDFUNDING = [
     {
-        title: "Pocket Civ Builder Campaign",
-        description: "Compact civilization card game campaign offering print-and-play files for backers.",
-        url: ""
+        title: "Pocket Puffins: Lost in Space",
+        description: "Edward Bell - Kickstarter campaign went live on April 14, 2026 and ends May 14, 2026 at 7:01 AM PDT.",
+        url: "https://www.kickstarter.com/projects/pocket-puffins/pocket-puffins-lost-in-space-18-card-solo-space-puzzle"
     },
     {
-        title: "Solo Dungeon Zine Launch",
-        description: "Small-batch solo dungeon crawler with immediate PnP access during the campaign.",
-        url: ""
+        title: "Sole Survivor",
+        description: "Paper Tigers - Sole Survivor is an alien-infested spaceship solo survival challenge. It is a lightweight print-and-play game where you run, hide, and scramble to assemble a transporter before the creatures find you.",
+        url: "https://www.kickstarter.com/projects/papertigers/sole-survivor-0"
     },
     {
-        title: "Modular Skirmish Pack",
-        description: "Terrain and card-driven skirmish project with printable rewards and stretch content.",
-        url: ""
+        title: "Nothing But Net: A Playground Basketball Card Game",
+        description: "Hafiz Printer - A fast-paced, two-player basketball card and dice game that brings the intensity of streetball straight to your tabletop. Draft your offense and defense cards, execute slick plays, and react in real time to your opponent's moves. Score big, trigger special abilities, and race to 21 points in high-energy, head-to-head action.",
+        url: "https://www.kickstarter.com/projects/hp1/nothing-but-net-2-player-head-to-head-basketball-card-game"
+    },
+    {
+        title: "Hidden Realms: The Mummy's Tomb",
+        description: "Spiros Kallos - Hidden Realms: The Mummy's Tomb is a single-page, print-and-play, roll-and-write dungeon crawl inspired by classic D&D maps. Draw polyomino shapes to map a new dungeon every game. Uncover treasure, face deadly guardians, and confront the Mummy!",
+        url: "https://gamefound.com/en/projects/tabletop-for-world/hidden-realms-the-mummys-tomb"
     }
 ];
 
@@ -67,108 +104,230 @@ const DEFAULT_SITES = [
 const DEFAULT_BUILDS = [
     {
         source: "hideaway",
-        name: "Martin G.",
-        title: "Bargain Basement Bathysphere",
-        url: "http://pnpfinder.com",
-        blurb: "I wanted something quick to print that still felt like a real campaign game."
+        name: "Chris Hepburn",
+        title: "Maquis",
+        url: "https://pnpfinder.com/game.html?id=59",
+        blurb: "I've changed my cards for my maquis retheme to a matte as the darker colours look much better in matte."
     },
     {
         source: "hideaway",
-        name: "Lena M.",
-        title: "Mini Rogue",
-        url: "http://pnpfinder.com",
-        blurb: "I am keeping the build simple and focusing on clean cards and a sturdy tracker."
+        name: "Sultan Syahrul FJ",
+        title: "Palm Island",
+        url: "https://pnpfinder.com/game.html?id=255",
+        blurb: "Napalm Island (which is a retheme of Palm Island ) is a terrific little game that is very easy to craft and carry, a solid timewaster, and one that occupies zero table space"
     },
     {
         source: "hideaway",
-        name: "Carlos R.",
-        title: "Voyages",
-        url: "http://pnpfinder.com",
-        blurb: "This one keeps hitting the sweet spot for me between easy setup and satisfying play."
+        name: "Arnold Hau",
+        title: "Cursed?!",
+        url: "https://boardgamegeek.com/filepage/316266/cursed-masters-of-the-universe-retheme-by-sakier",
+        blurb: "Masters of the Universe - Cursed Fields of Eternia a retheme of Cursed!?"
     },
     {
         source: "reddit",
-        name: "meeplepilot",
+        name: "Crase_W",
+        title: "Galdor's Grip",
+        url: "https://boardgamegeek.com/boardgame/373828/galdors-grip",
+        blurb: "I made Galdor's Grip. I love the card art on this game."
+    },
+    {
+        source: "reddit",
+        name: "GhostCubeGroucho",
         title: "Utopia Engine",
-        url: "http://pnpfinder.com",
-        blurb: "I was in the mood for something compact, puzzly, and easy to get to the table."
+        url: "https://boardgamegeek.com/boardgame/75223/utopia-engine",
+        blurb: "My 8yo playing Utopia Engine, my 5 and 11yo and me playing sunshine city. The roll and writes have been big hits!"
     },
     {
         source: "reddit",
-        name: "cardcraftingcat",
-        title: "Gloomholdin'",
-        url: "http://pnpfinder.com",
-        blurb: "The challenge here is keeping the footprint tiny without the build feeling flimsy."
-    },
-    {
-        source: "reddit",
-        name: "hexandink",
-        title: "Ragemore",
-        url: "http://pnpfinder.com",
-        blurb: "I like how much game this packs into a very manageable little print job."
+        name: "Wombat_Roll",
+        title: "Line of Contact",
+        url: "https://boardgamegeek.com/thread/3694934/wip-line-of-contact-a-wwii-print-and-play-card-gam",
+        blurb: "LINE OF CONTACT is a project that I've been testing in playingcards.io for a few weeks, but sometimes you just gotta print out the game and put it on the table to see if it truly works!"
     },
     {
         source: "bgg",
-        name: "T. Warren",
-        title: "Deck Hand Contest Entry",
-        url: "https://boardgamegeek.com",
-        blurb: "Still tightening the rules, but the core loop is finally starting to feel right."
+        name: "@Flash001",
+        title: "Lone Sherman: The Pacific – A Solitaire Wargame",
+        url: "https://boardgamegeek.com/boardgame/415855/lone-sherman-the-pacific-a-solitaire-wargame",
+        blurb: "My first Mike Lambo wargame..."
     },
     {
         source: "bgg",
-        name: "Maya L.",
-        title: "9-Card Contest Prototype",
-        url: "https://boardgamegeek.com",
-        blurb: "I am trying to get the most out of the tiny format without making it feel cramped."
+        name: "@lemdavefn",
+        title: "Descent: Legends of the Dark",
+        url: "https://boardgamegeek.com/boardgame/322708/descent-legends-of-the-dark",
+        blurb: "Printed enemy images..."
     },
     {
         source: "bgg",
-        name: "RookDesigns",
-        title: "Solo Adventure WIP",
-        url: "https://boardgamegeek.com",
-        blurb: "This is now fully playable, and I am mostly testing pacing and decision tension."
+        name: "@Phenuxela",
+        title: "Puzzle Dungeon",
+        url: "https://boardgamegeek.com/boardgame/262498/puzzle-dungeon",
+        blurb: "Saw some playthroughs..."
     }
 ];
 
 const DEFAULT_GAMES = [
     {
-        name: "Mini Rogue",
-        designer: "Nuts! Publishing",
+        name: "Village Builder",
+        designer: "Doc Viglietti",
         source: "PnP Community Pick",
-        description: "A compact solo dungeon crawl with fast setup and strong replayability.",
-        url: ""
+        description: "A cozy solitaire village building game.",
+        url: "https://boardgamegeek.com/thread/2470162/wip-village-builder-2020-solitairegame-design-cont"
+    },
+    {
+        name: "Gem Getter Pro",
+        designer: "Daniel W. Young",
+        source: "PnP Community Pick",
+        description: "Rival gem enthusiasts compete to unearth the most valuable collection of gems.",
+        url: "https://www.clearlysharp.com/games"
+    },
+    {
+        name: "The Cubes of Europe",
+        designer: "Ben Huntley",
+        source: "PnP Community Pick",
+        description: "Use dice to acquire and place unique cubes, manipulate the game state, and score victory points.",
+        url: "https://boardgamegeek.com/filepage/278285/the-cubes-of-europe-game-files"
+    },
+    {
+        name: "Royal Espionage",
+        designer: "Rachel Bruner",
+        source: "PnP Community Pick",
+        description: "A storytelling game of intrigue, intelligence, and imminent death.",
+        url: "https://boardgamegeek.com/boardgame/257681/royal-espionage/files"
+    },
+    {
+        name: "Maquis",
+        designer: "Jake Staines",
+        source: "PnP Community Pick",
+        description: "Engage the Nazis of France in 'la petite guerre' and free your homeland!",
+        url: "https://boardgamegeek.com/filepage/179348/maquis-2019-pnp-files-v10"
+    },
+    {
+        name: "A Simple Life",
+        designer: "Clint Goshn",
+        source: "PnP Community Pick",
+        description: "Roll & Write to upgrade your farm and complete randomized run objectives",
+        url: "https://boardgamegeek.com/filepage/251102/game-sheets-and-1-page-rule-a-simple-life-contest"
+    },
+    {
+        name: "Galdor's Grip",
+        designer: "Gregg Jewell",
+        source: "PnP Community Pick",
+        description: "Stop an evil telepath with just your hands in this fantasy card game for one player.",
+        url: "https://greggjewell.itch.io/galdors-grip"
+    },
+    {
+        name: "Orchard",
+        designer: "Mark Tuck",
+        source: "PnP Community Pick",
+        description: "Create the most fruitful micro orchard, but beware of rotten fruit!",
+        url: "https://boardgamegeek.com/filepage/159521/orchard-cards-v1"
+    },
+    {
+        name: "Alea's Garden",
+        designer: "Brave James",
+        source: "PnP Community Pick",
+        description: "A cosy polyomino deckbuilding game, and winner of 2025 BoardGameGeek Solitaire competition!",
+        url: "https://linktr.ee/aleasgarden"
+    },
+    {
+        name: "Deckula!",
+        designer: "Dr. Mindflip",
+        source: "PnP Community Pick",
+        description: "Decadent and dramatic vampires try to decorate their castles in peace.",
+        url: "https://drmindflip.itch.io/deckula"
     },
     {
         name: "Bargain Basement Bathysphere",
-        designer: "Scott Almes",
+        designer: "Scott Slomiany",
         source: "PnP Community Pick",
-        description: "Solo campaign-style deep-sea dice game with free downloadable content.",
-        url: ""
-    },
-    {
-        name: "Utopia Engine",
-        designer: "Matt Riddle",
-        source: "PnP Community Pick",
-        description: "Classic roll-and-write puzzle game that is quick to print and teach.",
-        url: ""
+        description: "Explore the depths of Beachside Bay through multiple linked roll-and-write games. ",
+        url: "https://boardgamegeek.com/filepage/181118/bargain-basement-bathysphere-chapters-1-3"
     }
 ];
 
 const DEFAULT_CONTESTS = [
     {
-        title: "Monthly Solo Design Challenge",
-        ends: "December 31, 2026",
-        description: "Community print-and-play design prompt with voting and build logs.",
-        url: ""
+        title: "2026 9-Card Nanogame PnP Design Contest",
+        ends: "5/31/2026",
+        description: "Create a new solo, co-op, or competitive game that fits on one sheet of 9 poker-size cards (2.5\" x 3.5\") plus rules pages, using up to 24 generic components total or none at all. Contest ends May 31, 2026.",
+        url: "https://boardgamegeek.com/thread/3648226/2026-9-card-nanogame-print-and-play-design-contest"
+    },
+    {
+        title: "2026 Two-Player PnP Game Design Contest",
+        ends: "5/31/2026",
+        description: "Let's play some inexpensive and innovative two-player games!  With this contest, we hope to encourage designers to create interesting new gaming experiences specifically for a pair of gamers. Contest ends May 31, 2026.",
+        url: "https://boardgamegeek.com/thread/3620917/2026-two-player-print-and-play-game-design-contest"
+    },
+    {
+        title: "2026 Deck Hand Games Design Contest",
+        ends: "6/26/2026",
+        description: "The Challenge: To make an 18-card game that works in conjunction with any standard deck of playing cards. Deadline: June 26, 2026",
+        url: "https://boardgamegeek.com/thread/3669375/2026-deck-hand-games-design-contest-open-until-jun"
+    },
+    {
+        title: "2026 Solomode Contest",
+        ends: "5/31/2026",
+        description: "Design a solo mode for a game that does not have one, or has one that you find lacking. Contest ends June 30, 2026.",
+        url: "https://boardgamegeek.com/thread/3670686/2026-solomode-contest"
+    },
+    {
+        title: "2026 Children & Family Game Design Contest",
+        ends: "5/15/2026",
+        description: "This contest is meant to design games that we can play with the children, or games that children can play together. The focus should be on games that children (9 and under) can play with their families. Voting closes May 15, 2026",
+        url: "https://boardgamegeek.com/thread/3645079/2026-children-and-family-game-design-contest"
+    },
+    {
+        title: "2026 Print and Play Wargame Design Contest",
+        ends: "12/21/2026",
+        description: "Games entered in this contest should be purpose-designed wargames. Games may be solitaire, two player, multi-player or even co-operative. However it is critical that the game is a wargame. The primary focus should therefore be on conflict and warfare. ",
+        url: "https://boardgamegeek.com/thread/3627732/contest-open-2026-print-and-play-wargame-design-co"
     }
 ];
 
 const DEFAULT_WIPS = [
     {
-        title: "Pocket Card Battler Prototype",
-        designer: "Martin Gonzalvez",
-        description: "A compact deck-driven combat prototype currently being iterated in public.",
-        url: ""
+        title: "DOKUSU",
+        designer: "@UberDante",
+        description: "DOKUSU is a SUDOKU-inspired puzzle in 9 cards. Arrange the nine cards into a 9x9 grid so that no number repeats in any one column or row, or within any of the nine 3x3 sub-grids.",
+        url: "https://boardgamegeek.com/thread/3665416/wip-dokusu-1p-puzzle-5-10-2026-9-card-contest-comp"
+    },
+    {
+        title: "Crafting Crawler",
+        designer: "Agustin Gallo",
+        description: "A dungeon-building and exploration game where you generate the map as you forge your path, defeating the threats that lie within.Choose your hero (or a party of adventurers) to reach the deepest corners of this ever-shifting dungeon. Defeat the Ancient Dragon and claim the riches hidden behind its walls.",
+        url: "https://boardgamegeek.com/thread/3666361/wip-crafting-crawler-2026-9-card-pnp-design-contes"
+    },
+    {
+        title: "The Test of Time",
+        designer: "Barny Skninner",
+        description: "Test of Time is a solo 9 card civilization game. From the dawn of time to the modern day, you will guide a small tribe of hunter-gatherers into a mighty empire, by managing and growing the population, using and developing new technologies, managing resources, developing theories of government, constructing a mighty wonder of the world, doing battle with a rival nation, surviving four historical ages, and developing enough culture to become a nation that stands the Test of Time.",
+        url: "https://boardgamegeek.com/thread/3675681/wip-test-of-time-2026-9-card-pnp-design-contest-co"
+    },
+    {
+        title: "1st Hero",
+        designer: "Pengyu Chen",
+        description: "In this world, you do not merely fight; you lead. As a legendary Guild Master, your path is carved through untamed wilds and the remains of fallen kings. But steel alone will not win this war. Here, the clash of blades is replaced by the cunning of the mind.",
+        url: "https://boardgamegeek.com/thread/3665438/wip-1st-hero-2026-9-card-pnp-design-contest-contes"
+    },
+    {
+        title: "Doodle Bash",
+        designer: "Daniel Young",
+        description: "In Doodle Bash you'll level up your doodling skills by combining simple shapes into an astonishing variety of clever drawings. Arrange your doodles in a pleasing way to score big and just maybe you'll be an artist some day! Doodle Bash is a 1-page, app-assisted PnP game. It was my entry in the 2025 Roll and Write contest where it placed 2nd overall.",
+        url: "https://boardgamegeek.com/thread/3677111/doodle-bash-now-an-app-assisted-1-page-pnp-deck-bu"
+    },
+    {
+        title: "Flipping Little Dinos",
+        designer: "Martin Segobia",
+        description: "Flipping Little Dinos is a fast paced little puzzle. Players compete by placing Dinosaurs on a shared ecosystem with four different dinosaur species and four different ways to score. Score the most points with the dinosaurs you draw or flip them!",
+        url: "https://boardgamegeek.com/thread/3677905/wip-flipping-little-dinos-2026-9-card-pnp-design-c"
+    },
+    {
+        title: "THE WORST PART OF BEING CAUGHT IN A TIME LOOP",
+        designer: "Andy Wagers",
+        description: "You are agents of the Temporal Research Division, racing across a 3×3 grid to collect four anomaly Relics before the timeline collapses. Every failed loop leaves the board scarred and your time shorter, but the Relics make your team stronger with each attempt. A coop puzzle of movement prediction, edge-color matching, and cascading grid shifts — playable solo or with up to four agents.",
+        url: "https://boardgamegeek.com/thread/3672662/wip-the-worst-part-of-being-caught-in-a-time-loop"
     }
 ];
 
@@ -182,7 +341,7 @@ const DEFAULT_POLL_RESULTS = [
     },
     {
         option: "Without bleed",
-        votes: 0
+        votes: 1
     }
 ];
 
@@ -207,17 +366,17 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     renderEditorial(getRandomItem(DEFAULT_ARTICLES));
 
-    const [tips, tools, crowdfunding, builds, games, contests, wips, pollResults, posts] = await Promise.all([
-        loadTips(),
-        loadTools(),
-        loadCrowdfunding(),
-        loadBuilds(),
-        loadGames(),
-        loadContests(),
-        loadWips(),
-        loadPollResults(),
-        loadPostsManifest()
-    ]);
+    const data = await loadData();
+
+    const tips = data.tips || DEFAULT_TIPS;
+    const tools = data.tools || DEFAULT_TOOLS;
+    const crowdfunding = data.crowdfunding || DEFAULT_CROWDFUNDING;
+    const builds = data.builds || DEFAULT_BUILDS;
+    const games = data.games || DEFAULT_GAMES;
+    const contests = data.contests || DEFAULT_CONTESTS;
+    const wips = data.wips || DEFAULT_WIPS;
+    const pollResults = data.poll || DEFAULT_POLL_RESULTS;
+    const posts = await loadPostsManifest();
 
     renderTip(getRandomItem(tips));
     renderTool(getRandomItem(tools));
@@ -232,10 +391,34 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+async function loadData() {
+    try {
+        const response = await fetch("assets/data.json", { cache: "no-store" });
+        if (!response.ok) {
+            throw new Error(`Failed to fetch assets/data.json: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.log("Using default data:", error);
+        return {};
+    }
+}
+
+async function loadSites() {
+    try {
+        const data = await loadData();
+        const parsed = data.sites || [];
+        return parsed.length ? parsed : DEFAULT_SITES;
+    } catch (error) {
+        console.log("Using default sites directory:", error);
+        return DEFAULT_SITES;
+    }
+}
+
 async function loadTips() {
     try {
-        const csv = await fetchCsv("assets/tips.csv");
-        const parsed = parseTipsCsv(csv);
+        const data = await loadData();
+        const parsed = data.tips || [];
         return parsed.length ? parsed : DEFAULT_TIPS;
     } catch (error) {
         console.log("Using default tips:", error);
@@ -245,8 +428,8 @@ async function loadTips() {
 
 async function loadTools() {
     try {
-        const csv = await fetchCsv("assets/tools.csv");
-        const parsed = parseToolsCsv(csv);
+        const data = await loadData();
+        const parsed = data.tools || [];
         return parsed.length ? parsed : DEFAULT_TOOLS;
     } catch (error) {
         console.log("Using default tools:", error);
@@ -256,8 +439,8 @@ async function loadTools() {
 
 async function loadGames() {
     try {
-        const csv = await fetchCsv("assets/games.csv");
-        const parsed = parseGamesCsv(csv);
+        const data = await loadData();
+        const parsed = data.games || [];
         return parsed.length ? parsed : DEFAULT_GAMES;
     } catch (error) {
         console.log("Using default games:", error);
@@ -267,8 +450,8 @@ async function loadGames() {
 
 async function loadCrowdfunding() {
     try {
-        const csv = await fetchCsv("assets/crowdfunding.csv");
-        const parsed = parseCrowdfundingCsv(csv);
+        const data = await loadData();
+        const parsed = data.crowdfunding || [];
         return parsed.length ? parsed : DEFAULT_CROWDFUNDING;
     } catch (error) {
         console.log("Using default crowdfunding roundup:", error);
@@ -276,21 +459,10 @@ async function loadCrowdfunding() {
     }
 }
 
-async function loadSites() {
-    try {
-        const csv = await fetchCsv("assets/sites.csv");
-        const parsed = parseSitesCsv(csv);
-        return parsed.length ? parsed : DEFAULT_SITES;
-    } catch (error) {
-        console.log("Using default sites directory:", error);
-        return DEFAULT_SITES;
-    }
-}
-
 async function loadBuilds() {
     try {
-        const csv = await fetchCsv("assets/builds.csv");
-        const parsed = parseBuildsCsv(csv);
+        const data = await loadData();
+        const parsed = data.builds || [];
         return parsed.length ? parsed : DEFAULT_BUILDS;
     } catch (error) {
         console.log("Using default builds feed:", error);
@@ -300,8 +472,8 @@ async function loadBuilds() {
 
 async function loadContests() {
     try {
-        const csv = await fetchCsv("assets/contests.csv");
-        const parsed = parseContestCsv(csv);
+        const data = await loadData();
+        const parsed = data.contests || [];
         return parsed.length ? parsed : DEFAULT_CONTESTS;
     } catch (error) {
         console.log("Using default contests:", error);
@@ -311,8 +483,8 @@ async function loadContests() {
 
 async function loadWips() {
     try {
-        const csv = await fetchCsv("assets/wips.csv");
-        const parsed = parseWipCsv(csv);
+        const data = await loadData();
+        const parsed = data.wips || [];
         return parsed.length ? parsed : DEFAULT_WIPS;
     } catch (error) {
         console.log("Using default WIPs:", error);
@@ -322,21 +494,13 @@ async function loadWips() {
 
 async function loadPollResults() {
     try {
-        const csv = await fetchCsv("assets/poll-results.csv");
-        const parsed = parsePollResultsCsv(csv);
+        const data = await loadData();
+        const parsed = data.poll || [];
         return parsed.length ? parsed : DEFAULT_POLL_RESULTS;
     } catch (error) {
         console.log("Using default poll results:", error);
         return DEFAULT_POLL_RESULTS;
     }
-}
-
-async function fetchCsv(path) {
-    const response = await fetch(path, { cache: "no-store" });
-    if (!response.ok) {
-        throw new Error(`Failed to fetch ${path}: ${response.status}`);
-    }
-    return response.text();
 }
 
 async function loadPostsManifest() {
@@ -363,174 +527,6 @@ async function loadPostsManifest() {
         console.log("Using default editorial article:", error);
         return [];
     }
-}
-
-function parseTipsCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            title: getField(row, ["title"]).trim(),
-            source: getField(row, ["source"]).trim(),
-            content: getField(row, ["content", "tip"]).trim()
-        }))
-        .filter((row) => row.title && row.content);
-}
-
-function parseToolsCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            name: getField(row, ["name", "tool", "title"]).trim(),
-            description: getField(row, ["description", "summary", "notes"]).trim(),
-            url: getField(row, ["url", "link"]).trim()
-        }))
-        .filter((row) => row.name && row.description);
-}
-
-function parseGamesCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            name: getField(row, ["name", "game", "title"]).trim(),
-            designer: getField(row, ["designer", "author"]).trim(),
-            source: getField(row, ["source", "community", "subreddit"]).trim(),
-            description: getField(row, ["description", "notes", "summary"]).trim(),
-            url: getField(row, ["url", "link"]).trim()
-        }))
-        .filter((row) => row.name);
-}
-
-function parseSitesCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            name: getField(row, ["name", "title", "site"]).trim(),
-            description: getField(row, ["description", "summary", "notes"]).trim(),
-            url: getField(row, ["url", "link"]).trim()
-        }))
-        .filter((row) => row.name);
-}
-
-function parseBuildsCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            source: normalizeBuildSource(getField(row, ["source", "community", "1"]).trim()),
-            name: getField(row, ["name", "username", "user"]).trim(),
-            title: getField(row, ["title", "game", "name"]).trim(),
-            url: getField(row, ["url", "link"]).trim(),
-            blurb: getField(row, ["blurb", "quote", "description", "notes"]).trim()
-        }))
-        .filter((row) => row.source && row.name && row.title);
-}
-
-function parseCrowdfundingCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            title: getField(row, ["title", "name", "project", "campaign"]).trim(),
-            description: getField(row, ["description", "summary", "notes"]).trim(),
-            url: getField(row, ["url", "link"]).trim()
-        }))
-        .filter((row) => row.title);
-}
-
-function parseContestCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            title: getField(row, ["title", "name", "contest"]).trim(),
-            ends: getField(row, ["ends", "end", "deadline"]).trim(),
-            description: getField(row, ["description", "summary", "notes"]).trim(),
-            url: getField(row, ["url", "link"]).trim()
-        }))
-        .filter((row) => row.title)
-        .filter((row) => isContestActive(row.ends));
-}
-
-function parseWipCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            title: getField(row, ["title", "name", "wip", "thread"]).trim(),
-            designer: getField(row, ["designer", "author"]).trim(),
-            description: getField(row, ["description", "summary", "notes"]).trim(),
-            url: getField(row, ["url", "link"]).trim()
-        }))
-        .filter((row) => row.title);
-}
-
-function parsePollResultsCsv(csvText) {
-    return parseCsvRows(csvText)
-        .map((row) => ({
-            option: getField(row, ["option", "choice", "answer"]).trim(),
-            votes: Number(getField(row, ["votes", "count", "total"]).trim() || 0)
-        }))
-        .filter((row) => row.option);
-}
-
-function parseCsvRows(csvText) {
-    const lines = csvText
-        .replace(/\r\n/g, "\n")
-        .replace(/\r/g, "\n")
-        .split("\n")
-        .filter((line) => line.trim().length);
-
-    if (lines.length < 2) {
-        return [];
-    }
-
-    const headers = splitCsvLine(lines[0]).map((header) => normalizeHeader(header));
-
-    return lines.slice(1).map((line) => {
-        const values = splitCsvLine(line);
-        const row = {};
-        headers.forEach((header, index) => {
-            row[header] = (values[index] || "").trim();
-        });
-        return row;
-    });
-}
-
-function splitCsvLine(line) {
-    const values = [];
-    let current = "";
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i += 1) {
-        const char = line[i];
-        const next = line[i + 1];
-
-        if (char === "\"" && next === "\"" && inQuotes) {
-            current += "\"";
-            i += 1;
-            continue;
-        }
-
-        if (char === "\"") {
-            inQuotes = !inQuotes;
-            continue;
-        }
-
-        if (char === "," && !inQuotes) {
-            values.push(current);
-            current = "";
-            continue;
-        }
-
-        current += char;
-    }
-
-    values.push(current);
-    return values;
-}
-
-function normalizeHeader(header) {
-    return String(header || "")
-        .replace(/^\uFEFF/, "")
-        .trim()
-        .toLowerCase();
-}
-
-function getField(row, keys) {
-    for (const key of keys) {
-        if (typeof row[key] === "string") {
-            return row[key];
-        }
-    }
-    return "";
 }
 
 function renderTip(tip) {
@@ -711,21 +707,6 @@ function renderWips(wip) {
     wipsElement.innerHTML = `
         <p>${titleMarkup}, designed by <strong>${safeDesigner}</strong>.</p>
         <p>${safeDescription}</p>
-    `;
-}
-
-function renderFeedCardMarkup(sectionLabel, item, linkLabel) {
-    const safeTitle = escapeHtml(item.title);
-    const safeDescription = item.description
-        ? escapeHtml(item.description)
-        : "Current community thread worth checking out.";
-    const safeUrl = item.url ? escapeHtml(item.url) : "";
-
-    return `
-        <p class="feed-label">${escapeHtml(sectionLabel)}</p>
-        <p><strong>${safeTitle}</strong></p>
-        <p>${safeDescription}</p>
-        ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${linkLabel}</a>` : ""}
     `;
 }
 
