@@ -2,7 +2,6 @@ name: Deploy to GitHub Pages
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  GOOGLE_POLL_RESULTS_CSV_URL: ${{ vars.GOOGLE_POLL_RESULTS_CSV_URL }}
 
 on:
   push:
@@ -15,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,13 +26,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Update poll results from Google Sheets
-        run: |
-          if [ -n "$GOOGLE_POLL_RESULTS_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_POLL_RESULTS_CSV_URL" -o assets/poll-results.csv
-            test -s assets/poll-results.csv
-          fi
 
       - name: Build editorial pages from Markdown
         run: node scripts/build-posts.mjs
