@@ -104,24 +104,24 @@ const DEFAULT_SITES = [
 const DEFAULT_BUILDS = [
     {
         source: "hideaway",
+        name: "Shamus Smith",
+        title: "Sole Survivor",
+        url: "https://www.kickstarter.com/projects/papertigers/sole-survivor-0",
+        blurb: "New PnP finished today. This is a preview of "Sole Survivor". Very excited to see how this plays as I was part of the play testing back in December. All components laminated. Lego pieces for xenomorphs, player and transporter modules. Two d6 for health and action points. For the play testing version, I mounted the boards on cardboard. Now the boards are laminated, they may too slippery. Hopefully the weight of the Lego will help as I used plastic cubes previously."
+    },
+    {
+        source: "hideaway",
         name: "Chris Hepburn",
-        title: "Maquis",
-        url: "https://pnpfinder.com/game.html?id=59",
-        blurb: "I've changed my cards for my maquis retheme to a matte as the darker colours look much better in matte."
+        title: "Regicide - Slay the Spire theme",
+        url: "",
+        blurb: "Noticed this on BGG and had to take a look. Lovely game with a lovely retheme that someone has done. Lost on the last boss"
     },
     {
         source: "hideaway",
-        name: "Sultan Syahrul FJ",
-        title: "Palm Island",
-        url: "https://pnpfinder.com/game.html?id=255",
-        blurb: "Napalm Island (which is a retheme of Palm Island ) is a terrific little game that is very easy to craft and carry, a solid timewaster, and one that occupies zero table space"
-    },
-    {
-        source: "hideaway",
-        name: "Arnold Hau",
-        title: "Cursed?!",
-        url: "https://boardgamegeek.com/filepage/316266/cursed-masters-of-the-universe-retheme-by-sakier",
-        blurb: "Masters of the Universe - Cursed Fields of Eternia a retheme of Cursed!?"
+        name: "Angela Neff",
+        title: "A Wayfarer's Tale",
+        url: "",
+        blurb: "Attempting A Wayfarer's Tale this afternoon."
     },
     {
         source: "reddit",
