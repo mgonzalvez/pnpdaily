@@ -24,9 +24,9 @@ const CARD_SIZES = {
         inches: "2.25 x 3.5",
         mm: "57.2 x 88.9"
     },
-    business: {
-        inches: "2 x 3.5",
-        mm: "50.8 x 88.9"
+    euro: {
+        inches: "2.32 x 3.62",
+        mm: "58.9 x 91.9"
     },
     domino: {
         inches: "1.75 x 3.5",
