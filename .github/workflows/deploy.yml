@@ -2,14 +2,6 @@ name: Deploy to GitHub Pages
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  GOOGLE_TIPS_CSV_URL: ${{ vars.GOOGLE_TIPS_CSV_URL }}
-  GOOGLE_TOOLS_CSV_URL: ${{ vars.GOOGLE_TOOLS_CSV_URL }}
-  GOOGLE_CROWDFUNDING_CSV_URL: ${{ vars.GOOGLE_CROWDFUNDING_CSV_URL }}
-  GOOGLE_SITES_CSV_URL: ${{ vars.GOOGLE_SITES_CSV_URL }}
-  GOOGLE_BUILDS_CSV_URL: ${{ vars.GOOGLE_BUILDS_CSV_URL }}
-  GOOGLE_GAMES_CSV_URL: ${{ vars.GOOGLE_GAMES_CSV_URL }}
-  GOOGLE_CONTESTS_CSV_URL: ${{ vars.GOOGLE_CONTESTS_CSV_URL }}
-  GOOGLE_WIPS_CSV_URL: ${{ vars.GOOGLE_WIPS_CSV_URL }}
   GOOGLE_POLL_RESULTS_CSV_URL: ${{ vars.GOOGLE_POLL_RESULTS_CSV_URL }}
 
 on:
@@ -36,48 +28,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Update data from Google Sheets
+      - name: Update poll results from Google Sheets
         run: |
-          if [ -n "$GOOGLE_TIPS_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_TIPS_CSV_URL" -o assets/tips.csv
-            test -s assets/tips.csv
-          fi
-          
-          if [ -n "$GOOGLE_TOOLS_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_TOOLS_CSV_URL" -o assets/tools.csv
-            test -s assets/tools.csv
-          fi
-
-          if [ -n "$GOOGLE_CROWDFUNDING_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_CROWDFUNDING_CSV_URL" -o assets/crowdfunding.csv
-            test -s assets/crowdfunding.csv
-          fi
-
-          if [ -n "$GOOGLE_SITES_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_SITES_CSV_URL" -o assets/sites.csv
-            test -s assets/sites.csv
-          fi
-
-          if [ -n "$GOOGLE_BUILDS_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_BUILDS_CSV_URL" -o assets/builds.csv
-            test -s assets/builds.csv
-          fi
-
-          if [ -n "$GOOGLE_GAMES_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_GAMES_CSV_URL" -o assets/games.csv
-            test -s assets/games.csv
-          fi
-
-          if [ -n "$GOOGLE_CONTESTS_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_CONTESTS_CSV_URL" -o assets/contests.csv
-            test -s assets/contests.csv
-          fi
-
-          if [ -n "$GOOGLE_WIPS_CSV_URL" ]; then
-            curl -fsSL "$GOOGLE_WIPS_CSV_URL" -o assets/wips.csv
-            test -s assets/wips.csv
-          fi
-
           if [ -n "$GOOGLE_POLL_RESULTS_CSV_URL" ]; then
             curl -fsSL "$GOOGLE_POLL_RESULTS_CSV_URL" -o assets/poll-results.csv
             test -s assets/poll-results.csv
