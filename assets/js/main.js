@@ -107,7 +107,7 @@ const DEFAULT_BUILDS = [
         name: "Shamus Smith",
         title: "Sole Survivor",
         url: "https://www.kickstarter.com/projects/papertigers/sole-survivor-0",
-        blurb: "New PnP finished today. This is a preview of "Sole Survivor". Very excited to see how this plays as I was part of the play testing back in December. All components laminated. Lego pieces for xenomorphs, player and transporter modules. Two d6 for health and action points. For the play testing version, I mounted the boards on cardboard. Now the boards are laminated, they may too slippery. Hopefully the weight of the Lego will help as I used plastic cubes previously."
+        blurb: "New PnP finished today. This is a preview of \"Sole Survivor\". Very excited to see how this plays as I was part of the play testing back in December. All components laminated. Lego pieces for xenomorphs, player and transporter modules. Two d6 for health and action points. For the play testing version, I mounted the boards on cardboard. Now the boards are laminated, they may too slippery. Hopefully the weight of the Lego will help as I used plastic cubes previously."
     },
     {
         source: "hideaway",
