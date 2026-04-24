@@ -197,13 +197,20 @@ const DEFAULT_ARTICLES = [
 ];
 
 window.addEventListener("DOMContentLoaded", async () => {
+    const isSitesPage = document.getElementById("sites-content") !== null;
+
+    if (isSitesPage) {
+        const sites = await loadSites();
+        renderSites(sites);
+        return;
+    }
+
     renderEditorial(getRandomItem(DEFAULT_ARTICLES));
 
-    const [tips, tools, crowdfunding, sites, builds, games, contests, wips, pollResults, posts] = await Promise.all([
+    const [tips, tools, crowdfunding, builds, games, contests, wips, pollResults, posts] = await Promise.all([
         loadTips(),
         loadTools(),
         loadCrowdfunding(),
-        loadSites(),
         loadBuilds(),
         loadGames(),
         loadContests(),
@@ -215,7 +222,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     renderTip(getRandomItem(tips));
     renderTool(getRandomItem(tools));
     renderCrowdfunding(getRandomItem(crowdfunding));
-    renderSites(sites);
     renderBuilds(builds);
     renderGame(getRandomItem(games));
     renderContests(contests);
