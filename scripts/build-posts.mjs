@@ -116,12 +116,20 @@ function markdownToHtml(markdown) {
     listMode = null;
   };
 
+  let blankCount = 0;
+
   for (const rawLine of lines) {
     const line = rawLine.trim();
 
     if (!line) {
+      blankCount++;
       flushParagraph();
       closeList();
+      if (blankCount > 1) {
+        for (let i = 0; i < blankCount - 1; i++) {
+          out.push("<br>");
+        }
+      }
       continue;
     }
 
