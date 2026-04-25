@@ -1,6 +1,6 @@
 # PnPDaily - Print & Play Daily Roundup
 
-Fast static site for print-and-play highlights: rotating homepage widgets, featured editorial, print utilities, community poll, live crafting roundup, and a directory of Martin's PnP sites.
+Static GitHub Pages site for print-and-play board game highlights.
 
 ## Project Structure
 
