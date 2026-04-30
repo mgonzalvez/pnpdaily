@@ -311,7 +311,15 @@ function renderContests(contests) {
         return;
     }
 
-    contestsElement.innerHTML = contests.map((contest) => {
+    const sorted = [...contests].sort((a, b) => {
+        const da = Date.parse(a.ends);
+        const db = Date.parse(b.ends);
+        if (Number.isNaN(da)) return 1;
+        if (Number.isNaN(db)) return -1;
+        return da - db;
+    });
+
+    contestsElement.innerHTML = sorted.map((contest) => {
         const safeTitle = escapeHtml(contest.title);
         const safeUrl = contest.url ? escapeHtml(contest.url) : "";
         const formattedEnds = formatContestEndDate(contest.ends);
