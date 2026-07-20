@@ -440,6 +440,11 @@
       "name": "Card Formatter",
       "description": "Upload your card images, pick a layout, and export a duplex-ready PDF with corner crosshair guides, with flexible spacing and page sizes.",
       "url": "https://formatter.gonzhome.us"
+    },
+    {
+      "name": "Geeklist",
+      "description": "Host and manage geeklists with this free, self-hosted geeklist platform.",
+      "url": "https://geeklist.gonzhome.us"
     }
   ],
   "builds": [
