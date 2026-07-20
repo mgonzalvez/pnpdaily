@@ -443,7 +443,7 @@
     },
     {
       "name": "Geeklist",
-      "description": "Host and manage geeklists with this free, self-hosted geeklist platform.",
+      "description": "A custom tool to help guest hosts of the monthly crafting geeklist on BGG to easily generate the header text for the next month's geeklist.",
       "url": "https://geeklist.gonzhome.us"
     }
   ],
