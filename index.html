@@ -31,11 +31,6 @@
 
         <section id="top-widgets">
             <div class="widgets-grid">
-                <div class="card game-card">
-                    <h2>PnP Game Spotlight</h2>
-                    <div id="game-content"></div>
-                </div>
-
                 <div class="card converter-card">
                     <h2>Paper Weight Converter</h2>
                     <div class="converter-grid">
@@ -64,11 +59,6 @@
                             <span class="label" id="converted-label"></span>
                         </div>
                     </div>
-                </div>
-
-                <div class="card tip-card">
-                    <h2>Tip of the Day</h2>
-                    <div id="tip-content"></div>
                 </div>
 
                 <div class="card dimensions-card">
@@ -100,6 +90,60 @@
                             <span class="label">millimeters (W x H)</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="card bgg-generator-card">
+                    <h2>BGG Image Code Generator</h2>
+                    <div class="bgg-generator-grid">
+                        <div class="input-group">
+                            <label for="bgg-start-id">Starting Image ID</label>
+                            <input type="number" id="bgg-start-id" value="9700473" min="1">
+                        </div>
+                        <div class="input-group">
+                            <label for="bgg-count">Number of Images</label>
+                            <input type="number" id="bgg-count" value="45" min="1" max="1000">
+                        </div>
+                        <div class="input-group">
+                            <label for="bgg-direction">Direction</label>
+                            <select id="bgg-direction">
+                                <option value="up">Increment (+1)</option>
+                                <option value="down" selected>Decrement (-1)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="bgg-size">Image Size</label>
+                            <select id="bgg-size">
+                                <option value="thumb">thumb</option>
+                                <option value="small">small</option>
+                                <option value="medium" selected>medium</option>
+                                <option value="large">large</option>
+                                <option value="original">original</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label class="check-label">
+                                <input type="checkbox" id="bgg-inline" checked>
+                                Put all tags on one line
+                            </label>
+                        </div>
+                    </div>
+                    <div class="bgg-generator-actions">
+                        <button id="bgg-generate" class="bgg-action-btn">Generate</button>
+                        <button id="bgg-copy" class="bgg-action-btn">Copy</button>
+                        <button id="bgg-clear" class="bgg-action-btn">Clear</button>
+                    </div>
+                    <div id="bgg-status"></div>
+                    <textarea id="bgg-output" spellcheck="false" placeholder="Generated BGG image code will appear here."></textarea>
+                </div>
+
+                <div class="card game-card">
+                    <h2>PnP Game Spotlight</h2>
+                    <div id="game-content"></div>
+                </div>
+
+                <div class="card tip-card">
+                    <h2>Tip of the Day</h2>
+                    <div id="tip-content"></div>
                 </div>
 
                 <div class="card tools-card">

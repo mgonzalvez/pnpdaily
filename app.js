@@ -141,7 +141,115 @@ function formatValue(num) {
     return num.toFixed(2).replace(/\.?0+$/, "");
 }
 
+function initBGGGenerator() {
+    const startId = document.getElementById("bgg-start-id");
+    const count = document.getElementById("bgg-count");
+    const direction = document.getElementById("bgg-direction");
+    const size = document.getElementById("bgg-size");
+    const inline = document.getElementById("bgg-inline");
+    const output = document.getElementById("bgg-output");
+    const status = document.getElementById("bgg-status");
+
+    if (!startId || !count || !direction || !size || !inline || !output || !status) {
+        return;
+    }
+
+    const savedStartId = localStorage.getItem("pnp_bgg_start_id");
+    const savedCount = localStorage.getItem("pnp_bgg_count");
+    const savedDirection = localStorage.getItem("pnp_bgg_direction");
+    const savedSize = localStorage.getItem("pnp_bgg_size");
+    const savedInline = localStorage.getItem("pnp_bgg_inline");
+
+    if (savedStartId && Number(savedStartId) >= 1) {
+        startId.value = savedStartId;
+    }
+    if (savedCount && Number(savedCount) >= 1) {
+        count.value = savedCount;
+    }
+    if (savedDirection && (savedDirection === "up" || savedDirection === "down")) {
+        direction.value = savedDirection;
+    }
+    if (savedSize && ["thumb", "small", "medium", "large", "original"].includes(savedSize)) {
+        size.value = savedSize;
+    }
+    if (savedInline !== null) {
+        inline.checked = savedInline === "true";
+    }
+
+    function generate() {
+        const start = Number(startId.value);
+        const qty = Number(count.value);
+        const dir = direction.value;
+        const sz = size.value;
+        const isInline = inline.checked;
+
+        if (!Number.isInteger(start) || start < 1) {
+            status.textContent = "Enter a valid starting image ID.";
+            status.style.color = "var(--accent)";
+            return;
+        }
+        if (!Number.isInteger(qty) || qty < 1 || qty > 1000) {
+            status.textContent = "Enter a count between 1 and 1000.";
+            status.style.color = "var(--accent)";
+            return;
+        }
+
+        const step = dir === "up" ? 1 : -1;
+        const separator = isInline ? " " : "\n";
+        const tags = [];
+
+        for (let i = 0; i < qty; i++) {
+            const id = start + (i * step);
+            if (id < 1) break;
+            tags.push(`[imageid=${id} ${sz} inline]`);
+        }
+
+        output.value = tags.join(separator);
+        status.textContent = `Generated ${tags.length} image tags.`;
+        status.style.color = "";
+    }
+
+    async function copyOutput() {
+        if (!output.value) generate();
+
+        try {
+            await navigator.clipboard.writeText(output.value);
+            status.textContent = "Copied to clipboard.";
+        } catch {
+            output.select();
+            document.execCommand("copy");
+            status.textContent = "Copied to clipboard.";
+        }
+    }
+
+    startId.addEventListener("input", () => {
+        localStorage.setItem("pnp_bgg_start_id", startId.value);
+    });
+    count.addEventListener("input", () => {
+        localStorage.setItem("pnp_bgg_count", count.value);
+    });
+    direction.addEventListener("change", () => {
+        localStorage.setItem("pnp_bgg_direction", direction.value);
+    });
+    size.addEventListener("change", () => {
+        localStorage.setItem("pnp_bgg_size", size.value);
+    });
+    inline.addEventListener("change", () => {
+        localStorage.setItem("pnp_bgg_inline", inline.checked);
+    });
+
+    document.getElementById("bgg-generate").addEventListener("click", generate);
+    document.getElementById("bgg-copy").addEventListener("click", copyOutput);
+    document.getElementById("bgg-clear").addEventListener("click", () => {
+        output.value = "";
+        status.textContent = "";
+    });
+
+    generate();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initConverter();
     initCardDimensions();
+    initBGGGenerator();
 });

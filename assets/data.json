@@ -1,123 +1,579 @@
 {
   "tips": [
-    { "title": "Cut cards from the back", "source": "Martin Gonzalvez", "content": "Cut duplex card sheets from the back, if fronts and backs are misaligned it won't be obvious from the card backs and the cards will still be playable." },
-    { "title": "Laminate twice", "source": "Martin Gonzalvez", "content": "If your laminated PnP cards are splitting open at the edges, consider passing them through the laminator a second time." },
-    { "title": "Use a higher heat setting", "source": "Martin Gonzalvez", "content": "If your cards are delaminating at the 3mil heat setting, try passing them through at the 5mil heat setting on your laminator." },
-    { "title": "Rotary cutter + metal blade", "source": "Manu Villarroya", "content": "Rotary cutter + metal blade. Highly precise cuts once you get it. A bit muscle-taxing, however, if you use thick laminated paper!" },
-    { "title": "Ink tank printers", "source": "Manu Villarroya", "content": "Ink tank printers can work wonders: my Canon Pixma has printed A LOT, with high quality, and still has half ink left over!" },
-    { "title": "Learn a design tool", "source": "Manu Villarroya", "content": "Inkscape (and other free design tools) is your friend. Learn a program, and the quality of your designs will increase substantially." },
-    { "title": "Sleeve laminated cards", "source": "Manu Villarroya", "content": "Laminating and corner-rounding a card, and then sleeving it, will get you a premium feeling. The thickness of a pnp'd laminated card in ~140 mg paper is just right." },
-    { "title": "Get an ink tank printer", "source": "Daniel Männikkö", "content": "Get an ink tank printer. It's more expensive up front but cheaper in the long run." },
-    { "title": "Use coin capsules for circle tokens", "source": "Martin Gonzalvez", "content": "Punch out 1-inch circle tokens and place them inside 25mm plastic coin capsules for easy yet deluxe circle tokens." },
-    { "title": "Peeling off sticker backs", "source": "Sarah Haag", "content": "Sometimes using another scrap piece of sticker on the back of the first will peel the backing off." },
-    { "title": "Just do it", "source": "Lara Matiisen", "content": "Don't overthink. I spent so long early on wanting to have the smoothest process, finding the \"perfect\" way to craft, that I often just never started." },
-    { "title": "Experiment", "source": "Lara Matiisen", "content": "Don't be afraid to try different techniques and experiment to find what works for you." },
-    { "title": "Play test first", "source": "Colette Haley", "content": "Play test a game first to see if you like it before fully investing time and money into crafting a \"forever copy\"." },
-    { "title": "Start small", "source": "Rob Beachler", "content": "Start small with your first project so you can get a handle on how to do things. Work up to larger projects if you have any in mind." },
-    { "title": "Choose your cutter", "source": "Edward Bell", "content": "Find what cutting method works for you (mine is a guillotine cutter) and use it." },
-    { "title": "Paper and card sleeves", "source": "Edward Bell", "content": "200+gsm paper and card sleeves are a great way to start." },
-    { "title": "Eco-tank printer", "source": "Darin Herrick", "content": "Buy an eco-tank inkjet printer, and print frequently so the nozzles don't clog." },
-    { "title": "Test print", "source": "Darin Herrick", "content": "Test Print One Page before printing out 300." },
-    { "title": "Don't rush", "source": "Darin Herrick", "content": "TAKE YOUR TIME, don't rush." },
-    { "title": "Digital rules", "source": "Darin Herrick", "content": "If you like digital copies of rules, get a comics app for your tablet and copy the rules PDF to the tablet instead of printing it out." },
-    { "title": "Card backing", "source": "Darin Herrick", "content": "Use construction paper or print card backs to make cards less flimsy." },
-    { "title": "Thicker tokens", "source": "Darin Herrick", "content": "Use coin protectors or glue onto pennies to make circular tokens." },
-    { "title": "Explore your creativity", "source": "Darin Herrick", "content": "You can create whatever you want. Create your own game, modify a game you already own, create something like a game that already exists from scratch. The only limit is your imagination." },
-    { "title": "Practice first", "source": "Darin Herrick", "content": "You don't have to do a full board game on your first try. Create some extra pieces or cards for a game you already know with some fan expansions or official PNP extra components so you can practice." },
-    { "title": "Half full printer tray", "source": "Yuri Verweij", "content": "Make sure your paper drawer is at least half full, this really makes a difference when printing (manual) duplex" },
-    { "title": "Edit PDFs", "source": "Yuri Verweij", "content": "Affinity (software, free version) is capable of editing PDF files. For example, to remove cut lines or extract images." },
-    { "title": "Dry erase pocket sleeves", "source": "Yuri Verweij", "content": "You don't need to laminate all your Roll and Writes. There exist Dry Erase Pocket Sleeves that can hold your paper and make it reusable." },
-    { "title": "Reuse old boxes", "source": "Yuri Verweij", "content": "reuse old boxes for storing pnp games. You can print on full page label paper to cover the full box and make it look amazing. Add a layer of cold laminate over it to make it even better." },
-    { "title": "Don't cut to the edge", "source": "Barny Skinner", "content": "Don't cut to the edge of the sheet, to keep the crop marks in place." },
-    { "title": "Use permanent markers", "source": "Doc Viglietti", "content": "Using permanent markers on matte laminated roll and write sheets requires tedious alcohol wiping to clean between games. Try wet-erase markers on matte laminate and rinse the sheets easily under running water!" },
-    { "title": "Start small and simple", "source": "Katie Duggan", "content": "Start with a small game. It can be an 18 card game like Rove, Mini Rogue, or Galdor's Grip. Just use printer paper and a deck of playing cards. Packing tape the front and backs. That way you don't have to fuss about the fronts and backs aligning properly." }
+    {
+      "title": "Cut cards from the back",
+      "source": "Martin Gonzalvez",
+      "content": "Cut duplex card sheets from the back, if fronts and backs are misaligned it won't be obvious from the card backs and the cards will still be playable."
+    },
+    {
+      "title": "Laminate twice",
+      "source": "Martin Gonzalvez",
+      "content": "If your laminated PnP cards are splitting open at the edges, consider passing them through the laminator a second time."
+    },
+    {
+      "title": "Use a higher heat setting",
+      "source": "Martin Gonzalvez",
+      "content": "If your cards are delaminating at the 3mil heat setting, try passing them through at the 5mil heat setting on your laminator."
+    },
+    {
+      "title": "Rotary cutter + metal blade",
+      "source": "Manu Villarroya",
+      "content": "Rotary cutter + metal blade. Highly precise cuts once you get it. A bit muscle-taxing, however, if you use thick laminated paper!"
+    },
+    {
+      "title": "Ink tank printers",
+      "source": "Manu Villarroya",
+      "content": "Ink tank printers can work wonders: my Canon Pixma has printed A LOT, with high quality, and still has half ink left over!"
+    },
+    {
+      "title": "Learn a design tool",
+      "source": "Manu Villarroya",
+      "content": "Inkscape (and other free design tools) is your friend. Learn a program, and the quality of your designs will increase substantially."
+    },
+    {
+      "title": "Sleeve laminated cards",
+      "source": "Manu Villarroya",
+      "content": "Laminating and corner-rounding a card, and then sleeving it, will get you a premium feeling. The thickness of a pnp'd laminated card in ~140 mg paper is just right."
+    },
+    {
+      "title": "Get an ink tank printer",
+      "source": "Daniel Männikkö",
+      "content": "Get an ink tank printer. It's more expensive up front but cheaper in the long run."
+    },
+    {
+      "title": "Use coin capsules for circle tokens",
+      "source": "Martin Gonzalvez",
+      "content": "Punch out 1-inch circle tokens and place them inside 25mm plastic coin capsules for easy yet deluxe circle tokens."
+    },
+    {
+      "title": "Peeling off sticker backs",
+      "source": "Sarah Haag",
+      "content": "Sometimes using another scrap piece of sticker on the back of the first will peel the backing off."
+    },
+    {
+      "title": "Just do it",
+      "source": "Lara Matiisen",
+      "content": "Don't overthink. I spent so long early on wanting to have the smoothest process, finding the \"perfect\" way to craft, that I often just never started."
+    },
+    {
+      "title": "Experiment",
+      "source": "Lara Matiisen",
+      "content": "Don't be afraid to try different techniques and experiment to find what works for you."
+    },
+    {
+      "title": "Play test first",
+      "source": "Colette Haley",
+      "content": "Play test a game first to see if you like it before fully investing time and money into crafting a \"forever copy\"."
+    },
+    {
+      "title": "Start small",
+      "source": "Rob Beachler",
+      "content": "Start small with your first project so you can get a handle on how to do things. Work up to larger projects if you have any in mind."
+    },
+    {
+      "title": "Choose your cutter",
+      "source": "Edward Bell",
+      "content": "Find what cutting method works for you (mine is a guillotine cutter) and use it."
+    },
+    {
+      "title": "Paper and card sleeves",
+      "source": "Edward Bell",
+      "content": "200+gsm paper and card sleeves are a great way to start."
+    },
+    {
+      "title": "Eco-tank printer",
+      "source": "Darin Herrick",
+      "content": "Buy an eco-tank inkjet printer, and print frequently so the nozzles don't clog."
+    },
+    {
+      "title": "Test print",
+      "source": "Darin Herrick",
+      "content": "Test Print One Page before printing out 300."
+    },
+    {
+      "title": "Don't rush",
+      "source": "Darin Herrick",
+      "content": "TAKE YOUR TIME, don't rush."
+    },
+    {
+      "title": "Digital rules",
+      "source": "Darin Herrick",
+      "content": "If you like digital copies of rules, get a comics app for your tablet and copy the rules PDF to the tablet instead of printing it out."
+    },
+    {
+      "title": "Card backing",
+      "source": "Darin Herrick",
+      "content": "Use construction paper or print card backs to make cards less flimsy."
+    },
+    {
+      "title": "Thicker tokens",
+      "source": "Darin Herrick",
+      "content": "Use coin protectors or glue onto pennies to make circular tokens."
+    },
+    {
+      "title": "Explore your creativity",
+      "source": "Darin Herrick",
+      "content": "You can create whatever you want. Create your own game, modify a game you already own, create something like a game that already exists from scratch. The only limit is your imagination."
+    },
+    {
+      "title": "Practice first",
+      "source": "Darin Herrick",
+      "content": "You don't have to do a full board game on your first try. Create some extra pieces or cards for a game you already know with some fan expansions or official PNP extra components so you can practice."
+    },
+    {
+      "title": "Half full printer tray",
+      "source": "Yuri Verweij",
+      "content": "Make sure your paper drawer is at least half full, this really makes a difference when printing (manual) duplex"
+    },
+    {
+      "title": "Edit PDFs",
+      "source": "Yuri Verweij",
+      "content": "Affinity (software, free version) is capable of editing PDF files. For example, to remove cut lines or extract images."
+    },
+    {
+      "title": "Dry erase pocket sleeves",
+      "source": "Yuri Verweij",
+      "content": "You don't need to laminate all your Roll and Writes. There exist Dry Erase Pocket Sleeves that can hold your paper and make it reusable."
+    },
+    {
+      "title": "Reuse old boxes",
+      "source": "Yuri Verweij",
+      "content": "reuse old boxes for storing pnp games. You can print on full page label paper to cover the full box and make it look amazing. Add a layer of cold laminate over it to make it even better."
+    },
+    {
+      "title": "Don't cut to the edge",
+      "source": "Barny Skinner",
+      "content": "Don't cut to the edge of the sheet, to keep the crop marks in place."
+    },
+    {
+      "title": "Use permanent markers",
+      "source": "Doc Viglietti",
+      "content": "Using permanent markers on matte laminated roll and write sheets requires tedious alcohol wiping to clean between games. Try wet-erase markers on matte laminate and rinse the sheets easily under running water!"
+    },
+    {
+      "title": "Start small and simple",
+      "source": "Katie Duggan",
+      "content": "Start with a small game. It can be an 18 card game like Rove, Mini Rogue, or Galdor's Grip. Just use printer paper and a deck of playing cards. Packing tape the front and backs. That way you don't have to fuss about the fronts and backs aligning properly."
+    }
   ],
   "tools": [
-    { "name": "PnP Launchpad", "description": "A website to keep track of current and upcoming PnP crowdfunding projects and promotions.", "url": "https://launchpad.gonzhome.us" },
-    { "name": "PnPFinder", "description": "A community-curated website to search for and discover worthwhile PnP games.", "url": "http://pnpfinder.com" },
-    { "name": "Martin's Card Prototyper", "description": "Design quick card prototypes and export individual card images or print-ready sheets in this intuitive, easy-to-use web app.", "url": "https://prototyper.gonzhome.us" },
-    { "name": "Component Studio", "description": "An online, subscription-based formatting tool to easily format 100's of cards and output PnP PDF files, or upload to The Gamecrafter.", "url": "https://component.studio/" },
-    { "name": "PnP Buddy", "description": "A free online tool to format your print and play files and adjust front-back page alignment.", "url": "http://www.pnpbuddy.com/" },
-    { "name": "CardFoldr", "description": "A tool to help you convert a PDF of card grids into a gutterfold PDF.", "url": "https://foosel.github.io/cardfoldr/" },
-    { "name": "PnP Tool", "description": "A Windows-based tool to perform various formatting tasks for PnP files.", "url": "https://boardgamegeek.com/thread/2490834/tool-for-help-with-your-game-prototype-tabletop-pn" },
-    { "name": "nanDECK", "description": "A free tool for designing games, enabling users to create custom cards and components via scripting and spreadsheet integration.", "url": "https://www.nandeck.com" },
-    { "name": "Dextrous", "description": "Faster prototyping for tabletop game designers. Make cards, tiles, tokens, at speed with game design software for Chrome.", "url": "https://www.dextrous.com.au/" },
-    { "name": "PnP PDF Creator", "description": "PnP PDF Creator is a powerful and easy-to-use tool that converts card images into clean, print-ready Print & Play PDF sheets. It is designed for game designers, prototypers, and players who want fast and reliable PDF generation for home or professional printing.", "url": "https://raoulschaupp.itch.io/pnp-pdf-creator" }
+    {
+      "name": "PnP Launchpad",
+      "description": "A website to keep track of current and upcoming PnP crowdfunding projects and promotions.",
+      "url": "https://launchpad.gonzhome.us"
+    },
+    {
+      "name": "PnPFinder",
+      "description": "A community-curated website to search for and discover worthwhile PnP games.",
+      "url": "http://pnpfinder.com"
+    },
+    {
+      "name": "Martin's Card Prototyper",
+      "description": "Design quick card prototypes and export individual card images or print-ready sheets in this intuitive, easy-to-use web app.",
+      "url": "https://prototyper.gonzhome.us"
+    },
+    {
+      "name": "Component Studio",
+      "description": "An online, subscription-based formatting tool to easily format 100's of cards and output PnP PDF files, or upload to The Gamecrafter.",
+      "url": "https://component.studio/"
+    },
+    {
+      "name": "PnP Buddy",
+      "description": "A free online tool to format your print and play files and adjust front-back page alignment.",
+      "url": "http://www.pnpbuddy.com/"
+    },
+    {
+      "name": "CardFoldr",
+      "description": "A tool to help you convert a PDF of card grids into a gutterfold PDF.",
+      "url": "https://foosel.github.io/cardfoldr/"
+    },
+    {
+      "name": "PnP Tool",
+      "description": "A Windows-based tool to perform various formatting tasks for PnP files.",
+      "url": "https://boardgamegeek.com/thread/2490834/tool-for-help-with-your-game-prototype-tabletop-pn"
+    },
+    {
+      "name": "nanDECK",
+      "description": "A free tool for designing games, enabling users to create custom cards and components via scripting and spreadsheet integration.",
+      "url": "https://www.nandeck.com"
+    },
+    {
+      "name": "Dextrous",
+      "description": "Faster prototyping for tabletop game designers. Make cards, tiles, tokens, at speed with game design software for Chrome.",
+      "url": "https://www.dextrous.com.au/"
+    },
+    {
+      "name": "PnP PDF Creator",
+      "description": "PnP PDF Creator is a powerful and easy-to-use tool that converts card images into clean, print-ready Print & Play PDF sheets. It is designed for game designers, prototypers, and players who want fast and reliable PDF generation for home or professional printing.",
+      "url": "https://raoulschaupp.itch.io/pnp-pdf-creator"
+    }
   ],
   "games": [
-    { "name": "Village Builder", "designer": "Doc Viglietti", "source": "PnP Community Pick", "description": "A cozy solitaire village building game.", "url": "https://boardgamegeek.com/thread/2470162/wip-village-builder-2020-solitairegame-design-cont" },
-    { "name": "Gem Getter Pro", "designer": "Daniel W. Young", "source": "PnP Community Pick", "description": "Rival gem enthusiasts compete to unearth the most valuable collection of gems.", "url": "https://www.clearlysharp.com/games" },
-    { "name": "The Cubes of Europe", "designer": "Ben Huntley", "source": "PnP Community Pick", "description": "Use dice to acquire and place unique cubes, manipulate the game state, and score victory points.", "url": "https://boardgamegeek.com/filepage/278285/the-cubes-of-europe-game-files" },
-    { "name": "Royal Espionage", "designer": "Rachel Bruner", "source": "PnP Community Pick", "description": "A storytelling game of intrigue, intelligence, and imminent death.", "url": "https://boardgamegeek.com/boardgame/257681/royal-espionage/files" },
-    { "name": "Maquis", "designer": "Jake Staines", "source": "PnP Community Pick", "description": "Engage the Nazis of France in 'la petite guerre' and free your homeland!", "url": "https://boardgamegeek.com/filepage/179348/maquis-2019-pnp-files-v10" },
-    { "name": "A Simple Life", "designer": "Clint Goshn", "source": "PnP Community Pick", "description": "Roll & Write to upgrade your farm and complete randomized run objectives", "url": "https://boardgamegeek.com/filepage/251102/game-sheets-and-1-page-rule-a-simple-life-contest" },
-    { "name": "Galdor's Grip", "designer": "Gregg Jewell", "source": "PnP Community Pick", "description": "Stop an evil telepath with just your hands in this fantasy card game for one player.", "url": "https://greggjewell.itch.io/galdors-grip" },
-    { "name": "Orchard", "designer": "Mark Tuck", "source": "PnP Community Pick", "description": "Create the most fruitful micro orchard, but beware of rotten fruit!", "url": "https://boardgamegeek.com/filepage/159521/orchard-cards-v1" },
-    { "name": "Alea's Garden", "designer": "Brave James", "source": "PnP Community Pick", "description": "A cosy polyomino deckbuilding game, and winner of 2025 BoardGameGeek Solitaire competition!", "url": "https://linktr.ee/aleasgarden" },
-    { "name": "Deckula!", "designer": "Dr. Mindflip", "source": "PnP Community Pick", "description": "Decadent and dramatic vampires try to decorate their castles in peace.", "url": "https://drmindflip.itch.io/deckula" },
-    { "name": "Clouds of War", "designer": "Bojan Prakljacic", "source": "PnP Community Pick", "description": "A solo Great War aerial wargame in 54 cards. Pilot through missions over a French battlefield, survive dogfights, and build your pilot's career.", "url": "https://boardgamegeek.com/thread/3695663/wip-clouds-of-war-solo-wargame-of-54-cards-about-a" },
-    { "name": "Bargain Basement Bathysphere", "designer": "Scott Slomiany", "source": "PnP Community Pick", "description": "Explore the depths of Beachside Bay through multiple linked roll-and-write games.", "url": "https://boardgamegeek.com/filepage/181118/bargain-basement-bathysphere-chapters-1-3" },
-    { "name": "Tiny Eldritch Horror", "designer": "Bojan Prakljacic", "source": "BGG TOP RATED PNP GAMES", "description": "Eldritch Horror in 9 cards.", "url": "https://boardgamegeek.com/thread/1955117/wip-challenge-accepted-eldritch-horror-on-9-cards" },
-    { "name": "TINYforming Mars", "designer": "Michael Bevilacqua", "source": "BGG TOP RATED PNP GAMES", "description": "Two rival corps. One tiny planet. Plant trees, fill oceans, heat Mars.", "url": "https://boardgamegeek.com/filepage/182520/tinyforming-mars-base-game-v20-04-24" },
-    { "name": "Ark Minima: Ark Nova in 18 Cards", "designer": "Joe Klipfel", "source": "BGG TOP RATED PNP GAMES", "description": "Ark Minima is an 18-card version of Ark Nova.", "url": "https://boardgamegeek.com/filepage/259756/ark-minima-ark-nova-in-18-cards" },
-    { "name": "Pax Pamini", "designer": "Joe Klipfel", "source": "BGG TOP RATED PNP GAMES", "description": "Swing the tides of The Great Game using just 18 cards.", "url": "https://boardgamegeek.com/filepage/267554/pax-pamini-base-game" },
-    { "name": "Grove: A 9-card Solitaire Game", "designer": "Mark Tuck", "source": "BGG TOP RATED PNP GAMES", "description": "Grow your fruit grove with the help, or hindrance, of a cheeky squirrel.", "url": "https://boardgamegeek.com/filepage/215930/grove-pnp-edition" },
-    { "name": "Mage Lite", "designer": "Joe Klipfel", "source": "BGG TOP RATED PNP GAMES", "description": "Mage Knight in 18 cards (or so).", "url": "https://boardgamegeek.com/filepage/230216/mage-lite-base-game" },
-    { "name": "City of Fury", "designer": "Barny Skinner", "source": "BGG TOP RATED PNP GAMES", "description": "A 9 card homage to classic beat 'em ups like Streets of Rage and Double Dragon.", "url": "https://boardgamegeek.com/thread/2801371/wip-city-of-fury-2022-9-card-pnp-design-contest-co" }
+    {
+      "name": "Village Builder",
+      "designer": "Doc Viglietti",
+      "source": "PnP Community Pick",
+      "description": "A cozy solitaire village building game.",
+      "url": "https://boardgamegeek.com/thread/2470162/wip-village-builder-2020-solitairegame-design-cont"
+    },
+    {
+      "name": "Gem Getter Pro",
+      "designer": "Daniel W. Young",
+      "source": "PnP Community Pick",
+      "description": "Rival gem enthusiasts compete to unearth the most valuable collection of gems.",
+      "url": "https://www.clearlysharp.com/games"
+    },
+    {
+      "name": "The Cubes of Europe",
+      "designer": "Ben Huntley",
+      "source": "PnP Community Pick",
+      "description": "Use dice to acquire and place unique cubes, manipulate the game state, and score victory points.",
+      "url": "https://boardgamegeek.com/filepage/278285/the-cubes-of-europe-game-files"
+    },
+    {
+      "name": "Royal Espionage",
+      "designer": "Rachel Bruner",
+      "source": "PnP Community Pick",
+      "description": "A storytelling game of intrigue, intelligence, and imminent death.",
+      "url": "https://boardgamegeek.com/boardgame/257681/royal-espionage/files"
+    },
+    {
+      "name": "Maquis",
+      "designer": "Jake Staines",
+      "source": "PnP Community Pick",
+      "description": "Engage the Nazis of France in 'la petite guerre' and free your homeland!",
+      "url": "https://boardgamegeek.com/filepage/179348/maquis-2019-pnp-files-v10"
+    },
+    {
+      "name": "A Simple Life",
+      "designer": "Clint Goshn",
+      "source": "PnP Community Pick",
+      "description": "Roll & Write to upgrade your farm and complete randomized run objectives",
+      "url": "https://boardgamegeek.com/filepage/251102/game-sheets-and-1-page-rule-a-simple-life-contest"
+    },
+    {
+      "name": "Galdor's Grip",
+      "designer": "Gregg Jewell",
+      "source": "PnP Community Pick",
+      "description": "Stop an evil telepath with just your hands in this fantasy card game for one player.",
+      "url": "https://greggjewell.itch.io/galdors-grip"
+    },
+    {
+      "name": "Orchard",
+      "designer": "Mark Tuck",
+      "source": "PnP Community Pick",
+      "description": "Create the most fruitful micro orchard, but beware of rotten fruit!",
+      "url": "https://boardgamegeek.com/filepage/159521/orchard-cards-v1"
+    },
+    {
+      "name": "Alea's Garden",
+      "designer": "Brave James",
+      "source": "PnP Community Pick",
+      "description": "A cosy polyomino deckbuilding game, and winner of 2025 BoardGameGeek Solitaire competition!",
+      "url": "https://linktr.ee/aleasgarden"
+    },
+    {
+      "name": "Deckula!",
+      "designer": "Dr. Mindflip",
+      "source": "PnP Community Pick",
+      "description": "Decadent and dramatic vampires try to decorate their castles in peace.",
+      "url": "https://drmindflip.itch.io/deckula"
+    },
+    {
+      "name": "Clouds of War",
+      "designer": "Bojan Prakljacic",
+      "source": "PnP Community Pick",
+      "description": "A solo Great War aerial wargame in 54 cards. Pilot through missions over a French battlefield, survive dogfights, and build your pilot's career.",
+      "url": "https://boardgamegeek.com/thread/3695663/wip-clouds-of-war-solo-wargame-of-54-cards-about-a"
+    },
+    {
+      "name": "Bargain Basement Bathysphere",
+      "designer": "Scott Slomiany",
+      "source": "PnP Community Pick",
+      "description": "Explore the depths of Beachside Bay through multiple linked roll-and-write games.",
+      "url": "https://boardgamegeek.com/filepage/181118/bargain-basement-bathysphere-chapters-1-3"
+    },
+    {
+      "name": "Tiny Eldritch Horror",
+      "designer": "Bojan Prakljacic",
+      "source": "BGG TOP RATED PNP GAMES",
+      "description": "Eldritch Horror in 9 cards.",
+      "url": "https://boardgamegeek.com/thread/1955117/wip-challenge-accepted-eldritch-horror-on-9-cards"
+    },
+    {
+      "name": "TINYforming Mars",
+      "designer": "Michael Bevilacqua",
+      "source": "BGG TOP RATED PNP GAMES",
+      "description": "Two rival corps. One tiny planet. Plant trees, fill oceans, heat Mars.",
+      "url": "https://boardgamegeek.com/filepage/182520/tinyforming-mars-base-game-v20-04-24"
+    },
+    {
+      "name": "Ark Minima: Ark Nova in 18 Cards",
+      "designer": "Joe Klipfel",
+      "source": "BGG TOP RATED PNP GAMES",
+      "description": "Ark Minima is an 18-card version of Ark Nova.",
+      "url": "https://boardgamegeek.com/filepage/259756/ark-minima-ark-nova-in-18-cards"
+    },
+    {
+      "name": "Pax Pamini",
+      "designer": "Joe Klipfel",
+      "source": "BGG TOP RATED PNP GAMES",
+      "description": "Swing the tides of The Great Game using just 18 cards.",
+      "url": "https://boardgamegeek.com/filepage/267554/pax-pamini-base-game"
+    },
+    {
+      "name": "Grove: A 9-card Solitaire Game",
+      "designer": "Mark Tuck",
+      "source": "BGG TOP RATED PNP GAMES",
+      "description": "Grow your fruit grove with the help, or hindrance, of a cheeky squirrel.",
+      "url": "https://boardgamegeek.com/filepage/215930/grove-pnp-edition"
+    },
+    {
+      "name": "Mage Lite",
+      "designer": "Joe Klipfel",
+      "source": "BGG TOP RATED PNP GAMES",
+      "description": "Mage Knight in 18 cards (or so).",
+      "url": "https://boardgamegeek.com/filepage/230216/mage-lite-base-game"
+    },
+    {
+      "name": "City of Fury",
+      "designer": "Barny Skinner",
+      "source": "BGG TOP RATED PNP GAMES",
+      "description": "A 9 card homage to classic beat 'em ups like Streets of Rage and Double Dragon.",
+      "url": "https://boardgamegeek.com/thread/2801371/wip-city-of-fury-2022-9-card-pnp-design-contest-co"
+    }
   ],
   "crowdfunding": [
-    { "title": "Pocket Puffins: Lost in Space", "description": "Edward Bell - Kickstarter campaign went live on April 14, 2026 and ends May 14, 2026 at 7:01 AM PDT.", "url": "https://www.kickstarter.com/projects/pocket-puffins/pocket-puffins-lost-in-space-18-card-solo-space-puzzle" },
-    { "title": "Sole Survivor", "description": "Paper Tigers - Sole Survivor is an alien-infested spaceship solo survival challenge. It is a lightweight print-and-play game where you run, hide, and scramble to assemble a transporter before the creatures find you.", "url": "https://www.kickstarter.com/projects/papertigers/sole-survivor-0" },
-    { "title": "Nothing But Net: A Playground Basketball Card Game", "description": "Hafiz Printer - A fast-paced, two-player basketball card and dice game that brings the intensity of streetball straight to your tabletop. Draft your offense and defense cards, execute slick plays, and react in real time to your opponent's moves. Score big, trigger special abilities, and race to 21 points in high-energy, head-to-head action.", "url": "https://www.kickstarter.com/projects/hp1/nothing-but-net-2-player-head-to-head-basketball-card-game" },
-    { "title": "Greetings from Earth: A Roll & Write Outta World Tour", "description": "Benno Thönelt - Collect the world - one landmark at a time. Travel light years with just one die and a pen in this Print & Play Game.", "url": "https://www.kickstarter.com/projects/1617006368/greetings-from-earth-a-roll-and-write-outa-world-tour" },
-    { "title": "Hidden Realms: The Mummy's Tomb", "description": "Spiros Kallos - Hidden Realms: The Mummy's Tomb is a single-page, print-and-play, roll-and-write dungeon crawl inspired by classic D&D maps. Draw polyomino shapes to map a new dungeon every game. Uncover treasure, face deadly guardians, and confront the Mummy!", "url": "https://gamefound.com/en/projects/tabletop-for-world/hidden-realms-the-mummys-tomb" }
+    {
+      "title": "PnP Bundle #1",
+      "description": "The Best of the Indie Scene, In One Bundle. A curated collection of top Print & Play designs from indie designers around the world, bundled with two of Florian Fiedler's own games.",
+      "url": "https://gamefound.com/en/projects/florianfiedler/pnp-bundle-1?ref=homepage_discover_upcoming-coming-soon_4"
+    },
+    {
+      "title": "Stack Stealer",
+      "description": "Strategically build and steal stacks, but beware nothing stays yours for long! For 2 to 8 players.",
+      "url": "https://www.kickstarter.com/projects/david007/stack-stealer"
+    },
+    {
+      "title": "Delivered!",
+      "description": "Deliver parcels across the galaxy with ease using the Delivered! A Solo Journaling RPG custom playing card deck.",
+      "url": "https://www.kickstarter.com/projects/rage-kage-games/delivered-card-deck"
+    },
+    {
+      "title": "Nectar - A Routes and Manoeuvres PnP",
+      "description": "Nectar is a dungeon-crawler for bees; a hex-based game where you design an efficient route from one point to another, gathering nectar to avoid slower routes and trapping cells.",
+      "url": "https://www.backerkit.com/c/projects/enigmailed-puzzles/nectar-a-routes-and-manoeuvres-pnp/pre-launch"
+    },
+    {
+      "title": "Pintó",
+      "description": "Pintó is a drawing game where your worst doodles are your best weapon. Pictionary meets Dixit scoring. If no one or everyone guesses your drawing, you get behind. Sketch just enough to leave some of them guessing. Designed in Argentina.",
+      "url": "https://www.backerkit.com/c/projects/pulga-escapista/pinto/pre-launch"
+    },
+    {
+      "title": "Pixel Arts",
+      "description": "A creative roll & write game where every dice roll becomes a colorful pixel artwork.",
+      "url": "https://www.kickstarter.com/projects/552971206/pixel-arts/description"
+    },
+    {
+      "title": "GLITCH",
+      "description": "The Card Game Where Everyone Slowly Malfunctions. Race to clear your hand, while performing ridiculous and difficult Glitches, in this 3-6 player chaotic card game!",
+      "url": "https://www.kickstarter.com/projects/yellowdicegames/glitch-the-card-game-where-everyone-slowly-malfunctions/description"
+    },
+    {
+      "title": "Backstab — Solo Dungeon Crawler",
+      "description": "A premium vertical side-scrolling solo dungeon crawler handcrafted with modular magnetic tiles. The ultimate tactical tabletop puzzle.",
+      "url": "https://www.kickstarter.com/projects/getyourchadon/backstab-solo-dungeon-crawler-board-game/description"
+    },
+    {
+      "title": "Showrunner [Solo Game of the Month]",
+      "description": "Climb the ratings by hooking as many viewers as possible each week. Find ways to keep viewers coming back while competing against other shows on the air.",
+      "url": "https://gamefound.com/en/projects/gabe-barrett/showrunner-solo-game-of-the-month"
+    },
+    {
+      "title": "Birthday Sale (Grim World / The Promise)",
+      "description": "A limited-time Itch sale featuring discounted print-and-play titles including Grim World and The Promise.",
+      "url": "https://itch.io/s/180328/-birthday-sale-"
+    },
+    {
+      "title": "What If...WARS (WWII Series)",
+      "description": "What If...WARS is a quick under-90-minute print-and-play area-control and resource-managed combat strategy game for 1 to 2 players, with solo play included. It offers legacy-light battle tracking across chronological World War II scenarios, using just one six-sided die, a pencil, and minimal printing and cutting.",
+      "url": "https://site.wargamevault.com/product/560851/WHAT-IFWars-WWII-Series?affiliate_id=3623781"
+    },
+    {
+      "title": "Courage & Cunning",
+      "description": "Enter the Maw — a mysterious dungeon full of ancient loot — and beat your friends using courage or cunning to snag the prize! With gameplay described as 'fencing on rocket skates,' take advantage of turn order, playing multiple cards, and unique hero abilities to grab more loot than your opponent before the end of 6 rounds. Includes a digital story mode book expansion and a 6-card hero pack expansion.",
+      "url": "https://www.kickstarter.com/projects/johnathansorce/courage-and-cunning"
+    },
+    {
+      "title": "Logic & Lore 2nd Edition & Expansion",
+      "description": "A revised edition and expansion bundle that adds more tactical cardplay and content to the Logic & Lore system, including a $10 print-and-play pledge tier.",
+      "url": "https://www.kickstarter.com/projects/weirdgiraffegames/logic-and-lore-2nd-edition/description"
+    }
   ],
   "sites": [
-    { "name": "PnPFinder", "description": "Search for and discover worthwhile PnP games using this efficient and versatile game directory, 100 percent free and driven by the PnP community.", "url": "https://pnpfinder.com" },
-    { "name": "PnP Launchpad", "description": "PnP Launchpad is your connection to what's hot and fresh in print and play game projects! Discover and keep track of the latest print and play game crowdfunding projects and promotions.", "url": "https://launchpad.gonzhome.us" },
-    { "name": "PnPTools", "description": "Your essential resource for print and play websites, tools, stores, sources, and more. Search quickly, filter by category, and jump straight to each resource.", "url": "https://pnptools.gonzhome.us" },
-    { "name": "Card Prototyper", "description": "Design quick card prototypes and export individual card images or print-ready sheets in this free, fast, and thoughtfully designed web app.", "url": "https://prototyper.gonzhome.us" },
-    { "name": "Card Extractor", "description": "A free, private in-browser app to extract individual card images from uploaded PnP PDFs, and save them as individual card image files.", "url": "https://extractor.gonzhome.us" },
-    { "name": "Card Formatter", "description": "Upload your card images, pick a layout, and export a duplex-ready PDF with corner crosshair guides, with flexible spacing and page sizes.", "url": "https://formatter.gonzhome.us" }
+    {
+      "name": "PnPFinder",
+      "description": "Search for and discover worthwhile PnP games using this efficient and versatile game directory, 100 percent free and driven by the PnP community.",
+      "url": "https://pnpfinder.com"
+    },
+    {
+      "name": "PnP Launchpad",
+      "description": "PnP Launchpad is your connection to what's hot and fresh in print and play game projects! Discover and keep track of the latest print and play game crowdfunding projects and promotions.",
+      "url": "https://launchpad.gonzhome.us"
+    },
+    {
+      "name": "PnPTools",
+      "description": "Your essential resource for print and play websites, tools, stores, sources, and more. Search quickly, filter by category, and jump straight to each resource.",
+      "url": "https://pnptools.gonzhome.us"
+    },
+    {
+      "name": "Card Prototyper",
+      "description": "Design quick card prototypes and export individual card images or print-ready sheets in this free, fast, and thoughtfully designed web app.",
+      "url": "https://prototyper.gonzhome.us"
+    },
+    {
+      "name": "Card Extractor",
+      "description": "A free, private in-browser app to extract individual card images from uploaded PnP PDFs, and save them as individual card image files.",
+      "url": "https://extractor.gonzhome.us"
+    },
+    {
+      "name": "Card Formatter",
+      "description": "Upload your card images, pick a layout, and export a duplex-ready PDF with corner crosshair guides, with flexible spacing and page sizes.",
+      "url": "https://formatter.gonzhome.us"
+    }
   ],
   "builds": [
-    { "source": "hideaway", "name": "Angela Neff", "title": "The Cubes of Europe", "url": "https://boardgamegeek.com/boardgame/419496/the-cubes-of-europe", "blurb": "One of my favorite PnP games of all time is Cubes of Europe. Curious what your favorite is!" },
-    { "source": "hideaway", "name": "Doc Viglietti", "title": "Twelve Years", "url": "", "blurb": "I watched a video recently that brought this solo RPG to my attention. This is a delightful pocket-sized solo game that is easy to pick up and play. It reminds me of 4 Against Darkness, but I enjoy this one a lot more than the former. Twelve Years has both overland and dungeon exploration, customizable party members, expansions to add more depth, and streamlined mechanics all combine to make this a winner for me. I bought the PDFs and printed them myself." },
-    { "source": "hideaway", "name": "Mariano Gutsu", "title": "The Rise Of A Jarl", "url": "https://boardgamegeek.com/boardgame/459419/the-rise-of-a-jarl", "blurb": "Hello everyone. Today I've printed and crafted the preview demo of The Rise Of A Jarl, designed by Joe Klipfel and published by Button Shy. I was intrigued by the art and gameplay mechanics of this solo game so I thought to give it a try. It's also very easy to build which is a big plus, and looking at some playthroughs, I think it should be really interesting. The artwork is amazing as well. Have a good one!" },
-
-    { "source": "reddit", "name": "Crase_W", "title": "For Northwood", "url": "https://boardgamegeek.com/boardgame/334590/for-northwood-a-solo-trick-taking-game", "blurb": "I made For Northwood yesterday. And I think I might go ahead and make the 1\"x3\" version so it'll fit next to my laptop on my work desk more comfortably. Shhh. Don't tell my boss. I am procrastinating about making Radiance. It'll be my biggest game by far." },
-    { "source": "reddit", "name": "kasztelan13", "title": "Raging Bulls", "url": "https://boardgamegeek.com/boardgame/228570/raging-bulls", "blurb": "I'm organizing a competition this weekend with some friends to play the game Raging Bulls. It's a quick game, but we love it and we're having a lot of fun with it. Plus, we all love a Print and Play games and a Roll and Write games." },
-    { "source": "reddit", "name": "jipiboily", "title": "Small-Time Heroes / Puzzle Dungeon / Radiance", "url": "https://boardgamegeek.com/boardgame/453446/small-time-heroes-base-box", "blurb": "I am wrapping up the cutting and sleeving of Small-Time Heroes soon, and I just played my first few games of Puzzle Dungeon that I printed yesterday (discovered the game over the weekend)! I think I'll be obsessed with both! I just got into PnP...last week I crafted Drawing Dead, Rove and Rise of a Jarl. Soon, Radiance! I am planning on doing dual sided boards for it." },
-    { "source": "bgg", "name": "@Flash001", "title": "Lone Sherman: The Pacific – A Solitaire Wargame", "url": "https://boardgamegeek.com/boardgame/415855/lone-sherman-the-pacific-a-solitaire-wargame", "blurb": "My first Mike Lambo wargame..." },
-    { "source": "bgg", "name": "@lemdavefn", "title": "Descent: Legends of the Dark", "url": "https://boardgamegeek.com/boardgame/322708/descent-legends-of-the-dark", "blurb": "Printed enemy images..." },
-    { "source": "bgg", "name": "@Phenuxela", "title": "Puzzle Dungeon", "url": "https://boardgamegeek.com/boardgame/262498/puzzle-dungeon", "blurb": "Saw some playthroughs..." }
+    {
+      "source": "hideaway",
+      "name": "Angela Neff",
+      "title": "The Cubes of Europe",
+      "url": "https://boardgamegeek.com/boardgame/419496/the-cubes-of-europe",
+      "blurb": "One of my favorite PnP games of all time is Cubes of Europe. Curious what your favorite is!"
+    },
+    {
+      "source": "hideaway",
+      "name": "Doc Viglietti",
+      "title": "Twelve Years",
+      "url": "",
+      "blurb": "I watched a video recently that brought this solo RPG to my attention. This is a delightful pocket-sized solo game that is easy to pick up and play. It reminds me of 4 Against Darkness, but I enjoy this one a lot more than the former. Twelve Years has both overland and dungeon exploration, customizable party members, expansions to add more depth, and streamlined mechanics all combine to make this a winner for me. I bought the PDFs and printed them myself."
+    },
+    {
+      "source": "hideaway",
+      "name": "Mariano Gutsu",
+      "title": "The Rise Of A Jarl",
+      "url": "https://boardgamegeek.com/boardgame/459419/the-rise-of-a-jarl",
+      "blurb": "Hello everyone. Today I've printed and crafted the preview demo of The Rise Of A Jarl, designed by Joe Klipfel and published by Button Shy. I was intrigued by the art and gameplay mechanics of this solo game so I thought to give it a try. It's also very easy to build which is a big plus, and looking at some playthroughs, I think it should be really interesting. The artwork is amazing as well. Have a good one!"
+    },
+    {
+      "source": "reddit",
+      "name": "Crase_W",
+      "title": "For Northwood",
+      "url": "https://boardgamegeek.com/boardgame/334590/for-northwood-a-solo-trick-taking-game",
+      "blurb": "I made For Northwood yesterday. And I think I might go ahead and make the 1\"x3\" version so it'll fit next to my laptop on my work desk more comfortably. Shhh. Don't tell my boss. I am procrastinating about making Radiance. It'll be my biggest game by far."
+    },
+    {
+      "source": "reddit",
+      "name": "kasztelan13",
+      "title": "Raging Bulls",
+      "url": "https://boardgamegeek.com/boardgame/228570/raging-bulls",
+      "blurb": "I'm organizing a competition this weekend with some friends to play the game Raging Bulls. It's a quick game, but we love it and we're having a lot of fun with it. Plus, we all love a Print and Play games and a Roll and Write games."
+    },
+    {
+      "source": "reddit",
+      "name": "jipiboily",
+      "title": "Small-Time Heroes / Puzzle Dungeon / Radiance",
+      "url": "https://boardgamegeek.com/boardgame/453446/small-time-heroes-base-box",
+      "blurb": "I am wrapping up the cutting and sleeving of Small-Time Heroes soon, and I just played my first few games of Puzzle Dungeon that I printed yesterday (discovered the game over the weekend)! I think I'll be obsessed with both! I just got into PnP...last week I crafted Drawing Dead, Rove and Rise of a Jarl. Soon, Radiance! I am planning on doing dual sided boards for it."
+    },
+    {
+      "source": "bgg",
+      "name": "@Flash001",
+      "title": "Lone Sherman: The Pacific – A Solitaire Wargame",
+      "url": "https://boardgamegeek.com/boardgame/415855/lone-sherman-the-pacific-a-solitaire-wargame",
+      "blurb": "My first Mike Lambo wargame..."
+    },
+    {
+      "source": "bgg",
+      "name": "@lemdavefn",
+      "title": "Descent: Legends of the Dark",
+      "url": "https://boardgamegeek.com/boardgame/322708/descent-legends-of-the-dark",
+      "blurb": "Printed enemy images..."
+    },
+    {
+      "source": "bgg",
+      "name": "@Phenuxela",
+      "title": "Puzzle Dungeon",
+      "url": "https://boardgamegeek.com/boardgame/262498/puzzle-dungeon",
+      "blurb": "Saw some playthroughs..."
+    }
   ],
   "contests": [
-    { "title": "2026 1-Card Print and Play Contest", "ends": "July 31, 2026", "description": "Design a complete game that fits on a single card — front and back. One card, one page of rules. Contest ends July 31, 2026.", "url": "https://boardgamegeek.com/thread/3686290/2026-1-card-print-and-play-contest" },
-    { "title": "2026 Bad Comet Cozy Game Design Contest", "ends": "August 31, 2026", "description": "Design a cozy game for the Bad Comet Cozy Game Design Contest. Contest ends August 31, 2026.", "url": "https://boardgamegeek.com/thread/3683796/contest-open-2026-bad-comet-cozy-game-design-conte" },
-    { "title": "2026 9-Card Nanogame PnP Design Contest", "ends": "May 31, 2026", "description": "Create a new solo, co-op, or competitive game that fits on one sheet of 9 poker-size cards (2.5\" x 3.5\") plus rules pages, using up to 24 generic components total or none at all. Contest ends May 31, 2026.", "url": "https://boardgamegeek.com/thread/3648226/2026-9-card-nanogame-print-and-play-design-contest" },
-    { "title": "2026 Two-Player PnP Game Design Contest", "ends": "May 31, 2026", "description": "Let's play some inexpensive and innovative two-player games! With this contest, we hope to encourage designers to create interesting new gaming experiences specifically for a pair of gamers. Contest ends May 31, 2026.", "url": "https://boardgamegeek.com/thread/3620917/2026-two-player-print-and-play-game-design-contest" },
-    { "title": "2026 Deck Hand Games Design Contest", "ends": "June 26, 2026", "description": "The Challenge: To make an 18-card game that works in conjunction with any standard deck of playing cards. Deadline: June 26, 2026", "url": "https://boardgamegeek.com/thread/3669375/2026-deck-hand-games-design-contest-open-until-jun" },
-    { "title": "2026 Solomode Contest", "ends": "May 31, 2026", "description": "Design a solo mode for a game that does not have one, or has one that you find lacking. Contest ends June 30, 2026.", "url": "https://boardgamegeek.com/thread/3670686/2026-solomode-contest" },
-    { "title": "2026 Children & Family Game Design Contest", "ends": "May 15, 2026", "description": "This contest is meant to design games that we can play with the children, or games that children can play together. The focus should be on games that children (9 and under) can play with their families. Voting closes May 15, 2026", "url": "https://boardgamegeek.com/thread/3645079/2026-children-and-family-game-design-contest" },
-    { "title": "2026 Print and Play Wargame Design Contest", "ends": "December 21, 2026", "description": "Games entered in this contest should be purpose-designed wargames. Games may be solo, two player, multi-player or even co-operative. However it is critical that the game is a wargame. The primary focus should therefore be on conflict and warfare.", "url": "https://boardgamegeek.com/thread/3627732/contest-open-2026-print-and-play-wargame-design-co" }
+    {
+      "title": "2026 1-Card Print and Play Contest",
+      "ends": "July 31, 2026",
+      "description": "Design a complete game that fits on a single card — front and back. One card, one page of rules. Voting is July 1-31, 2026.",
+      "url": "https://boardgamegeek.com/thread/3686290/2026-1-card-print-and-play-contest"
+    },
+    {
+      "title": "2026 Solitaire Print and Play Contest",
+      "ends": "August 31, 2026",
+      "description": "Innovative single-player games in a variety of themes and mechanics. Submissions accepted June 1 - August 31, 2026.",
+      "url": "https://boardgamegeek.com/thread/3664408/2026-solitaire-print-and-play-contest"
+    },
+    {
+      "title": "2026 Bad Comet Cozy Game Design Contest",
+      "ends": "August 31, 2026",
+      "description": "Design a cozy game for the Bad Comet Cozy Game Design Contest.",
+      "url": "https://boardgamegeek.com/thread/3683796/contest-open-2026-bad-comet-cozy-game-design-conte"
+    },
+    {
+      "title": "2026 Print and Play Wargame Design Contest",
+      "ends": "December 21, 2026",
+      "description": "Purpose-designed wargames - solo, two player, multi-player or co-operative. Special theme: SABOTAGE. Submissions close October 1, 2026.",
+      "url": "https://boardgamegeek.com/thread/3627732/contest-open-2026-print-and-play-wargame-design-co"
+    }
   ],
   "wips": [
-    { "title": "Stone Skipping", "designer": "Hep Sosing (thinkyfiller)", "description": "A cozy 1-4 player card game where you skip stones across the beach to earn coins and build chains. Flip cards, hit other stones to rocket forward, and buy special cards from a market to push further. Four rounds, most points wins.", "url": "https://boardgamegeek.com/thread/3685593/wip-stone-skipping-bad-comet-cozy-contest" },
-    { "title": "Mountain of Perils", "designer": "Chendo BVB (@chendobvb)", "description": "A one-card hex dungeon crawl as a mountain exploration with perils, treasures, and fights. Quick to set up and play in short moments — perfect for a job pause or waiting in an office. One or two players, 30 minutes, 10 d6 and 10 cubes.", "url": "https://boardgamegeek.com/thread/3692138/wip-mountain-of-perils-2026-1-card-print-and-play" },
-    { "title": "Zeus", "designer": "Birgit Röscheisen (@bhr_79)", "description": "A quick 1-player dice manipulation game. Three dice circle a track — each turn select one die and move all dice for its pips. Each die triggers the icon's effect where it stops. Use your thunderbolts wisely to manipulate the dice. 5-10 minutes.", "url": "https://boardgamegeek.com/thread/3691866/wip-zeus-2026-1-card-print-and-play-contest-compon" },
-    { "title": "Clouds of War", "designer": "Bojan Prakljacic", "description": "A solo Great War aerial wargame confined in 54 cards and one A4 page. Pilot through Patrol, Escort, and Balloon Busting missions over a French battlefield. Moderate damage system and dogfight mechanics combined with various in-air events provide just enough randomness and replayability for a compelling narrative. Your pilot gains better traits as they progress, increasing survivability in the skies.", "url": "https://boardgamegeek.com/thread/3695663/wip-clouds-of-war-solo-wargame-of-54-cards-about-a" },
-    { "title": "DOKUSU", "designer": "@UberDante", "description": "DOKUSU is a SUDOKU-inspired puzzle in 9 cards. Arrange the nine cards into a 9x9 grid so that no number repeats in any one column or row, or within any of the nine 3x3 sub-grids.", "url": "https://boardgamegeek.com/thread/3665416/wip-dokusu-1p-puzzle-5-10-2026-9-card-contest-comp" },
-    { "title": "Crafting Crawler", "designer": "Agustin Gallo", "description": "A dungeon-building and exploration game where you generate the map as you forge your path, defeating the threats that lie within. Choose your hero (or a party of adventurers) to reach the deepest corners of this ever-shifting dungeon. Defeat the Ancient Dragon and claim the riches hidden behind its walls.", "url": "https://boardgamegeek.com/thread/3666361/wip-crafting-crawler-2026-9-card-pnp-design-contes" },
-    { "title": "The Test of Time", "designer": "Barny Skninner", "description": "Test of Time is a solo 9 card civilization game. From the dawn of time to the modern day, you will guide a small tribe of hunter-gatherers into a mighty empire, by managing and growing the population, using and developing new technologies, managing resources, developing theories of government, constructing a mighty wonder of the world, doing battle with a rival nation, surviving four historical ages, and developing enough culture to become a nation that stands the Test of Time.", "url": "https://boardgamegeek.com/thread/3675681/wip-test-of-time-2026-9-card-pnp-design-contest-co" },
-    { "title": "1st Hero", "designer": "Pengyu Chen", "description": "In this world, you do not merely fight; you lead. As a legendary Guild Master, your path is carved through untamed wilds and the remains of fallen kings. But steel alone will not win this war. Here, the clash of blades is replaced by the cunning of the mind.", "url": "https://boardgamegeek.com/thread/3665438/wip-1st-hero-2026-9-card-pnp-design-contest-contes" },
-    { "title": "Doodle Bash", "designer": "Daniel Young", "description": "In Doodle Bash you'll level up your doodling skills by combining simple shapes into an astonishing variety of clever drawings. Arrange your doodles in a pleasing way to score big and just maybe you'll be an artist some day! Doodle Bash is a 1-page, app-assisted PnP game. It was my entry in the 2025 Roll and Write contest where it placed 2nd overall.", "url": "https://boardgamegeek.com/thread/3677111/doodle-bash-now-an-app-assisted-1-page-pnp-deck-bu" },
-    { "title": "Flipping Little Dinos", "designer": "Martin Segobia", "description": "Flipping Little Dinos is a fast paced little puzzle. Players compete by placing Dinosaurs on a shared ecosystem with four different dinosaur species and four different ways to score. Score the most points with the dinosaurs you draw or flip them!", "url": "https://boardgamegeek.com/thread/3677905/wip-flipping-little-dinos-2026-9-card-pnp-design-c" },
-    { "title": "THE WORST PART OF BEING CAUGHT IN A TIME LOOP", "designer": "Andy Wagers", "description": "You are agents of the Temporal Research Division, racing across a 3×3 grid to collect four anomaly Relics before the timeline collapses. Every failed loop leaves the board scarred and your time shorter, but the Relics make your team stronger with each attempt. A coop puzzle of movement prediction, edge-color matching, and cascading grid shifts — playable solo or with up to four agents.", "url": "https://boardgamegeek.com/thread/3672662/wip-the-worst-part-of-being-caught-in-a-time-loop" }
+    {
+      "title": "Behind The Curtain",
+      "designer": "Martin Gonzalvez (@DrHenryArmitage)",
+      "description": "Establish and build your spy network behind enemy lines at the height of the Cold War. A solo game of worker placement and card tableau/engine building played over five stages, with an emergent narrative of espionage, tension, and daring driven by an AI event deck.",
+      "url": "https://boardgamegeek.com/thread/3730152/wip-behind-the-curtain-worker-placement-tableaueng"
+    },
+    {
+      "title": "A Better Yesterday",
+      "designer": "Olivia Squier (@oliviasquier)",
+      "description": "A solitaire card game about time travel where every card that helps you change the past returns later as a future consequence. You use Machines and Power Sources to unlock the next timeline, but every Memory Card resolved is sent forward to the future. 18 cards, 15-25 min.",
+      "url": "https://boardgamegeek.com/thread/3728191/wip-a-better-yesterday-time-travel-solo-card-game"
+    },
+    {
+      "title": "Last Prime Minister",
+      "designer": "Tihomir Radosavljevic (@QuietOne)",
+      "description": "Solo game where you play as a Prime Minister trying to add new laws to retain control of the State. Mechanics: Melding and Splaying, Rondel, Scenario/Mission/Campaign. 30-90 min, requires 3 colored pawns and 15+ cubes.",
+      "url": "https://boardgamegeek.com/thread/3733831/wip-last-prime-minister-2026-solitaire-print-and-p"
+    },
+    {
+      "title": "Dice Delve",
+      "designer": "Eben Lenehan (@ebro450)",
+      "description": "A solo dungeon crawler using just 9 dice and 2 cards! Move through a 3x3 map of dice where each number represents an encounter. After each room, the dice re-roll, constantly changing the map. Reach the exit with 15 gold without dying.",
+      "url": "https://boardgamegeek.com/thread/3727736/dice-delve-a-component-light-dungeon-crawler-using"
+    },
+    {
+      "title": "Captain Crash!",
+      "designer": "Steven Tondeur (@Stavr0s)",
+      "description": "Solitaire deduction game. Melvin and his stuffed cat Tibbs crashed on an alien planet. Zark, a monster that clones himself, is hiding among the clones in the Forget-Me-Fog. Solve two independent puzzles to find the real Tibbs. Mechanics: Command Cards, Deduction.",
+      "url": "https://boardgamegeek.com/thread/3723756/wip-captain-crash-command-cards-deduction-componen"
+    }
   ],
   "poll": [
-    { "option": "With bleed", "votes": 3 },
-    { "option": "Without bleed", "votes": 1 }
+    {
+      "option": "With bleed",
+      "votes": 3
+    },
+    {
+      "option": "Without bleed",
+      "votes": 1
+    }
   ],
   "articles": []
 }

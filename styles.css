@@ -155,6 +155,7 @@ header h1 {
 
 #builds-section {
     margin-bottom: 1.6rem;
+    display: none;
 }
 
 .build-column {
@@ -214,6 +215,10 @@ header h1 {
 .card {
     padding: 1.2rem;
     min-height: 280px;
+}
+
+.poll-card {
+    display: none;
 }
 
 .card h2,
@@ -488,6 +493,112 @@ footer h2 {
 .poll-total {
     font-size: 0.84rem;
     color: var(--muted);
+}
+
+.bgg-generator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.bgg-generator-card #bgg-start-id,
+.bgg-generator-card #bgg-count,
+.bgg-generator-card #bgg-direction,
+.bgg-generator-card #bgg-size {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--ink);
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 0.55rem;
+}
+
+.bgg-generator-card #bgg-start-id:focus,
+.bgg-generator-card #bgg-count:focus,
+.bgg-generator-card #bgg-direction:focus,
+.bgg-generator-card #bgg-size:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.check-label {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700 !important;
+    color: var(--ink) !important;
+    font-size: 0.88rem !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    cursor: pointer;
+}
+
+.check-label input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.bgg-generator-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin: 0.9rem 0;
+    flex-wrap: wrap;
+}
+
+.bgg-action-btn {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--ink);
+    background: var(--panel);
+    border: 3px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.bgg-action-btn:hover {
+    background: #fff;
+}
+
+.bgg-action-btn:active {
+    box-shadow: 1px 1px 0 var(--ink);
+    transform: translate(1px, 1px);
+}
+
+#bgg-status {
+    min-height: 1.3em;
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.bgg-generator-card #bgg-output {
+    width: 100%;
+    min-height: 180px;
+    padding: 0.75rem;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: #fff;
+    border: 3px solid var(--ink);
+    resize: vertical;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+.bgg-generator-card #bgg-output:focus {
+    outline: none;
+    border-color: var(--accent);
 }
 
 @media (max-width: 1180px) {
